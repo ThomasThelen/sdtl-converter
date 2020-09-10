@@ -1,0 +1,159 @@
+{
+  "id": "program-117",
+  "sourceFileName": "",
+  "sourceLanguage": "r",
+  "scriptMD5": "a2a589b9ffdfd60bac2d8b0f3d2b280e",
+  "scriptSHA1": "f1f4ace5efaa8a259095c117eca0b8949f34ba0a",
+  "sourceFileLastUpdate": "2020-06-21T17:41:00+00:00",
+  "sourceFileSize": 385,
+  "lineCount": 10,
+  "commandCount": 9,
+  "parser": "r-to-sdtl",
+  "parserVersion": "0.9 Development",
+  "modelVersion": "0.9 Development",
+  "modelCreatedTime": "2020-06-21T17:41:00+00:00",
+  "commands": [
+    {
+      "$type": "Comment",
+      "command": "comment",
+      "sourceInformation": {
+        "sourceStopIndex": 60,
+        "originalSourceText": "#  This example reads a Deposit amount and an interest Rate"
+      },
+      "commentText": "This example reads a Deposit amount and an interest Rate"
+    },
+    {
+      "$type": "Comment",
+      "command": "comment",
+      "sourceInformation": {
+        "lineNumberStart": 1,
+        "sourceStartIndex": 61,
+        "sourceStopIndex": 99,
+        "originalSourceText": "#  It computes the amount of Interest"
+      },
+      "commentText": "It computes the amount of Interest"
+    },
+    {
+      "$type": "Comment",
+      "command": "comment",
+      "sourceInformation": {
+        "lineNumberStart": 2,
+        "sourceStartIndex": 100,
+        "sourceStopIndex": 132,
+        "originalSourceText": "#  The Rate variable is dropped"
+      },
+      "commentText": "The Rate variable is dropped"
+    },
+    {
+      "$type": "NoTransformOp",
+      "command": "noTransformOp",
+      "sourceInformation": {
+        "lineNumberStart": 4,
+        "lineNumberEnd": 4,
+        "sourceStartIndex": 135,
+        "sourceStopIndex": 192,
+        "originalSourceText": "setwd(\"~/ICPSR/Project development/metadata_capture/Prov\")"
+      }
+    },
+    {
+      "$type": "NoTransformOp",
+      "command": "noTransformOp",
+      "sourceInformation": {
+        "lineNumberStart": 5,
+        "lineNumberEnd": 5,
+        "sourceStartIndex": 195,
+        "sourceStopIndex": 212,
+        "originalSourceText": "library(tidyverse)"
+      }
+    },
+    {
+      "$type": "Load",
+      "command": "Load",
+      "sourceInformation": {
+        "lineNumberStart": 6,
+        "lineNumberEnd": 6,
+        "sourceStartIndex": 228,
+        "sourceStopIndex": 251,
+        "originalSourceText": "read_csv(\"Deposits.csv\")"
+      },
+      "fileName": "'deposits.csv'",
+      "producesDataframe": [
+        {"dataframeName": "Deposits1" }
+      ]
+    },
+    {
+      "$type": "Compute",
+      "command": "compute",
+      "sourceInformation": {
+        "lineNumberStart": 7,
+        "lineNumberEnd": 7,
+        "sourceStartIndex": 267,
+        "sourceStopIndex": 310,
+        "originalSourceText": "mutate(Deposits1, Interest = Deposit * Rate)"
+      },
+      "consumesDataframe": [
+        {"dataframeName": "Deposits1" }
+      ],
+      "variable": {
+        "$type": "VariableSymbolExpression",
+        "variableName": "Interest"
+      },
+      "expression": {
+        "$type": "FunctionCallExpression",
+        "function": "multiplication",
+        "isSdtlName": true,
+        "arguments": [
+          {
+            "$type": "FunctionArgument",
+            "argumentValue": {
+              "$type": "VariableSymbolExpression",
+              "variableName": "Deposit"
+            }
+          },
+          {
+            "$type": "FunctionArgument",
+            "argumentValue": {
+              "$type": "VariableSymbolExpression",
+              "variableName": "Rate"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "DropVariables",
+      "command": "DropVariables",
+      "sourceInformation": {
+        "lineNumberStart": 8,
+        "lineNumberEnd": 8,
+        "sourceStartIndex": 324,
+        "sourceStopIndex": 349,
+        "originalSourceText": "select(Deposits1, -Rate  )"
+      },
+       "consumesDataframe": [
+        {"dataframeName": "Deposits1" }
+      ],
+	  "variables": [
+        {
+          "$type": "VariableSymbolExpression",
+          "variableName": "Rate"
+        }
+      ]
+    },
+    {
+      "$type": "Save",
+      "command": "Save",
+      "sourceInformation": {
+        "lineNumberStart": 9,
+        "lineNumberEnd": 9,
+        "sourceStartIndex": 352,
+        "sourceStopIndex": 384,
+        "originalSourceText": "write.csv(Account, 'account.csv')"
+      },      
+      "fileName": "'accounts.sav'"
+       "consumesDataframe": [
+        {"dataframeName": "Deposits1" }
+		]
+	  }
+  ]
+}

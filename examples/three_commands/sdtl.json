@@ -1,0 +1,69 @@
+{
+  "id": "program-28",
+  "sourceFileName": "",
+  "sourceLanguage": "spss",
+  "scriptMD5": "4e356d3c2980674e0c28c2d937af0bed",
+  "scriptSHA1": "2d18984d3415c7b60a88eccb4251dcfbb2ccd31e",
+  "sourceFileLastUpdate": "2020-09-10T07:06:11+00:00",
+  "sourceFileSize": 96,
+  "lineCount": 3,
+  "commandCount": 3,
+  "parser": "spss-to-sdtl",
+  "parserVersion": "0.9 Development",
+  "modelVersion": "0.9 Development",
+  "modelCreatedTime": "2020-09-10T07:06:11+00:00",
+  "commands": [
+    {
+      "$type": "Compute",
+      "command": "compute",
+      "sourceInformation": {
+        "lineNumberStart": 1,
+        "lineNumberEnd": 1,
+        "sourceStartIndex": 1,
+        "sourceStopIndex": 30,
+        "originalSourceText": "compute interest_rate = 0.02 ."
+      },
+      "variable": {
+        "$type": "VariableSymbolExpression",
+        "variableName": "interest_rate"
+      },
+      "expression": {
+        "$type": "NumericConstantExpression",
+        "value": "0.02",
+        "numericType": "double"
+      }
+    },
+    {
+      "$type": "Compute",
+      "command": "compute",
+      "sourceInformation": {
+        "lineNumberStart": 2,
+        "lineNumberEnd": 2,
+        "sourceStartIndex": 32,
+        "sourceStopIndex": 58,
+        "originalSourceText": "compute delta_risk = 0.97 ."
+      },
+      "variable": {
+        "$type": "VariableSymbolExpression",
+        "variableName": "delta_risk"
+      },
+      "expression": {
+        "$type": "NumericConstantExpression",
+        "value": "0.97",
+        "numericType": "double"
+      }
+    },
+    {
+      "$type": "Load",
+      "command": "load",
+      "sourceInformation": {
+        "lineNumberStart": 3,
+        "lineNumberEnd": 3,
+        "sourceStartIndex": 60,
+        "sourceStopIndex": 94,
+        "originalSourceText": "GET FILE='retirement_accounts.sav'."
+      },
+      "fileName": "'retirement_accounts.sav'"
+    }
+  ]
+}

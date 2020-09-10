@@ -1,0 +1,77 @@
+{
+  "id": "program-9",
+  "sourceFileName": "",
+  "sourceLanguage": "spss",
+  "scriptMD5": "3aab9a54382d4e801f388b2b572b5ba7",
+  "scriptSHA1": "471ba2c046de78a09edd618e9b53946feeaeda0d",
+  "sourceFileLastUpdate": "2020-05-15T20:26:49+00:00",
+  "sourceFileSize": 117,
+  "lineCount": 6,
+  "commandCount": 3,
+  "parser": "spss-to-sdtl",
+  "parserVersion": "0.9 Development",
+  "modelVersion": "0.9 Development",
+  "modelCreatedTime": "2020-05-15T20:26:49+00:00",
+  "commands": [
+    {
+      "$type": "Load",
+      "command": "load",
+      "sourceInformation": {
+        "lineNumberStart": 1,
+        "lineNumberEnd": 1,
+        "sourceStartIndex": 1,
+        "sourceStopIndex": 29,
+        "originalSourceText": "GET     FILE='deposits.sav'."
+      },
+      "fileName": "'deposits.sav'"
+    },
+    {
+      "$type": "Compute",
+      "command": "compute",
+      "sourceInformation": {
+        "lineNumberStart": 2,
+        "lineNumberEnd": 2,
+        "sourceStartIndex": 31,
+        "sourceStopIndex": 64,
+        "originalSourceText": "compute Interest = Deposit * Rate."
+      },
+      "variable": {
+        "$type": "VariableSymbolExpression",
+        "variableName": "Interest"
+      },
+      "expression": {
+        "$type": "FunctionCallExpression",
+        "function": "multiplication",
+        "isSdtlName": true,
+        "arguments": [
+          {
+            "$type": "FunctionArgument",
+            "argumentValue": {
+              "$type": "VariableSymbolExpression",
+              "variableName": "Deposit"
+            }
+          },
+          {
+            "$type": "FunctionArgument",
+            "argumentValue": {
+              "$type": "VariableSymbolExpression",
+              "variableName": "Rate"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Save",
+      "command": "save",
+      "sourceInformation": {
+        "lineNumberStart": 5,
+        "lineNumberEnd": 5,
+        "sourceStartIndex": 76,
+        "sourceStopIndex": 103,
+        "originalSourceText": "save outfile='accounts.sav'."
+      },
+      "fileName": "'accounts.sav'"
+    }
+  ]
+}

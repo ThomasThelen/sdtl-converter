@@ -1,0 +1,29 @@
+{
+  "id": "program-21",
+  "sourceFileName": "",
+  "sourceLanguage": "spss",
+  "scriptMD5": "2ae21a2cd8d3fbc645e41d4e87a2862f",
+  "scriptSHA1": "2dd8050d9052d00651a54a9eec3fefa7ffc7ba2f",
+  "sourceFileLastUpdate": "2020-09-10T06:50:05+00:00",
+  "sourceFileSize": 28,
+  "lineCount": 1,
+  "commandCount": 1,
+  "parser": "spss-to-sdtl",
+  "parserVersion": "0.9 Development",
+  "modelVersion": "0.9 Development",
+  "modelCreatedTime": "2020-09-10T06:50:05+00:00",
+  "commands": [
+    {
+      "$type": "Load",
+      "command": "load",
+      "sourceInformation": {
+        "lineNumberStart": 1,
+        "lineNumberEnd": 1,
+        "sourceStartIndex": 1,
+        "sourceStopIndex": 28,
+        "originalSourceText": "GET     FILE='deposits.sav'."
+      },
+      "fileName": "'deposits.sav'"
+    }
+  ]
+}
