@@ -1,0 +1,2319 @@
+{
+  "schema": "http://json-schema.org/draft-04/schema#",
+  "id": "#root",
+  "simpleType": {
+    "duration": {
+      "type": "number",
+      "format": "utc-millisec"
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "time": {
+      "type": "string",
+      "format": "time"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "gYearMonth": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "integer"
+        },
+        "month": {
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z)|((\\+|\\-)(00|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]))$"
+        }
+      },
+      "required": [
+        "year",
+        "month"
+      ],
+      "additionalProperties": false
+    },
+    "gYear": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z)|((\\+|\\-)(00|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]))$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gMonthDay": {
+      "type": "object",
+      "properties": {
+        "month": {
+          "type": "integer"
+        },
+        "day": {
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z)|((\\+|\\-)(00|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]))$"
+        }
+      },
+      "required": [
+        "month",
+        "day"
+      ],
+      "additionalProperties": false
+    },
+    "gDay": {
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z)|((\\+|\\-)(00|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]))$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gMonth": {
+      "type": "object",
+      "properties": {
+        "month": {
+          "type": "integer"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z)|((\\+|\\-)(00|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9]))$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "anyURI": {
+      "type": "string"
+    },
+    "cogsDate": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "$ref": "#/simpleType/dateTime"
+        },
+        "date": {
+          "$ref": "#/simpleType/date"
+        },
+        "gYearMonth": {
+          "$ref": "#/simpleType/gYearMonth"
+        },
+        "gYear": {
+          "$ref": "#/simpleType/gYear"
+        },
+        "duration": {
+          "$ref": "#/simpleType/duration"
+        }
+      },
+      "additionalProperties": false
+    },
+    "language": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "Aggregate": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "GroupByVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "Variables used as keys to identify groups."
+        },
+        "AggregateVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Compute"
+          },
+          "minItems": 1,
+          "Description": "The expressions that compute the aggregations. An aggregation function should be used."
+        },
+        "WeightVariable": {
+          "$ref": "#/definitions/VariableSymbolExpression",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The variable used as a weight in the operation."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AllNumericVariablesExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AllTextVariablesExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AllVariablesExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Analysis": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Message": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A message listing commands that are not supported in SDTL."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AppendDatasets": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "AppendFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppendFileDescription"
+          },
+          "minItems": 1,
+          "Description": "Description of files to be appended"
+        },
+        "AppendFlagVariable": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Creates a new variable identifying the source dataframe for a row with the variable name given in the value of the property"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AppendFileDescription": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "FileName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Name of the file being merged.  May be \"Active file\"."
+        },
+        "RenameVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RenamePair"
+          },
+          "minItems": 0,
+          "Description": "Variables to be renamed"
+        },
+        "KeepVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to keep"
+        },
+        "DropVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to drop"
+        },
+        "Force": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Forces variable attributes to be changed to the attributes in the \"master\"  dataframe, when appended dataframes have the same variable names but different attributes.  For example, \"string\" may be forced to \"numeric\""
+        }
+      },
+      "additionalProperties": false
+    },
+    "BooleanConstantExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Values of TRUE and FALSE are used in logical expressions."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Collapse": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "OutputDatasetName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of a new, aggregated dataset to be created."
+        },
+        "GroupByVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "Variables used as keys to identify groups."
+        },
+        "AggregateVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Compute"
+          },
+          "minItems": 1,
+          "Description": "The expressions that compute the aggregations. An aggregation function should be used."
+        },
+        "WeightVariable": {
+          "$ref": "#/definitions/VariableSymbolExpression",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The variable used as a weight in the operation."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "CommentText": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The text of the source code comment."
+        }
+      },
+      "additionalProperties": false
+    },
+    "CompositeVariableNameExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "ComputedVariableName": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "An expression that evaluates to the constructed variable name."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Compute": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variable": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The variable that is computed."
+        },
+        "Expression": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The expression used to compute the value of the variable(s)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DeleteVariables": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The variables to be deleted."
+        }
+      },
+      "additionalProperties": false
+    },
+    "DoIf": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Condition": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A logical expression"
+        },
+        "ThenCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands to be performed if the condition is true."
+        },
+        "ElseCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands to be performed if the condition is false."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Execute": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ExpressionBase": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Name": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the argument, when the expression is passed to a function."
+        }
+      },
+      "additionalProperties": false
+    },
+    "FunctionArgument": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "ArgumentName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the parameter."
+        },
+        "ArgumentValue": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The value of the parameter."
+        }
+      },
+      "additionalProperties": false
+    },
+    "FunctionCallExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Function": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The name of the function being called."
+        },
+        "IsSdtlName": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "When true, the Function property contains the name of a function from the SDTL function library. When false, the Function property contains the name of a system-specific or user-defined function."
+        },
+        "Arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FunctionArgument"
+          },
+          "minItems": 0,
+          "Description": "A list of parameters to the function."
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupedExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Expression": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IfRows": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Condition": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A logical expression that is evaluated separately for every row in the dataframe."
+        },
+        "ThenCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands to be performed if the condition is true."
+        },
+        "ElseCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands to be performed if the condition is false."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Invalid": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Message": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A message describing the issue with the invalid command."
+        }
+      },
+      "additionalProperties": false
+    },
+    "IteratorDescription": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "IteratorSymbolName": {
+          "$ref": "#/definitions/IteratorSymbolExpression",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The name used in  IteratorCommands  for the index variable that changes value in the loop."
+        },
+        "IteratorValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressionBase"
+          },
+          "minItems": 1,
+          "Description": "Describes the values that are substituted for the index variable that changes value in the loop."
+        }
+      },
+      "additionalProperties": false
+    },
+    "IteratorSymbolExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Name": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "A name used for the index variable that takes different values inside a loop."
+        }
+      },
+      "additionalProperties": false
+    },
+    "KeepVariables": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The variables to be kept in the dataset."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Load": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "FileName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the file to be loaded."
+        },
+        "Software": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the file format, or the software package that works with the file."
+        },
+        "IsCompressed": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Indicates whether the file format is compressed."
+        }
+      },
+      "additionalProperties": false
+    },
+    "LoopOverList": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Iterators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IteratorDescription"
+          },
+          "minItems": 0,
+          "Description": "Describes one or more iteration processes in this loop.  "
+        },
+        "Commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands generated by the loop expanded by replacing tokens with their values."
+        }
+      },
+      "additionalProperties": false
+    },
+    "LoopWhile": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Condition": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Describes a condition required for the next iteration to begin.  "
+        },
+        "EndCondition": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Describes a condition that ends  interation.  "
+        },
+        "IteratorCommands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformBase"
+          },
+          "minItems": 0,
+          "Description": "Commands within the loop expressed in SDTL with IteratorSymbolExpressions."
+        }
+      },
+      "additionalProperties": false
+    },
+    "MergeDatasets": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "MergeFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MergeFileDescription"
+          },
+          "minItems": 2,
+          "Description": "Description of files to be merged."
+        },
+        "MergeByVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A variable or list of variables that acts as the unique case identifier across datasets.  If MatchByVariables is absent, MergeType must be \"sequential\" on all files."
+        },
+        "FirstVariable": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of a variable set to 1 for the first row of each group of cases with the same value for the MatchByVariables variables and set to  0 for all other rows."
+        },
+        "LastVariable": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of a variable set to 1 for the last row of each group of cases with the same value for the MatchByVariables variables and set to  0 for all other rows."
+        },
+        "KeepVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to keep"
+        },
+        "DropVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to drop"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MergeFileDescription": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "FileName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Name of the file being merged.  May be \"Active file\"."
+        },
+        "MergeType": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Describes the type of merge performed. "
+        },
+        "MergeFlagVariable": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Creates a new variable indicating whether the row came from this file or a different input file."
+        },
+        "RenameVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RenamePair"
+          },
+          "minItems": 0,
+          "Description": "Variables to be renamed"
+        },
+        "Overlap": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Outcome when the same variables exist in more than one file. \"Master\" means the value is taken from this file.  \"Merge\" means the value is taken from the other file.  \"Update\" means that value is taken from the other file when the value in this file is missing."
+        },
+        "NewRow": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Generate new row when not matched to other files"
+        },
+        "KeepVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to keep"
+        },
+        "DropVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "List of variables to drop"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "Severity": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Information, Warning, Error"
+        },
+        "LineNumber": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The line number of the source that the messages is related to, if relevant."
+        },
+        "CharacterPosition": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The character position of the source that the message is related to, if relevant."
+        },
+        "MessageText": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The content of the message."
+        }
+      },
+      "additionalProperties": false
+    },
+    "MissingValueConstantExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The missing value as it appears in the system (e.g., .a, .b, .c)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumberRangeExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "NumberRangeStart": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Starting value for range"
+        },
+        "NumberRangeEnd": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Ending value for range"
+        },
+        "NumberRangeIncrement": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Increment for stepping through range"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumericConstantExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "TODO"
+        },
+        "NumericType": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumericMaximumValueExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumericMinimumValueExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Recode": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "RecodedVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecodeVariable"
+          },
+          "minItems": 0,
+          "Description": "The variables that will have their values recoded. The resulting values may be either stored in the same variable, or a newly created destination variable"
+        },
+        "RecodedVariableRange": {
+          "$ref": "#/definitions/VariableRangeExpression",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A range of variables to which the recode rules are applied. The resulting values are stored in the same variable."
+        },
+        "Rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecodeRule"
+          },
+          "minItems": 0,
+          "Description": "A mapping describing which values will be recoded to which new values"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RecodeRule": {
+      "type": "object",
+      "properties": {
+        "FromValue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressionBase"
+          },
+          "minItems": 0,
+          "Description": "The values to be recoded."
+        },
+        "To": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The new value"
+        },
+        "Label": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A value label for the new recoded value, if appropriate"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RecodeVariable": {
+      "type": "object",
+      "properties": {
+        "Source": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the variable which will have its values recoded"
+        },
+        "Target": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the new variable into which the recoded values are inserted. This may be the same as the source variable if values are recoded in place."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Rename": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Renames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RenamePair"
+          },
+          "minItems": 0,
+          "Description": "A list of variable rename objects, which includes the old name and the new name."
+        }
+      },
+      "additionalProperties": false
+    },
+    "RenamePair": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "OldVariable": {
+          "$ref": "#/definitions/VariableSymbolExpression",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The old name of the variable."
+        },
+        "NewVariable": {
+          "$ref": "#/definitions/VariableSymbolExpression",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The new name of the variable."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReshapeItemDescription": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "TargetVariableName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Name of new variable created by this command."
+        },
+        "TargetVariableLabel": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Label for new variable created by this command."
+        },
+        "SourceVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Source variables in the original dataset used to create this variable."
+        },
+        "Stub": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The stub is a string used in the names of variables in the wide dataset."
+        },
+        "IndexValues": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A list of values that produce new rows (long) or columns (wide) for this variable."
+        },
+        "IndexVariableName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Name of the variable that will contain the value of the index for this row."
+        },
+        "IndexVariableLabel": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Label for the variable in IndexVariableName."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReshapeLong": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "MakeItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReshapeItemDescription"
+          },
+          "minItems": 0,
+          "Description": "New variables created by this command."
+        },
+        "CaseNumberVariable": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "New variable identifying the case number in the wide data that created this row."
+        },
+        "IDVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "One or more variables identifying unique rows in the wide data."
+        },
+        "DropVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Variables to be dropped from the new dataset."
+        },
+        "KeepVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Variables to be kept in the new dataset."
+        },
+        "KeepNullCases": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "When set to TRUE, rows in which all constructed variables are missing are not deleted."
+        },
+        "CountByID": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "New variable with the number of cases in the long dataset that were created from the source row in the wide dataset."
+        },
+        "CountByIDLabel": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Label for the CountByID variable."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReshapeWide": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "MakeItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReshapeItemDescription"
+          },
+          "minItems": 0,
+          "Description": "New variables created by this command."
+        },
+        "IDVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "One or more variables identifying unique rows in the wide data."
+        },
+        "DropVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Variables to be dropped from the new dataset."
+        },
+        "KeepVariables": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Variables to be kept in the new dataset."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Save": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "FileName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the file to be saved."
+        },
+        "Software": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the file format, or the software package that works with the file."
+        },
+        "IsCompressed": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Indicates whether the file format is compressed."
+        }
+      },
+      "additionalProperties": false
+    },
+    "Select": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Condition": {
+          "$ref": "#/definitions/ExpressionBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The logical expresion that must be true for a case to remain in the working dataset."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetDatasetProperty": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "PropertyName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the property to be set (for example, 'Title' or 'Subtitle')."
+        },
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The value of the property."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetDataType": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The variables that will have their format set"
+        },
+        "DataType": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "General type of a variable,  e.g.  \"Text\" or \"Numeric\"."
+        },
+        "SubTypeSchema": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A vendor or standards body with a controlled vocabulary.  The value can be a URL."
+        },
+        "SubType": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name used in the associated schema."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetDisplayFormat": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The variables that will have their format set"
+        },
+        "DisplayFormatSchema": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A vendor or standards body with a controlled vocabulary.  The value can be a URL."
+        },
+        "DisplayFormatName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name used in the associated schema."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetMissingValues": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The list of variables to which the missing values are assigned"
+        },
+        "Values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressionBase"
+          },
+          "minItems": 0,
+          "Description": "The values to be considered as missing values"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetValueLabels": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "The variables to which a label will be assigned"
+        },
+        "Labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValueLabel"
+          },
+          "minItems": 0,
+          "Description": "The label to be assigned to the variable"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SetVariableLabel": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variable": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The name of the variable to which a label will be assigned"
+        },
+        "Label": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The label to be assigned to the variable"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SortCases": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "SortCriteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SortCriterion"
+          },
+          "minItems": 1,
+          "Description": "Describes how cases are sorted."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SortCriterion": {
+      "type": "object",
+      "properties": {
+        "Variable": {
+          "$ref": "#/definitions/VariableReferenceBase",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The variable used to sort."
+        },
+        "SortDirection": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The direction in which to sort."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SourceInformation": {
+      "type": "object",
+      "properties": {
+        "LineNumberStart": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The line number of the beginning of the transform code"
+        },
+        "LineNumberEnd": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The line number of the end of the transform code"
+        },
+        "SourceStartIndex": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The character index of the beginning of the transform code"
+        },
+        "SourceStopIndex": {
+          "type": "integer",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The character index of the end of the transform code"
+        },
+        "OriginalSourceText": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The original source code of the data transform code"
+        },
+        "ProcessedSourceText": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The source code of the data transform code after processing macros or loops"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StringConstantExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StringRangeExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "RangeStart": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Starting value for range"
+        },
+        "RangeEnd": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Ending value for range"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TransformBase": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Command": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "The type of transform command"
+        },
+        "SourceInformation": {
+          "$ref": "#/definitions/SourceInformation",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Information about the source of the transform command."
+        },
+        "CanChangeData": {
+          "type": "boolean",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "Indicates that the transform is capable of changing the values in the data."
+        },
+        "ProducesDataframe": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "Description": "Signify the dataframe which this transform produces."
+        },
+        "ConsumesDataframe": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "Description": "Signify the dataframe which this transform acts upon."
+        },
+        "Message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "Description": "Adds a message that can be displayed with the command."
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnhandledValuesExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Unsupported": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Message": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "A message describing the issue with the invalid command."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ValueLabel": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The value to which a label is assigned"
+        },
+        "Label": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "The label to be assigned to the value"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ValueListExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressionBase"
+          },
+          "minItems": 1,
+          "Description": "The list of expressions."
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariableListExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "Variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VariableReferenceBase"
+          },
+          "minItems": 0,
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariableRangeExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "First": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "TODO"
+        },
+        "Last": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 0,
+            "upper": 1
+          },
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariableReferenceBase": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariableSymbolExpression": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "Discriminator specifies the data type name"
+        },
+        "VariableName": {
+          "type": "string",
+          "MultiplicityElement": {
+            "lower": 1,
+            "upper": 1
+          },
+          "Description": "TODO"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "TopLevelReference": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Reference",
+        "minItems": 0
+      }
+    },
+    "Program": {
+      "type": "object",
+      "patternProperties": {
+        "^(?!\\s*$).+": {
+          "type": "object",
+          "id": "#Program",
+          "properties": {
+            "ID": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 1,
+                "upper": 1
+              },
+              "Description": "ID of the object being referenced."
+            },
+            "SourceFileName": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The name of the file containing the source code."
+            },
+            "SourceLanguage": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The language of the source code."
+            },
+            "ScriptMD5": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The MD5 hash of the contents of the file."
+            },
+            "ScriptSHA1": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The SHA-1 hash of the contents of the file."
+            },
+            "SourceFileLastUpdate": {
+              "$ref": "#/simpleType/dateTime",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The date and time the file was last updated."
+            },
+            "SourceFileSize": {
+              "$ref": "#/simpleType/long",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The size of the file in bytes."
+            },
+            "LineCount": {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483648,
+              "exclusiveMinimum": false,
+              "exclusiveMaximum": false,
+              "Description": "The number of lines in the source file."
+            },
+            "CommandCount": {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483648,
+              "exclusiveMinimum": false,
+              "exclusiveMaximum": false,
+              "Description": "The number of commands detected in the source file."
+            },
+            "Messages": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Message"
+              },
+              "minItems": 0,
+              "Description": "Messages related to the parsing of the source file."
+            },
+            "Parser": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The name of the parser used to generate the SDTL."
+            },
+            "ParserVersion": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The version of the parser used to generate the SDTL."
+            },
+            "ModelVersion": {
+              "type": "string",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The version of the SDTL model."
+            },
+            "ModelCreatedTime": {
+              "$ref": "#/simpleType/dateTime",
+              "MultiplicityElement": {
+                "lower": 0,
+                "upper": 1
+              },
+              "Description": "The date and time the SDTL was generated."
+            },
+            "Commands": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TransformBase"
+              },
+              "minItems": 0,
+              "Description": "The list of commands that make up the program."
+            }
+          },
+          "required": [
+            "ID"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+}

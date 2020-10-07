@@ -1,5 +1,4 @@
 # SDTLConverter
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ThomasThelen/sdtl-converter/master)
 
 A python script for turning SDTL in JSON-LD into ProvONE/Prov.
 
@@ -23,4 +22,3 @@ The following examples are currently working.
 
 `load_command`
 
-To run an example, open `converter.py`, scroll to the bottom and replace the SDTL filename with the one you're interested in.
