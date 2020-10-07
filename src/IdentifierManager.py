@@ -11,10 +11,12 @@ class IdentifierManager:
         # A list of terms in ProvONE that have identifiers. DEVNOTE: The
         # xsd of ProvONE can *hopefully* be generated from the owl file and then
         # have python classes generated (see how the sdtl is done)
-        provone_terms: List[str] = ["Port", "Program", "Workflow"]
+        provone_terms: List[str] = ["Port", "Program", "Workflow", "Execution",
+                                    "Association"]
 
         # Create the ProvONE and SDTL namespaces.
         self.provone_ns = rdflib.Namespace("http://purl.dataone.org/provone/2015/01/15/ontology#")
+        self.prov_ns = rdflib.Namespace('http://www.w3.org/ns/prov#')
         self.sdtl_namespace: rdflib.Namespace = rdflib.Namespace('sdtl#')
 
         # Create a map of sdtl types to count
