@@ -29,7 +29,7 @@ class IdentifierManager:
         for provone_term in provone_terms:
             self.counts[provone_term] = 0
 
-    def get_id(self, property_name):
+    def get_id(self, property_name) -> rdflib.URIRef:
         """
          Returns an identifier that follows the recommended convention
              class/count
@@ -43,7 +43,7 @@ class IdentifierManager:
         else:
             return rdflib.URIRef(f'{self.sdtl_namespace}{property_name}')
 
-    def get_property_id(self, sdtl_property) -> str:
+    def get_property_id(self, sdtl_property) -> rdflib.URIRef:
         """
         sdtl#sdtl_property
         :param self:
