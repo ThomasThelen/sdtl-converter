@@ -1,25 +1,40 @@
 # SDTLConverter
 [![Build Status](https://travis-ci.org/ThomasThelen/sdtl-converter.svg?branch=master)](https://travis-ci.org/ThomasThelen/sdtl-converter)
+[![codecov](https://codecov.io/gh/ThomasThelen/sdtl-converter/branch/master/graph/badge.svg?token=FHBM1I1R5H)](undefined)
 
-A python script for turning SDTL in JSON-LD into ProvONE/Prov.
+A python library for turning SDTL in JSON-LD format into ProvONE/Prov.
 
-### Status
 
-Things seems to work fine with commands that aren't using data from
-other commands. Support for commands that use other data is under
-development. I recently did a refactor and pulled the retrospective
-provenance out, but will re-add it once I get data usage working (to
-reduce complexity).
+
 
 ### Try it Out
 
-The following examples are currently working.
+Install with pip
+ 
+ `pip install git+https://github.com/ThomasThelen/sdtl-converter.git`
+ 
+ To import the library in a sorce file,  
+ 
+ `from sdt-converter import Converter`
 
-`single_command`
 
-`two_commads`
+TCreate an instance of `Converter`, passing the location of an SDTL JSON
+file to its constructor, shown below.
+ 
+`converter = Converter('path_to/sdtl.json')`
 
-`three_commands`
+#### Constructing Provenance
 
-`load_command`
+The `construct_provenance` method is the main method used to create
+proveance representations of the SDTL. To create prospective provenance,
+use the following
+
+`converter.construct_provenance()`
+
+or
+
+`converter.construct_provenance(prospective=True)`
+
+
+
 
