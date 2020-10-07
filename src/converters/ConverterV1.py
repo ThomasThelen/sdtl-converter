@@ -1,13 +1,14 @@
+from typing import Union, List
 import rdflib
 import json
-from typing import Union, List
-import logging
 
+from .Converter import Converter
 import schemas.generated.sdtl as sdtl
-from src.IdentifierManager import IdentifierManager
-class Converter:
+
+
+class ConverterV1(Converter):
     """
-    A class that handles the conversion from SDTL to ProvONE.
+    A converter that takes SDTL 1.0 and produces a ProvONE representation.
     """
 
     def __init__(self, file_path: str):
@@ -16,14 +17,6 @@ class Converter:
 
         :param file_path: A path to an SDTL JSON file
         """
-
-        self.id_manager = IdentifierManager()
-
-        self.graph = rdflib.Graph()
-        self.graph.bind("sdtl", self.id_manager.sdtl_namespace)
-        self.graph.bind("provone", self.id_manager.provone_ns)
-        self.sdtl = None
-        self.store_sdtl(file_path)
 
         # A list of the sub-properties of the top level provone:Programs (has extension like .py, .R, etc) that
         # we want to include in the RDF
@@ -42,14 +35,8 @@ class Converter:
             self.schema_to_name(sdtl.ModelCreatedTime)
         ]
 
-    def store_sdtl(self, file_path: str):
-        """
-        Opens an SDTL json file and store it in memory
-        :param file_path:
-        :return:
-        """
-        with open(file_path) as json_file:
-            self.sdtl = json.load(json_file)
+        super().__init__(file_path)
+
 
     def parse_outer_sdtl(self, prospective=True) -> str:
         """
@@ -140,7 +127,7 @@ class Converter:
             # If it's a an SDTL object ie {'$type': 'VariableSymbolExpression', 'variableName': 'Interest'}
             if is_dict:
                 if prop == 'Comment':
-                    return
+                    pass
                 object_identifier = self.id_manager.get_id(prop)
                 prop_type = self.id_manager.get_property_id(prop)
                 self.graph.add((object_identifier, rdflib.RDF.type, prop_type))
@@ -197,18 +184,10 @@ class Converter:
         :param command:
         :return:
         """
-        logging.info("Adding command")
         self.graph.add((command_uri, rdflib.RDF.type, self.id_manager.provone_ns.Program))
         self.add_command_property(command, command_uri)
 
-    def __str__(self) -> str:
-        """
-        Returns the graph as a turtle string
-        :return:
-        """
-        return self.graph.serialize(format='turtle').decode('utf-8')
-
-    def construct_prospective_provenance(self):
+    def construct_provenance(self, prospective=True, retrospective=False):
         """
         Creates a prospective provenance model.
 
@@ -219,7 +198,7 @@ class Converter:
         parent_uri: str = self.parse_outer_sdtl()
         # Parse and add each SDTL command to the graph
         for command in self.sdtl['commands']:
-            # Prepare to create the provenance by gernerating an identifier for the
+            # Prepare to create the provenance by generating an identifier for the
             # provone:Program that will hold the SDTL
             name = "Program"
             command_id = self.id_manager.get_id(name)
@@ -227,12 +206,75 @@ class Converter:
             if parent_uri:
                 self.graph.add((parent_uri, self.id_manager.provone_ns.hasSubProgram, command_id))
 
-    def schema_to_name(self, schema_class) -> str:
-        name = schema_class.__qualname__
-        name = name[0].lower() + name[1:]
-        return name
+        if retrospective:
+            workflow_id = self.get_workflow_identifier()
+            self.add_workflow_execution(workflow_id)
 
+    def get_workflow_identifier(self) -> rdflib.URIRef:
+        """
+        Gets the identifier of the top level Workflow object
 
-converter = Converter('../examples/compute_drop/sdtl.json')
-converter.construct_prospective_provenance()
-print(str(converter))
+        :return: The workflow's identifier
+        """
+
+        query = """
+        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT ?workflow_id
+        WHERE
+        {
+          ?workflow_id rdf:type <http://purl.dataone.org/provone/2015/01/15/ontology#Workflow> .
+        }
+        """
+
+        query_res: rdflib.query.Result = self.graph.query(query)
+        # Return the identifier
+        try:
+            for res in query_res:
+                return res.asdict()['workflow_id']
+        except KeyError:
+            pass
+
+    def add_workflow_execution(self, workflow_id: rdflib.URIRef) -> rdflib.URIRef:
+        """
+        Creates a node that represents the execution of the workflow
+
+        :param workflow_id: The identifier of the workflow object
+        :return: The URI of the execution object
+        """
+        # Create a new identifier for the execution
+        execution_id = self.id_manager.get_id('Execution')
+        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
+
+        # Recall that provone:Execution connects back to the workflow via an intermediate provone:Association object.
+        association_id = self.id_manager.get_id('Association')
+        self.graph.add((association_id, rdflib.RDF.type, self.id_manager.provone_ns.Association))
+
+        # Connect the Workflow to the Association
+        self.graph.add((execution_id, self.id_manager.provone_ns.qualifiedAssociation, association_id))
+
+        # Connect the Association to the Workflow
+        self.graph.add((association_id, self.id_manager.provone_ns.hadPlan, workflow_id))
+
+        return execution_id
+
+    def get_program_identifiers(self):
+
+        query = """
+        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT ?program_identifier
+        WHERE
+        {
+          ?program_identifier rdf:type ?type .
+          FILTER exists { ?program_identifier rdf:type <http://purl.dataone.org/provone/2015/01/15/ontology#Program> }
+        }
+        """
+
+        query_res = self.graph.query(query)
+        print(f'Queried!')
+        for row in query_res:
+            # I
+            print(row)
