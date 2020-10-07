@@ -1,5 +1,6 @@
 # SDTLConverter
 [![Build Status](https://travis-ci.org/ThomasThelen/sdtl-converter.svg?branch=master)](https://travis-ci.org/ThomasThelen/sdtl-converter)
+
 A python script for turning SDTL in JSON-LD into ProvONE/Prov.
 
 ### Status
