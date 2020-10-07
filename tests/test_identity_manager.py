@@ -1,3 +1,5 @@
+import rdflib
+
 from src.IdentifierManager import IdentifierManager
 
 
@@ -11,12 +13,10 @@ def get_id():
 
     identifier = id_manager.get_id('Program')
     assert identifier == 'provone#Program/1'
-    assert 0
 
 
 def test_get_property_id():
     id_manager = IdentifierManager()
 
     identifier = id_manager.get_id('fileName')
-    assert identifier == 'sdtl#fileName'
-    assert 0
+    assert identifier == rdflib.URIRef('#fileName/1')
