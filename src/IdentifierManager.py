@@ -47,8 +47,10 @@ class IdentifierManager:
 
     def get_property_id(self, sdtl_property) -> rdflib.URIRef:
         """
-        sdtl#sdtl_property
-        :param self:
+        Returns of the form: sdtl#sdtl_property
+
+        Properties shouldn't have any sort of count associated with them (which is what get_id does).
+        This method returns a namespaced sdtl property.
         :param sdtl_property:
         :return:
         """

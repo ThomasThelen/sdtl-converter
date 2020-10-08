@@ -4,29 +4,39 @@
 
 A python library for turning SDTL in JSON-LD format into ProvONE/Prov.
 
+### Features
+
+- Single SDTL file conversion
+- Multiple SDTL file conversion
+- Prospective & (Prospective and Retrospective) provenance support
 
 
+### Installing
 
-### Try it Out
-
-Install with pip
+This isn't on PyPI, so use pip to install from this repository. 
  
 `pip install git+https://github.com/ThomasThelen/sdtl-converter.git`
  
- To import the library in a sorce file,  
- 
-`from sdt-converter import Converter`
+
+### Using
 
 #### Loading SDTL
  
- The path to the SDTL file is passed to the Converter constructors.
+ To parse a single file, create a converter object and pass the path to
+ the constructor.
  
- For example, to load and parse SDTL 1.0,
-  
-`converter = ConverterV1('path_to/sdtl.json')`
+ `converter = ConverterV1('path_to/sdtl.json')`
 
 
-#### Constructing Provenance
+To parse more than one SDTL document together, pass them in as a list
+
+```
+from typing import List
+paths: List = ['path_to/first/sdtl.json', 'path_to/second/sdtl.json'] 
+converter = ConverterV1(paths)
+```
+
+#### Generating Provenance
 
 The `construct_provenance` method is the main method used to create
 ProvONE representations of the SDTL. To create prospective provenance,
@@ -34,6 +44,18 @@ call `construct_provenance`.
 
 `converter.construct_provenance()`
 
-or
+If instead you want a prospective provenance trace with an associasted
+retrospective trace, set the `retrospective` flag to `True`]
 
-`converter.construct_provenance(prospective=True)`
+`converter.construct_provenance(retrospective=True)` 
+
+### Unit Tests
+
+The unit tests should be run with pytest. Navigate to the root directory
+and run
+
+`pytest`
+
+### Examples
+To run the examples, clone this repository and run the example files as
+as a normal python scripts.
