@@ -11,11 +11,12 @@ class ConverterV1(Converter):
     A converter that takes SDTL 1.0 and produces a ProvONE representation.
     """
 
-    def __init__(self, file_path: str):
+    def __init__(self, file_paths: Union[List, str]):
         """
-        Creates and runs the converter
+        Creates a converter instance. It can take any number of SDTL file paths as a list,
+        or a single file path as a string.
 
-        :param file_path: A path to an SDTL JSON file
+        :param file_paths: A path to an SDTL JSON file
         """
 
         # A list of the sub-properties of the top level provone:Programs (has extension like .py, .R, etc) that
@@ -35,54 +36,36 @@ class ConverterV1(Converter):
             self.schema_to_name(sdtl.ModelCreatedTime)
         ]
 
-        super().__init__(file_path)
+        super().__init__(file_paths)
 
-
-    def parse_outer_sdtl(self, prospective=True) -> str:
-        """
-        Parses the top level SDTL
-        :return:
-        """
-        # If there is at least one command present, create the workflow and
-        # provone:program that represents the script
-        if len(self.sdtl['commands']):
-            name = 'Workflow'
-            workflow_uri = self.id_manager.get_id(name)
-            self.create_workflow(workflow_uri)
-
-            if prospective:
-                name = "Program"
-                script_uri = self.id_manager.get_id(name)
-                script_description = "A script file that contains source code."
-                self.create_script_program(script_uri,script_description)
-
-                # Add the provone:hasSubProgram relation
-                self.graph.add((workflow_uri, self.id_manager.provone_ns.hasSubProgram, script_uri))
-                return script_uri
-
-    def create_workflow(self, workflow_uri: rdflib.URIRef):
+    def create_workflow(self) -> rdflib.URIRef:
         """
         Creates an outer provone:Workflow object that holds all of the scripts
 
         The description and label are deterministic and hard coded; there should only be one top level
         workflow object.
 
-        :param workflow_uri: The URI of the workflow (the subject)
-        :return: None
+        :return:
         """
-        workflow_comment = rdflib.Literal("The top level workflow that holds any number of scripts")
+        name = 'Workflow'
+        workflow_uri = self.id_manager.get_id(name)
+
+        workflow_comment = rdflib.Literal("The top level workflow that holds a number of scripts.")
         workflow_label = rdflib.Literal("Researcher workflow")
 
         self.graph.add((workflow_uri , rdflib.RDF.type, self.id_manager.provone_ns.Workflow))
         self.graph.add((workflow_uri , rdflib.RDFS.comment, workflow_comment))
         self.graph.add((workflow_uri , rdflib.RDFS.label, workflow_label))
 
+        return workflow_uri
+
     def create_script_program(self, identifier: rdflib.URIRef,
                               description: str = None):
         """
-        Creates a provone Program that represents a script containing code
+        Creates a provone Program that represents a script containing code. The script is
+        a file with the expected extensions (R, py, sps, etc).
 
-        :param identifier: The identifier for the progrogram
+        :param identifier: The identifier for the program
         :param description: An optional description of the script
         :return: None
         """
@@ -95,7 +78,7 @@ class ConverterV1(Converter):
             script_comment = rdflib.Literal(description)
             self.graph.add((identifier, rdflib.RDFS.comment, script_comment))
 
-        # There are a number of top level SDTL properties; we only want a few propeties,
+        # There are a number of top level SDTL properties; we only want a few properties,
         # so use the filter list.
         for prop in self.desired_script_properties:
             # Use URIRef instead of Namespace because of the way namespace propertiess are set
@@ -105,14 +88,15 @@ class ConverterV1(Converter):
             if prop in self.sdtl:
                 self.graph.add((identifier, rdflib.URIRef(predicate), rdflib.Literal(self.sdtl[prop])))
 
-    def add_command_property(self, command: dict, parent_id=None, child_id=None) -> Union[str, List[str]]:
+    def add_command_property(self, command: dict, parent_id=None) -> Union[str, List[str]]:
         """
         A recursive method that creates the appropriate provone objects and embeds the SDTL
         inside.
 
-        :param command:
-        :param parent_id:
-        :param child_id:
+        :param command: The chunk of SDTL being processed. This can be a string, List of dicts, List of strings,
+        or a dict.
+        :param parent_id: The identifier of the parent that the SDTL chunk belongs to. This is
+        used when connecting properties to their parents.
         :return:
         """
 
@@ -131,7 +115,7 @@ class ConverterV1(Converter):
                 object_identifier = self.id_manager.get_id(prop)
                 prop_type = self.id_manager.get_property_id(prop)
                 self.graph.add((object_identifier, rdflib.RDF.type, prop_type))
-                new_identifiers = self.add_command_property(command[prop], object_identifier)
+                self.add_command_property(command[prop], object_identifier)
                 if parent_id:
                     # Add a relation to the parent, connecting the two nodes
                     self.graph.add(
@@ -140,8 +124,6 @@ class ConverterV1(Converter):
             # If it's a list of SDTL objects
             elif is_list:
                 # Check if its a list of strings or a list of objects
-                if isinstance(command[prop], dict):
-                    1+1
                 for sdtl_expression in command[prop]:
                     parent_id = self.id_manager.get_property_id(prop)
                     self.add_command_property(sdtl_expression, parent_id)
@@ -187,28 +169,131 @@ class ConverterV1(Converter):
         self.graph.add((command_uri, rdflib.RDF.type, self.id_manager.provone_ns.Program))
         self.add_command_property(command, command_uri)
 
-    def construct_provenance(self, prospective=True, retrospective=False):
+    def construct_provenance(self, retrospective=False, new_graph=True):
         """
-        Creates a prospective provenance model.
+        The main user-facing method that will create the complete provenance model. By default, it will produce
+        retrospective provenance. Toggling the 'retrospective' flag will produce retrospective provenance
+        alongside.
 
+        :param retrospective: A flag to generate retrospective provenance
+        :param new_graph: Flag to use a new graph
+        :return:
+        """
+        # Create a new graph instance
+        if new_graph:
+            self.graph = rdflib.Graph()
+        # Parse the outer most SDTL (adds provone:Workflow & provone:Program)
+        workflow_uri: str = self.create_workflow()
+        # Parse and add each SDTL command in the program
+        for sdtl_file in self.sdtl_files:
+            with open(sdtl_file) as json_file:
+                self.sdtl = json.load(json_file)
+                name = "Program"
+                script_uri = self.id_manager.get_id(name)
+                script_description = "A script file that contains source code."
+                self.create_script_program(script_uri, description=script_description)
+                # Add the provone:hasSubProgram relation
+                self.graph.add((workflow_uri, self.id_manager.provone_ns.hasSubProgram, script_uri))
+                # Add the commands within the file
+                for command in self.sdtl['commands']:
+                    # Prepare to create the provenance by generating an identifier for the
+                    # provone:Program that will hold the SDTL
+                    name = "Program"
+                    command_id = self.id_manager.get_id(name)
+                    self.add_command(command_id, command)
+                    if script_uri:
+                        self.graph.add((script_uri, self.id_manager.provone_ns.hasSubProgram, command_id))
+
+                if retrospective:
+                    workflow_id: rdflib.URIRef  = self.get_workflow_identifier()
+                    self.add_execution(workflow_id)
+                    # Get all of the scripts that belong to the top level workflow
+                    sub_programs = self.get_program_identifiers(workflow_id)
+                    # Loop over each one and add provone:Execution
+                    for sub_program in sub_programs:
+                        self.add_retrospective(sub_program)
+
+    def add_retrospective(self, parent_program_id):
+        """
+
+        :param parent_program_id:
         :return:
         """
 
-        # Parse the outer most SDTL (adds provone:Workflow & provone:Program)
-        parent_uri: str = self.parse_outer_sdtl()
-        # Parse and add each SDTL command to the graph
-        for command in self.sdtl['commands']:
-            # Prepare to create the provenance by generating an identifier for the
-            # provone:Program that will hold the SDTL
-            name = "Program"
-            command_id = self.id_manager.get_id(name)
-            self.add_command(command_id, command)
-            if parent_uri:
-                self.graph.add((parent_uri, self.id_manager.provone_ns.hasSubProgram, command_id))
+        # Get all of the scripts that belong to the top level workflow
+        sub_programs = self.get_program_identifiers(parent_program_id)
+        for sub_program in sub_programs:
+            self.add_execution(sub_program)
+            # Process each of the commands in the script
+            command_ids = self.get_command_identifiers(sub_program)
+            for command_id in command_ids:
+                self.add_execution(command_id)
 
-        if retrospective:
-            workflow_id = self.get_workflow_identifier()
-            self.add_workflow_execution(workflow_id)
+    def add_program_execution(self, parent_execution):
+        """
+        Adds a provone:Execution that's associated with a provone:Program. The provone:Execution
+        may be associated with a parent provone:Execution. If this is the case, it should be stated
+        in the RDF.
+
+        :return:
+        """
+        execution_id = self.id_manager.get_id('Execution')
+        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
+
+        if parent_execution:
+            self.graph.add((execution_id, self.id_manager.provone_ns.wasPartOf, parent_execution))
+
+    def add_execution(self, program_id: rdflib.URIRef) -> rdflib.URIRef:
+        """
+        Creates a node that represents the execution of a provone:Program
+
+        :param program_id: The identifier of the workflow object
+        :return: The URI of the execution object
+        """
+
+        # Create a new identifier for the execution
+        execution_id = self.id_manager.get_id('Execution')
+        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
+
+        # Recall that provone:Execution connects back to the workflow via an intermediate provone:Association object.
+        association_id = self.id_manager.get_id('Association')
+        self.graph.add((association_id, rdflib.RDF.type, self.id_manager.provone_ns.Association))
+
+        # Connect the Workflow to the Association
+        self.graph.add((execution_id, self.id_manager.provone_ns.qualifiedAssociation, association_id))
+
+        # Connect the Association to the Workflow
+        self.graph.add((association_id, self.id_manager.provone_ns.hadPlan, program_id))
+
+        return execution_id
+
+    def get_program_identifiers(self, workflow_id):
+        """
+        Get the identifiers of script-level programs (there should only be one).
+
+        :param workflow_id: The identifier of the workflow holding the programs
+        :return:
+        """
+        query = """
+        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT ?workflow_id ?sub_programs
+        WHERE
+        {
+            ?workflow_id provone:hasSubProgram ?sub_programs .
+        }
+        """
+        ids = []
+        query_res = self.graph.query(query)
+        try:
+            for res in query_res:
+                id = res.asdict()['workflow_id']
+                if id == workflow_id:
+                    ids.append(res.asdict()['sub_programs'])
+        except KeyError:
+            pass
+
+        return ids
 
     def get_workflow_identifier(self) -> rdflib.URIRef:
         """
@@ -236,45 +321,30 @@ class ConverterV1(Converter):
         except KeyError:
             pass
 
-    def add_workflow_execution(self, workflow_id: rdflib.URIRef) -> rdflib.URIRef:
+    def get_command_identifiers(self, script_id) -> list:
         """
-        Creates a node that represents the execution of the workflow
-
-        :param workflow_id: The identifier of the workflow object
-        :return: The URI of the execution object
+        Gets the identifier of the command objects
+        :param script_id: The identifier of the script (provone:Program) holding commands
+        :return: The workflow's identifier
         """
-        # Create a new identifier for the execution
-        execution_id = self.id_manager.get_id('Execution')
-        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
-
-        # Recall that provone:Execution connects back to the workflow via an intermediate provone:Association object.
-        association_id = self.id_manager.get_id('Association')
-        self.graph.add((association_id, rdflib.RDF.type, self.id_manager.provone_ns.Association))
-
-        # Connect the Workflow to the Association
-        self.graph.add((execution_id, self.id_manager.provone_ns.qualifiedAssociation, association_id))
-
-        # Connect the Association to the Workflow
-        self.graph.add((association_id, self.id_manager.provone_ns.hadPlan, workflow_id))
-
-        return execution_id
-
-    def get_program_identifiers(self):
 
         query = """
         PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-        SELECT ?program_identifier
+        SELECT ?script_id ?sub_commands
         WHERE
         {
-          ?program_identifier rdf:type ?type .
-          FILTER exists { ?program_identifier rdf:type <http://purl.dataone.org/provone/2015/01/15/ontology#Program> }
+            ?script_id provone:hasSubProgram ?sub_commands.
         }
         """
-
+        ids = []
         query_res = self.graph.query(query)
-        print(f'Queried!')
-        for row in query_res:
-            # I
-            print(row)
+        try:
+            for res in query_res:
+                id = res.asdict()['script_id ']
+                if id == script_id:
+                    ids.append(res.asdict()['sub_commands'])
+        except KeyError:
+            pass
+
+        return ids

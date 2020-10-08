@@ -1,42 +1,43 @@
-import json
-
+from typing import List, Union
 import rdflib
-
 from src.IdentifierManager import IdentifierManager
+
+
 class Converter:
 
-    def __init__(self, file_path: str):
+    def __init__(self, file_paths: Union[List[str], str]):
         """
         Creates and runs the converter
 
         :param file_path: A path to an SDTL JSON file
         """
-
         self.id_manager = IdentifierManager()
-
+        self.sdtl_files: List[str] = None
         self.graph = rdflib.Graph()
         self.graph.bind("sdtl", self.id_manager.sdtl_namespace)
         self.graph.bind("provone", self.id_manager.provone_ns)
         self.sdtl = None
-        self.store_sdtl(file_path)
+        if isinstance(file_paths, str):
+            self.sdtl_files = [file_paths]
+        else:
+            self.sdtl_files: List[str] = file_paths
 
-    def store_sdtl(self, file_path: str):
+    @staticmethod
+    def schema_to_name(schema_class) -> str:
         """
-        Opens an SDTL json file and store it in memory
-        :param file_path:
+        Lowercases the first letter in a string. This is used to map the SDTL generated
+        from the SDTLL parsers(lowercase first letter) to the schema (which has an uppercase letter)
+
+        :param schema_class: The class name of an SDTL schema binding
         :return:
         """
-        with open(file_path) as json_file:
-            self.sdtl = json.load(json_file)
-
-    def schema_to_name(self, schema_class) -> str:
         name = schema_class.__qualname__
         name = name[0].lower() + name[1:]
         return name
 
     def __str__(self) -> str:
         """
-        Returns the graph as a turtle string
+        Returns the graph as a turtle
         :return:
         """
         return self.graph.serialize(format='turtle').decode('utf-8')
