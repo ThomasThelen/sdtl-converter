@@ -1,7 +1,7 @@
 from src.converters.test_converter import ConverterV1
 # Demonstrates how the Load command is handled
 
-converter = ConverterV1('../tests/scripts/load_file/sdtl.json')
+converter = ConverterV1('../tests/scripts/load-save/sdtl.json')
 
 # Construct the prospective provenance
 

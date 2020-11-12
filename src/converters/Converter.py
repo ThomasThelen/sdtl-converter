@@ -13,14 +13,17 @@ class Converter:
         """
         self.id_manager = IdentifierManager()
         self.sdtl_files: List[str] = None
-        self.graph = rdflib.Graph()
-        self.graph.bind("sdtl", self.id_manager.sdtl_namespace)
-        self.graph.bind("provone", self.id_manager.provone_ns)
+        self.new_graph()
         self.sdtl = None
         if isinstance(file_paths, str):
             self.sdtl_files = [file_paths]
         else:
             self.sdtl_files: List[str] = file_paths
+
+    def new_graph(self):
+        self.graph = rdflib.Graph()
+        self.graph.bind("sdtl", self.id_manager.sdtl_namespace)
+        self.graph.bind("provone", self.id_manager.provone_ns)
 
     @staticmethod
     def schema_to_name(schema_class) -> str:

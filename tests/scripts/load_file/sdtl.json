@@ -1,29 +1,30 @@
 {
-  "id": "program-21",
+  "id": "program-118",
   "sourceFileName": "",
-  "sourceLanguage": "spss",
-  "scriptMD5": "2ae21a2cd8d3fbc645e41d4e87a2862f",
-  "scriptSHA1": "2dd8050d9052d00651a54a9eec3fefa7ffc7ba2f",
-  "sourceFileLastUpdate": "2020-09-10T06:50:05+00:00",
-  "sourceFileSize": 28,
-  "lineCount": 1,
-  "commandCount": 1,
-  "parser": "spss-to-sdtl",
+  "sourceLanguage": "r",
+  "scriptMD5": "dd4516b18ff89fed1b945d8c8a7368c8",
+  "scriptSHA1": "72ed0b42184b7d823c65e93aa3588068dcbb5907",
+  "sourceFileLastUpdate": "2020-06-21T17:42:33+00:00",
+  "sourceFileSize": 486,
+  "lineCount": 15,
+  "commandCount": 9,
+  "parser": "r-to-sdtl",
   "parserVersion": "0.9 Development",
   "modelVersion": "0.9 Development",
-  "modelCreatedTime": "2020-09-10T06:50:05+00:00",
+  "modelCreatedTime": "2020-06-21T17:42:33+00:00",
   "commands": [
     {
       "$type": "Load",
-      "command": "load",
+      "command": "Load",
       "sourceInformation": {
-        "lineNumberStart": 1,
-        "lineNumberEnd": 1,
-        "sourceStartIndex": 1,
-        "sourceStopIndex": 28,
-        "originalSourceText": "GET     FILE='deposits.sav'."
+        "lineNumberStart": 6,
+        "lineNumberEnd": 6,
+        "sourceStartIndex": 279,
+        "sourceStopIndex": 303,
+        "originalSourceText": "read_csv(\"Rate_only.csv\")"
       },
-      "fileName": "'deposits.sav'"
+      "fileName": "Rate_only.csv",
+	  "producesDataframe": [{"dataframeName": "Rate_only" } ]
     }
   ]
 }
