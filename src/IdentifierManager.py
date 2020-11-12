@@ -14,6 +14,8 @@ class IdentifierManager:
         provone_terms: List[str] = ["Port", "Program", "Workflow", "Execution",
                                     "Association"]
 
+        misc_terms: List[str] = ["bag"]
+
         # Create the ProvONE and SDTL namespaces.
         self.provone_ns = rdflib.Namespace("http://purl.dataone.org/provone/2015/01/15/ontology#")
         self.prov_ns = rdflib.Namespace('http://www.w3.org/ns/prov#')
@@ -30,6 +32,8 @@ class IdentifierManager:
             self.counts[lowercase_key] = value
         for provone_term in provone_terms:
             self.counts[provone_term] = 0
+        for misc_term in misc_terms:
+            self.counts[misc_term] = 0
 
     def get_id(self, property_name) -> rdflib.URIRef:
         """

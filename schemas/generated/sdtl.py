@@ -3691,7 +3691,9 @@ class MergeDatasets(TransformBase):
     )
 
 
-all_classes = ('Aggregate',
+all_classes = (
+    'dataFrame',
+    'Aggregate',
     'AggregateVariables',
     'AllNumericVariablesExpression',
     'AllTextVariablesExpression',

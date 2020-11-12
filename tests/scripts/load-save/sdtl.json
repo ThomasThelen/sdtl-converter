@@ -1,0 +1,44 @@
+{
+  "id": "program-118",
+  "sourceFileName": "",
+  "sourceLanguage": "r",
+  "scriptMD5": "dd4516b18ff89fed1b945d8c8a7368c8",
+  "scriptSHA1": "72ed0b42184b7d823c65e93aa3588068dcbb5907",
+  "sourceFileLastUpdate": "2020-06-21T17:42:33+00:00",
+  "sourceFileSize": 486,
+  "lineCount": 15,
+  "commandCount": 9,
+  "parser": "r-to-sdtl",
+  "parserVersion": "0.9 Development",
+  "modelVersion": "0.9 Development",
+  "modelCreatedTime": "2020-06-21T17:42:33+00:00",
+  "commands": [
+    {
+      "$type": "Load",
+      "command": "Load",
+      "sourceInformation": {
+        "lineNumberStart": 5,
+        "lineNumberEnd": 5,
+        "sourceStartIndex": 236,
+        "sourceStopIndex": 263,
+        "originalSourceText": "read_csv(\"Deposit_only.csv\")"
+      },
+      "fileName": "Deposit_only.csv",
+	  "producesDataframe": [{"dataframeName": "Deposit_only"} ]
+    },
+
+    {
+      "$type": "Save",
+      "command": "Save",
+      "sourceInformation": {
+        "lineNumberStart": 13,
+        "lineNumberEnd": 13,
+        "sourceStartIndex": 444,
+        "sourceStopIndex": 483,
+        "originalSourceText": "write.csv(Accounts_all, 'account_2.csv')"
+      },
+      "fileName": "'accounts.sav'",
+	  "consumesDataframe": [{"dataframeName": "Deposit_only" } ]
+    }
+  ]
+}

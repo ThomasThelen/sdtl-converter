@@ -53,9 +53,9 @@ class ConverterV1(Converter):
         workflow_comment = rdflib.Literal("The top level workflow that holds a number of scripts.")
         workflow_label = rdflib.Literal("Researcher workflow")
 
-        self.graph.add((workflow_uri , rdflib.RDF.type, self.id_manager.provone_ns.Workflow))
-        self.graph.add((workflow_uri , rdflib.RDFS.comment, workflow_comment))
-        self.graph.add((workflow_uri , rdflib.RDFS.label, workflow_label))
+        self.graph.add((workflow_uri, rdflib.RDF.type, self.id_manager.provone_ns.Workflow))
+        self.graph.add((workflow_uri, rdflib.RDFS.comment, workflow_comment))
+        self.graph.add((workflow_uri, rdflib.RDFS.label, workflow_label))
 
         return workflow_uri
 
@@ -123,10 +123,19 @@ class ConverterV1(Converter):
 
             # If it's a list of SDTL objects
             elif is_list:
-                # Check if its a list of strings or a list of objects
+                # Create a node to represent the list
+                new_list = rdflib.BNode()
+                # Check if its a list of strings or a list of dicts
                 for sdtl_expression in command[prop]:
-                    parent_id = self.id_manager.get_property_id(prop)
-                    self.add_command_property(sdtl_expression, parent_id)
+                    listItem1 = rdflib.BNode()
+
+                    print(sdtl_expression)
+                    if isinstance(sdtl_expression, dict):
+                        parent_id = self.id_manager.get_property_id(prop)
+                        self.add_command_property(sdtl_expression, parent_id)
+                    elif isinstance(sdtl_expression, str):
+                        print("It's a string!")
+
 
             # Otherwise it's just a property that belongs to an existing object
             else:
@@ -181,7 +190,7 @@ class ConverterV1(Converter):
         """
         # Create a new graph instance
         if new_graph:
-            self.graph = rdflib.Graph()
+            self.new_graph()
         # Parse the outer most SDTL (adds provone:Workflow & provone:Program)
         workflow_uri: str = self.create_workflow()
         # Parse and add each SDTL command in the program
