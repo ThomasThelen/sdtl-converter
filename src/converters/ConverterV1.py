@@ -2,8 +2,15 @@ from typing import Union, List
 import rdflib
 import json
 
+from collections import OrderedDict
 from .Converter import Converter
 import schemas.generated.sdtl as sdtl
+
+
+class DataFrame:
+    def __init__(self, name, identifier):
+        self.name = name
+        self.identifier = identifier
 
 
 class ConverterV1(Converter):
@@ -18,6 +25,9 @@ class ConverterV1(Converter):
 
         :param file_paths: A path to an SDTL JSON file
         """
+
+        self.dataframes= {}
+        self.variable_names = {}
 
         # A list of the sub-properties of the top level provone:Programs (has extension like .py, .R, etc) that
         # we want to include in the RDF
@@ -38,7 +48,7 @@ class ConverterV1(Converter):
 
         super().__init__(file_paths)
 
-    def create_workflow(self) -> rdflib.URIRef:
+    def create_workflow(self):
         """
         Creates an outer provone:Workflow object that holds all of the scripts
 
@@ -88,15 +98,229 @@ class ConverterV1(Converter):
             if prop in self.sdtl:
                 self.graph.add((identifier, rdflib.URIRef(predicate), rdflib.Literal(self.sdtl[prop])))
 
-    def add_command_property(self, command: dict, parent_id=None) -> Union[str, List[str]]:
-        """
-        A recursive method that creates the appropriate provone objects and embeds the SDTL
-        inside.
+    def parse(self):
+        for sdtl_file in self.sdtl_files:
+            with open(sdtl_file) as json_file:
+                self.sdtl = json.load(json_file, object_pairs_hook=OrderedDict)
+                for command in self.sdtl['commands']:
+                    if command["$type"] == "Comment":
+                        pass
+                    elif command["$type"] == "NoTransformOp":
+                        pass
+                    elif command["$type"] == "Load":
+                        self.parse_load_command(command)
+                    elif command["$type"] == "Save":
+                        self.parse_save_command(command)
+                    elif command["$type"] == "Compute":
+                        self.parse_compute_command(command)
 
-        :param command: The chunk of SDTL being processed. This can be a string, List of dicts, List of strings,
-        or a dict.
-        :param parent_id: The identifier of the parent that the SDTL chunk belongs to. This is
-        used when connecting properties to their parents.
+    def parse_dataframe_creation(self, produces_dataframe_command: json, program_id: rdflib.URIRef):
+        """
+        Takes a list of objects in a "producesdataFrame" SDTL chunk and creates the appropriate ports
+        and SDTL-RDF.
+
+        :param produces_dataframe_command:
+        :param program_id: The identifier of the provone:Program that's creating the dataframes
+        :return:
+        """
+
+        for new_dataframe in produces_dataframe_command:
+            # Create the outport representing the new dataframe
+            out_port_id = self.id_manager.get_id("Port")
+            self.graph.add((out_port_id, rdflib.RDF.type, self.id_manager.provone_ns.Port))
+            # Connect the program to the new port
+            self.graph.add((program_id, self.id_manager.provone_ns.hasOutPort, out_port_id))
+            # Track the identifier of the dataframe
+            self.dataframes[new_dataframe["dataframeName"]] = out_port_id
+            # Add the SDTL data frame name to it
+            self.graph.add((out_port_id, self.id_manager.sdtl_namespace.dataframeName,
+                            rdflib.Literal(new_dataframe["dataframeName"])))
+
+            # Create and attach any potential variables to the port
+            if "variableInventory" in new_dataframe:
+                # Create an rdf:seq to hold the variable inventory
+                inventory_id = self.id_manager.get_id("variableInventory")
+                self.graph.add((inventory_id, rdflib.RDF.type, rdflib.RDF.Seq))
+                self.graph.add((out_port_id, self.id_manager.sdtl_namespace.variableInventory, inventory_id))
+                item_count = 1
+                for new_variable in new_dataframe["variableInventory"]:
+                    variable_id = self.id_manager.get_id("variable")
+                    self.graph.add((variable_id, rdflib.RDF.type, self.id_manager.schema_ns.Thing))
+                    self.graph.add((variable_id, self.id_manager.schema_ns.name, rdflib.Literal(new_variable)))
+                    # Connect the rdf:Bag to it
+                    self.graph.add((inventory_id,
+                                    rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{item_count}'),
+                                    variable_id))
+                    item_count += 1
+
+    def parse_variable_usage(self, program_id, variable, is_dataframe=False):
+        """
+
+        :param program_id:
+        :param commands:
+        :return:
+        """
+        # Create the channel
+        channel_id = self.id_manager.get_id("Channel")
+        self.graph.add((channel_id,
+                        rdflib.RDF.type,
+                        self.id_manager.provone_ns.Channel))
+        # Connect the original inport
+        existing_id = None
+        if is_dataframe:
+            existing_id = self.dataframes[variable["dataframeName"]]
+            self.graph.add((existing_id,
+                            self.id_manager.provone_ns.connectsTo,
+                            channel_id))
+        elif variable["argumentValue"]["$type"] == "VariableSymbolExpression":
+            existing_id = self.variable_names[variable["argumentValue"]["variableName"]]
+            self.graph.add((existing_id,
+                            self.id_manager.provone_ns.connectsTo,
+                            channel_id))
+        # Create the new port
+        new_port_id = self.id_manager.get_id("Port")
+        self.graph.add((new_port_id,
+                        rdflib.RDF.type,
+                        self.id_manager.provone_ns.Port))
+        # Connect it to the channel
+        self.graph.add((new_port_id,
+                        self.id_manager.provone_ns.connectsTo,
+                        channel_id))
+        # Connect the program to it
+        self.graph.add((program_id,
+                        self.id_manager.provone_ns.hasInPort,
+                        rdflib.Literal(new_port_id)))
+
+        if is_dataframe:
+            self.dataframes[variable["dataframeName"]] = new_port_id
+        elif variable["argumentValue"]["$type"] == "VariableSymbolExpression":
+            self.variable_names[variable["argumentValue"]["variableName"]] = new_port_id
+
+    def parse_load_command(self, command):
+        """
+        Parses an sdtl Load command
+        :param command:
+        :return: None
+        """
+
+        # Create the program representing the load command
+        program_id = self.id_manager.get_id("Program")
+        self.graph.add((program_id, rdflib.RDF.type, self.id_manager.provone_ns.Program))
+        # Create the port representing the input (the file)
+        in_port_id = self.id_manager.get_id("Port")
+        self.graph.add((in_port_id, rdflib.RDF.type, self.id_manager.provone_ns.Port))
+        # Connect the program to the port
+        self.graph.add((program_id, self.id_manager.provone_ns.hasInPort, in_port_id))
+
+        # Add load-command properties
+        self.graph.add((in_port_id, self.id_manager.sdtl_namespace.FileName, rdflib.Literal(command['fileName'])))
+
+        if 'producesDataframe' not in command:
+            raise ValueError("Loading is only supported for SDTL that has producesDataFrame annotated")
+
+        self.parse_dataframe_creation(command['producesDataframe'], program_id)
+        # Create the port representing the dataframe that waas created
+        #self.add_output_dataframes(command['producesDataframe'], program_id)
+        # Add the SDTL SourceInformation to the command
+        self.parse_source_information(command['sourceInformation'], program_id)
+
+    def parse_save_command(self, command):
+        """
+        Parses an sdtl save command
+        :param command:
+        :return:
+        """
+        # Create the program representing the save command
+        program_id = self.id_manager.get_id("Program")
+        self.graph.add((program_id, rdflib.RDF.type, self.id_manager.provone_ns.Program))
+
+        # Create the outport
+        out_port_id = self.id_manager.get_id("Port")
+        self.graph.add((out_port_id, rdflib.RDF.type, self.id_manager.provone_ns.Program))
+
+        # Put the filename in the port
+        self.graph.add((out_port_id, self.id_manager.sdtl_namespace.FileName, rdflib.Literal(command['fileName'])))
+
+        # Connect the outport to the program
+        self.graph.add((program_id, self.id_manager.provone_ns.hasOutPort, out_port_id))
+
+        if 'consumesDataframe' not in command:
+            raise ValueError("The Save command only supports saving dataframes")
+
+        for frame in command['consumesDataframe']:
+            self.parse_variable_usage(program_id, frame, is_dataframe=True)
+
+        # Add the relevant SDTL SourceInformation blocks
+        self.parse_source_information(command['sourceInformation'], program_id)
+
+    def parse_compute_command(self, command):
+        # Create the program representing the command
+        program_id = self.id_manager.get_id("Program")
+        self.graph.add((program_id, rdflib.RDF.type, self.id_manager.provone_ns.Program))
+        # Add its source information
+        self.parse_source_information(command['sourceInformation'], program_id)
+
+        if 'consumesDataframe' in command:
+            for data_frame in command['consumesDataframe']:
+                self.parse_variable_usage(program_id, data_frame , is_dataframe=True)
+
+        if 'producesDataframe' in command:
+            self.parse_dataframe_creation(command['producesDataframe'], program_id)
+
+        if 'variable' in command:
+            # Create a new variable object
+            variable_id = self.id_manager.get_id("variable")
+            self.graph.add((variable_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.Variable))
+            # Add it to the parent program
+            self.graph.add((program_id, self.id_manager.sdtl_namespace.variable, variable_id))
+            self.sdtl_to_rdf(command['variable'], variable_id)
+
+        if "expression" in command:
+            # Convert to SDTL and add back to the program
+            expresion_id = self.id_manager.get_id("expression")
+            self.graph.add((expresion_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.Expression))
+            # Add it to the parent program
+            self.graph.add((program_id, self.id_manager.sdtl_namespace.expression, expresion_id))
+            self.sdtl_to_rdf(command['expression'], expresion_id)
+
+
+    def add_output_variable(self, program_id, variable):
+        # Create a port representing the variable
+        out_port_id = self.id_manager.get_id("Port")
+        self.graph.add((out_port_id, rdflib.RDF.type, self.id_manager.provone_ns.Port))
+        # Connect the outport to the program
+        self.graph.add((program_id, self.id_manager.provone_ns.hasOutPort, out_port_id))
+        # Add the variable properties to the object
+        self.add_sdtl_properties(out_port_id, variable)
+        self.variable_names[variable["variableName"]] = out_port_id
+
+    def add_sdtl_properties(self, object_id, object_json):
+        for key in object_json.keys():
+            source_info = f'sdtl#{key}'
+            self.graph.add((object_id, rdflib.URIRef(source_info), rdflib.Literal(object_json[key])))
+
+    def parse_source_information(self, source_information: List, program_id: rdflib.URIRef):
+        """
+        Turns an sdtl:SourceInformation block into RDF and attaches it to the associated provone:Program
+
+        :param source_information: A list of sdtl:SourceInformation blocks
+        :param program_id: The identifier of the provone:Program that represents this source code
+        :return: None
+        """
+        for source_info in source_information:
+            source_information_id = self.id_manager.get_id("sourceInformation")
+            self.graph.add((source_information_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.SourceInformation))
+            for key in source_info.keys():
+                source_info_item = f'sdtl#{key}'
+                self.graph.add((source_information_id, rdflib.URIRef(source_info_item), rdflib.Literal(source_info[key])))
+            self.graph.add((program_id, rdflib.URIRef('sdtl#sourceInformation'), source_information_id))
+
+    def sdtl_to_rdf(self, sdtl, parent_id):
+        """
+        Turns a block of SDTL into RDF, recursively.
+
+        :param parent_id:
+        :param sdtl:
         :return:
         """
 
@@ -104,18 +328,16 @@ class ConverterV1(Converter):
         object_identifiers = []
         # Loop over all the things in the command
 
-        for prop in command:
-            is_dict=isinstance(command[prop], dict)
-            is_list = isinstance(command[prop], list)
+        for prop in sdtl:
+            is_dict=isinstance(sdtl[prop], dict)
+            is_list = isinstance(sdtl[prop], list)
 
             # If it's a an SDTL object ie {'$type': 'VariableSymbolExpression', 'variableName': 'Interest'}
             if is_dict:
-                if prop == 'Comment':
-                    pass
                 object_identifier = self.id_manager.get_id(prop)
                 prop_type = self.id_manager.get_property_id(prop)
                 self.graph.add((object_identifier, rdflib.RDF.type, prop_type))
-                self.add_command_property(command[prop], object_identifier)
+                new_identifiers = self.sdtl_to_rdf(sdtl[prop], object_identifier)
                 if parent_id:
                     # Add a relation to the parent, connecting the two nodes
                     self.graph.add(
@@ -123,19 +345,12 @@ class ConverterV1(Converter):
 
             # If it's a list of SDTL objects
             elif is_list:
-                # Create a node to represent the list
-                new_list = rdflib.BNode()
-                # Check if its a list of strings or a list of dicts
-                for sdtl_expression in command[prop]:
-                    listItem1 = rdflib.BNode()
-
-                    print(sdtl_expression)
-                    if isinstance(sdtl_expression, dict):
-                        parent_id = self.id_manager.get_property_id(prop)
-                        self.add_command_property(sdtl_expression, parent_id)
-                    elif isinstance(sdtl_expression, str):
-                        print("It's a string!")
-
+                # Check if its a list of strings or a list of objects
+                if isinstance(sdtl[prop], dict):
+                    print("UNSUPPORTED")
+                for sdtl_expression in sdtl[prop]:
+                    parent_id = self.id_manager.get_property_id(prop)
+                    self.sdtl_to_rdf(sdtl_expression, parent_id)
 
             # Otherwise it's just a property that belongs to an existing object
             else:
@@ -144,216 +359,7 @@ class ConverterV1(Converter):
                     for identifier in object_identifiers:
                         self.graph.add((parent_id, prop_type, identifier))
                 else:
-                    self.graph.add((parent_id, prop_type, rdflib.Literal(command[prop])))
+                    self.graph.add((parent_id, prop_type, rdflib.Literal(sdtl[prop])))
 
-            if prop == 'variable':
-                self.create_port(parent_id, 'hasOutPort')
 
         return object_identifiers
-
-    def create_port(self, parent_id, relation: str):
-        """
-        Creates a provone:Port
-
-        :param parent_id: The ID of the provone:Program using or creating it
-        :param relation: Should be hasInPort or hasOutPort
-        :return:
-        """
-        name = "Port"
-        port_id = self.id_manager.get_id(name)
-        self.graph.add((port_id, rdflib.RDF.type, self.id_manager.provone_ns.Port))
-
-        if parent_id:
-            predicate = rdflib.URIRef(f'{self.id_manager.provone_ns}{relation}')
-            self.graph.add((parent_id, predicate, port_id))
-
-    def add_command(self, command_uri: rdflib.URIRef, command: json):
-        """
-        Adds a command and its sdtl to the graph
-
-        :param command_uri:
-        :param command:
-        :return:
-        """
-        self.graph.add((command_uri, rdflib.RDF.type, self.id_manager.provone_ns.Program))
-        self.add_command_property(command, command_uri)
-
-    def construct_provenance(self, retrospective=False, new_graph=True):
-        """
-        The main user-facing method that will create the complete provenance model. By default, it will produce
-        retrospective provenance. Toggling the 'retrospective' flag will produce retrospective provenance
-        alongside.
-
-        :param retrospective: A flag to generate retrospective provenance
-        :param new_graph: Flag to use a new graph
-        :return:
-        """
-        # Create a new graph instance
-        if new_graph:
-            self.new_graph()
-        # Parse the outer most SDTL (adds provone:Workflow & provone:Program)
-        workflow_uri: str = self.create_workflow()
-        # Parse and add each SDTL command in the program
-        for sdtl_file in self.sdtl_files:
-            with open(sdtl_file) as json_file:
-                self.sdtl = json.load(json_file)
-                name = "Program"
-                script_uri = self.id_manager.get_id(name)
-                script_description = "A script file that contains source code."
-                self.create_script_program(script_uri, description=script_description)
-                # Add the provone:hasSubProgram relation
-                self.graph.add((workflow_uri, self.id_manager.provone_ns.hasSubProgram, script_uri))
-                # Add the commands within the file
-                for command in self.sdtl['commands']:
-                    # Prepare to create the provenance by generating an identifier for the
-                    # provone:Program that will hold the SDTL
-                    name = "Program"
-                    command_id = self.id_manager.get_id(name)
-                    self.add_command(command_id, command)
-                    if script_uri:
-                        self.graph.add((script_uri, self.id_manager.provone_ns.hasSubProgram, command_id))
-
-                if retrospective:
-                    workflow_id: rdflib.URIRef  = self.get_workflow_identifier()
-                    self.add_execution(workflow_id)
-                    # Get all of the scripts that belong to the top level workflow
-                    sub_programs = self.get_program_identifiers(workflow_id)
-                    # Loop over each one and add provone:Execution
-                    for sub_program in sub_programs:
-                        self.add_retrospective(sub_program)
-
-    def add_retrospective(self, parent_program_id):
-        """
-
-        :param parent_program_id:
-        :return:
-        """
-
-        # Get all of the scripts that belong to the top level workflow
-        sub_programs = self.get_program_identifiers(parent_program_id)
-        for sub_program in sub_programs:
-            self.add_execution(sub_program)
-            # Process each of the commands in the script
-            command_ids = self.get_command_identifiers(sub_program)
-            for command_id in command_ids:
-                self.add_execution(command_id)
-
-    def add_program_execution(self, parent_execution):
-        """
-        Adds a provone:Execution that's associated with a provone:Program. The provone:Execution
-        may be associated with a parent provone:Execution. If this is the case, it should be stated
-        in the RDF.
-
-        :return:
-        """
-        execution_id = self.id_manager.get_id('Execution')
-        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
-
-        if parent_execution:
-            self.graph.add((execution_id, self.id_manager.provone_ns.wasPartOf, parent_execution))
-
-    def add_execution(self, program_id: rdflib.URIRef) -> rdflib.URIRef:
-        """
-        Creates a node that represents the execution of a provone:Program
-
-        :param program_id: The identifier of the workflow object
-        :return: The URI of the execution object
-        """
-
-        # Create a new identifier for the execution
-        execution_id = self.id_manager.get_id('Execution')
-        self.graph.add((execution_id, rdflib.RDF.type, self.id_manager.provone_ns.Execution))
-
-        # Recall that provone:Execution connects back to the workflow via an intermediate provone:Association object.
-        association_id = self.id_manager.get_id('Association')
-        self.graph.add((association_id, rdflib.RDF.type, self.id_manager.provone_ns.Association))
-
-        # Connect the Workflow to the Association
-        self.graph.add((execution_id, self.id_manager.provone_ns.qualifiedAssociation, association_id))
-
-        # Connect the Association to the Workflow
-        self.graph.add((association_id, self.id_manager.provone_ns.hadPlan, program_id))
-
-        return execution_id
-
-    def get_program_identifiers(self, workflow_id):
-        """
-        Get the identifiers of script-level programs (there should only be one).
-
-        :param workflow_id: The identifier of the workflow holding the programs
-        :return:
-        """
-        query = """
-        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?workflow_id ?sub_programs
-        WHERE
-        {
-            ?workflow_id provone:hasSubProgram ?sub_programs .
-        }
-        """
-        ids = []
-        query_res = self.graph.query(query)
-        try:
-            for res in query_res:
-                id = res.asdict()['workflow_id']
-                if id == workflow_id:
-                    ids.append(res.asdict()['sub_programs'])
-        except KeyError:
-            pass
-
-        return ids
-
-    def get_workflow_identifier(self) -> rdflib.URIRef:
-        """
-        Gets the identifier of the top level Workflow object
-
-        :return: The workflow's identifier
-        """
-
-        query = """
-        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-        SELECT ?workflow_id
-        WHERE
-        {
-          ?workflow_id rdf:type <http://purl.dataone.org/provone/2015/01/15/ontology#Workflow> .
-        }
-        """
-
-        query_res: rdflib.query.Result = self.graph.query(query)
-        # Return the identifier
-        try:
-            for res in query_res:
-                return res.asdict()['workflow_id']
-        except KeyError:
-            pass
-
-    def get_command_identifiers(self, script_id) -> list:
-        """
-        Gets the identifier of the command objects
-        :param script_id: The identifier of the script (provone:Program) holding commands
-        :return: The workflow's identifier
-        """
-
-        query = """
-        PREFIX provone: <http://purl.dataone.org/provone/2015/01/15/ontology#>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?script_id ?sub_commands
-        WHERE
-        {
-            ?script_id provone:hasSubProgram ?sub_commands.
-        }
-        """
-        ids = []
-        query_res = self.graph.query(query)
-        try:
-            for res in query_res:
-                id = res.asdict()['script_id ']
-                if id == script_id:
-                    ids.append(res.asdict()['sub_commands'])
-        except KeyError:
-            pass
-
-        return ids

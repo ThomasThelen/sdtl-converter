@@ -139,8 +139,8 @@ class ConverterV1(Converter):
                 self.graph.add((out_port_id, rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{item_count}'), data_frame_id))
                 item_count+=1
 
-        source_info_id = self.parse_source_information(command['sourceInformation'])
-        self.graph.add((program_id, rdflib.URIRef('sdtl#sourceInformation'), source_info_id))
+        source_info_id = self.parse_source_information(command['sourceInformation'], program_id)
+
 
     def parse_save_command(self, command):
         # Create the program representing the load command
@@ -177,22 +177,25 @@ class ConverterV1(Converter):
                 self.graph.add((in_port_id, rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{item_count}'), data_frame_id))
                 item_count+=1
 
-        source_info_id = self.parse_source_information(command['sourceInformation'])
-        self.graph.add((program_id, rdflib.URIRef('sdtl#sourceInformation'), source_info_id))
+            self.parse_source_information(command['sourceInformation'], program_id)
 
 
 
+    def parse_source_information(self, source_information: List, program_id: rdflib.URIRef):
+        """
+        Turns an sdtl:SourceInformation block into RDF and attaches it to the associated provone:Program
 
-
-    def parse_source_information(self, source_information):
-        # Create a new SourceInformation object
-        source_information_id = self.id_manager.get_id("sourceInformation")
-        self.graph.add((source_information_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.SourceInformation))
-        for key in source_information.keys():
-            source_info = f'sdtl#{key}'
-            self.graph.add((source_information_id, rdflib.URIRef(source_info), rdflib.Literal(source_information[key])))
-
-        return source_information_id
+        :param source_information: A list of sdtl:SourceInformation blocks
+        :param program_id: The identifier of the provone:Program that represents this source code
+        :return: None
+        """
+        for source_info in source_information:
+            source_information_id = self.id_manager.get_id("sourceInformation")
+            self.graph.add((source_information_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.SourceInformation))
+            for key in source_info.keys():
+                source_info_item = f'sdtl#{key}'
+                self.graph.add((source_information_id, rdflib.URIRef(source_info_item), rdflib.Literal(source_info[key])))
+            self.graph.add((program_id, rdflib.URIRef('sdtl#sourceInformation'), source_information_id))
 
 
 

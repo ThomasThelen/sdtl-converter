@@ -1,0 +1,99 @@
+{
+    "commands": [
+        {
+            "$type": "NoTransformOp",
+            "command": "NoTransformOp",
+            "sourceInformation": [
+                {
+                    "$type": "SourceInformation",
+                    "lineNumberStart": 1,
+                    "lineNumberEnd": 1,
+                    "sourceStartIndex": 1,
+                    "sourceStopIndex": 19,
+                    "originalSourceText": "import pandas as pd"
+                }
+            ]
+        },
+        {
+            "$type": "Comment",
+            "command": "Comment",
+            "commentText": "\n    A B\n--+----\n0 | 1 4\n1 | 2 5\n2 | 3 6\n",
+            "sourceInformation": [
+                {
+                    "$type": "SourceInformation",
+                    "lineNumberStart": 3,
+                    "lineNumberEnd": 9,
+                    "sourceStartIndex": 22,
+                    "sourceStopIndex": 68,
+                    "originalSourceText": "\"\"\"\n    A B\n--+----\n0 | 1 4\n1 | 2 5\n2 | 3 6\n\"\"\""
+                }
+            ]
+        },
+        {
+            "$type": "Load",
+            "command": "Load",
+            "fileName": "df.csv",
+            "software": "csv",
+            "producesDataframe": [
+                {
+                    "dataframeName": "df",
+                    "variableInventory": [
+                        "A",
+                        "B"
+                    ]
+                }
+            ],
+            "sourceInformation": [
+                {
+                    "$type": "SourceInformation",
+                    "lineNumberStart": 10,
+                    "lineNumberEnd": 10,
+                    "sourceStartIndex": 70,
+                    "sourceStopIndex": 95,
+                    "originalSourceText": "df = pd.read_csv(\"df.csv\")"
+                }
+            ]
+        },
+        {
+            "$type": "Compute",
+            "command": "Compute",
+            "consumesDataframe": [
+                {
+                    "dataframeName": "df",
+                    "variableInventory": [
+                        "A",
+                        "B"
+                    ]
+                }
+            ],
+            "expression": {
+                "$type": "NumericConstantExpression",
+                "numericType": "Integer",
+                "value": "3"
+            },
+            "producesDataframe": [
+                {
+                    "dataframeName": "df",
+                    "variableInventory": [
+                        "A",
+                        "B"
+                    ]
+                }
+            ],
+            "variable": {
+                "$type": "VariableSymbolExpression",
+                "variableName": "A"
+            },
+            "sourceInformation": [
+                {
+                    "$type": "SourceInformation",
+                    "lineNumberStart": 12,
+                    "lineNumberEnd": 12,
+                    "sourceStartIndex": 98,
+                    "sourceStopIndex": 108,
+                    "originalSourceText": "df[\"A\"] = 3"
+                }
+            ]
+        }
+    ]
+}

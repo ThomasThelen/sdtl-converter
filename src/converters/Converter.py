@@ -24,6 +24,8 @@ class Converter:
         self.graph = rdflib.Graph()
         self.graph.bind("sdtl", self.id_manager.sdtl_namespace)
         self.graph.bind("provone", self.id_manager.provone_ns)
+        self.graph.bind("schema", self.id_manager.schema_ns)
+        self.graph.bind("sdtl", rdflib.Namespace('sdtl#$'))
 
     @staticmethod
     def schema_to_name(schema_class) -> str:
