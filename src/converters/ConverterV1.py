@@ -101,7 +101,7 @@ class ConverterV1(Converter):
     def parse(self):
         for sdtl_file in self.sdtl_files:
             with open(sdtl_file) as json_file:
-                self.sdtl = json.load(json_file, object_pairs_hook=OrderedDict)
+                self.sdtl = json.load(json_file) #, object_pairs_hook=OrderedDict)
                 for command in self.sdtl['commands']:
                     if command["$type"] == "Comment":
                         pass
@@ -283,7 +283,6 @@ class ConverterV1(Converter):
             self.graph.add((program_id, self.id_manager.sdtl_namespace.expression, expresion_id))
             self.sdtl_to_rdf(command['expression'], expresion_id)
 
-
     def add_output_variable(self, program_id, variable):
         # Create a port representing the variable
         out_port_id = self.id_manager.get_id("Port")
@@ -319,8 +318,8 @@ class ConverterV1(Converter):
         """
         Turns a block of SDTL into RDF, recursively.
 
-        :param parent_id:
-        :param sdtl:
+        :param sdtl: The SDTL being turned into RDF
+        :param parent_id: The identifier of the parent object that this object/property belongs to
         :return:
         """
 
@@ -329,7 +328,7 @@ class ConverterV1(Converter):
         # Loop over all the things in the command
 
         for prop in sdtl:
-            is_dict=isinstance(sdtl[prop], dict)
+            is_dict = isinstance(sdtl[prop], dict) or isinstance(sdtl[prop], OrderedDict)
             is_list = isinstance(sdtl[prop], list)
 
             # If it's a an SDTL object ie {'$type': 'VariableSymbolExpression', 'variableName': 'Interest'}
@@ -345,12 +344,15 @@ class ConverterV1(Converter):
 
             # If it's a list of SDTL objects
             elif is_list:
-                # Check if its a list of strings or a list of objects
-                if isinstance(sdtl[prop], dict):
-                    print("UNSUPPORTED")
                 for sdtl_expression in sdtl[prop]:
-                    parent_id = self.id_manager.get_property_id(prop)
-                    self.sdtl_to_rdf(sdtl_expression, parent_id)
+                    object_identifier = self.id_manager.get_id(prop)
+                    prop_type = self.id_manager.get_property_id(prop)
+                    self.graph.add((object_identifier, rdflib.RDF.type, prop_type))
+                    if parent_id:
+                            # Add a relation to the parent, connecting the two nodes
+                        self.graph.add((parent_id, prop_type, rdflib.URIRef(object_identifier)))
+                    new_parent = object_identifier
+                    self.sdtl_to_rdf(sdtl_expression, new_parent)
 
             # Otherwise it's just a property that belongs to an existing object
             else:

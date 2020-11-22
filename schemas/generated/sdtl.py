@@ -3876,4 +3876,5 @@ all_classes = (
     'VariableSymbolExpression',
     'Variables',
     'WeightVariable',
-    'variableInventory')
+    'VariableInventory',
+    'FunctionArgument')
