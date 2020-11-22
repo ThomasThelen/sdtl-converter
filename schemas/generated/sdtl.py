@@ -3875,4 +3875,5 @@ all_classes = (
     'VariableReferenceBase',
     'VariableSymbolExpression',
     'Variables',
-    'WeightVariable')
+    'WeightVariable',
+    'variableInventory')
