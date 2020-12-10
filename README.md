@@ -6,16 +6,12 @@ A python library for turning SDTL in JSON-LD format into ProvONE/Prov.
 
 ### Features
 
-- Single SDTL file conversion
-- Multiple SDTL file conversion
-- Prospective & (Prospective and Retrospective) provenance support
-
 
 ### Installing
 
 This isn't on PyPI, so use pip to install from this repository. 
  
-`pip install git+https://github.com/ThomasThelen/sdtl-converter.git`
+`pip3 install git+https://github.com/ThomasThelen/sdtl-converter.git`
  
 
 ### Using
@@ -36,18 +32,29 @@ paths: List = ['path_to/first/sdtl.json', 'path_to/second/sdtl.json']
 converter = ConverterV1(paths)
 ```
 
+#### Converting SDTL to RDF
+
+Turn turn an SDTL JSON file into RDF, start by loading the file
+ 
+```
+converter = ConverterV1('path_to/sdtl.json')
+```
+
+Next, call `convert_sdtl_to_rdf` to perform the conversion. Either print
+the ConverterV1 object or write to disk for the output.
+```
+converter.convert_sdtl_to_rdf()
+print(str(converter))
+converter.write_jsonld()
+converter.write_turtle()
+
+```
+
+See `tests/to_sdtl` for examples.
+
 #### Generating Provenance
 
-The `construct_provenance` method is the main method used to create
-ProvONE representations of the SDTL. To create prospective provenance,
-call `construct_provenance`.
 
-`converter.construct_provenance()`
-
-If instead you want a prospective provenance trace with an associasted
-retrospective trace, set the `retrospective` flag to `True`]
-
-`converter.construct_provenance(retrospective=True)` 
 
 ### Unit Tests
 

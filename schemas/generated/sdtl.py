@@ -3877,4 +3877,5 @@ all_classes = (
     'Variables',
     'WeightVariable',
     'VariableInventory',
+    'dataframeVariable',
     'FunctionArgument')
