@@ -1,4 +1,4 @@
-from schemas.generated.sdtl import (
+from .sdtl import (
     Aggregate,
     AggregateVariables,
     AllNumericVariablesExpression,

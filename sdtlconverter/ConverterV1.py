@@ -2,10 +2,7 @@ from typing import Union, List
 import rdflib
 import json
 
-from collections import OrderedDict
 from .Converter import Converter
-import schemas.generated.sdtl as sdtl
-
 
 class DataFrame:
     def __init__(self, name, identifier):
@@ -32,20 +29,12 @@ class ConverterV1(Converter):
         # A list of the sub-properties of the top level provone:Programs (ie scripts, things that have
         # extensions like .py, .R, etc) that
         # we want to include in the RDF
-        self.desired_script_properties = [
-            self.schema_to_name(sdtl.Id),
-            self.schema_to_name(sdtl.SourceFileName),
-            self.schema_to_name(sdtl.FileName),
-            self.schema_to_name(sdtl.SourceLanguage),
-            self.schema_to_name(sdtl.ScriptMD5),
-            self.schema_to_name(sdtl.ScriptSHA1),
-            self.schema_to_name(sdtl.SourceFileLastUpdate),
-            self.schema_to_name(sdtl.SourceFileSize),
-            self.schema_to_name(sdtl.LineCount),
-            self.schema_to_name(sdtl.CommandCount),
-            self.schema_to_name(sdtl.Parser),
-            self.schema_to_name(sdtl.ModelCreatedTime)
-        ]
+        self.desired_script_properties = ["id",
+                                          "sourceFileName", "fileName", "sourceLanguage",
+                                          "ScriptMD5", "ScriptSHA1", "SourceFileLastUpdate",
+                                          "SourceFileSize", "LineCount", "CommandCount",
+                                          "Parser", "ModelCreatedTime"
+                                          ]
 
         super().__init__(file_paths)
 

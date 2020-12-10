@@ -1,7 +1,7 @@
 from typing import List
 import rdflib
 
-import schemas.generated.sdtl as sdtl
+from .schemas.generated.sdtl import all_classes
 
 
 class IdentifierManager:
@@ -23,7 +23,7 @@ class IdentifierManager:
         self.sdtl_namespace: rdflib.Namespace = rdflib.Namespace('https://rdf-vocabulary.ddialliance.org/sdtl#')
 
         # Create a map of sdtl types to count
-        sdtl_schema: dict = {i: 0 for i in sdtl.all_classes}
+        sdtl_schema: dict = {i: 0 for i in all_classes}
 
         # The schema is CamelCaps, but SDTL is subCaps, so convert
         # the keys to lowerUpper, which amounts to lowercasing the first letter
