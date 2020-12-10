@@ -1,0 +1,807 @@
+[
+  {
+    "@id": "#ArgumentValue/3",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments": [
+      {
+        "@id": "#Arguments/4"
+      },
+      {
+        "@id": "#Arguments/5"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Function": [
+      {
+        "@value": "division"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#IsSdtlName": [
+      {
+        "@value": true
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionCallExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#ProducesDataframe/2",
+    "@type": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ProducesDataframe"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#DataframeDescription/2"
+      }
+    ]
+  },
+  {
+    "@id": "#Program/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Program"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#commands": [
+      {
+        "@id": "#Commands/1"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/13",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "sex"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/3",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "died"
+      }
+    ]
+  },
+  {
+    "@id": "#DataframeDescription/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#DataframeDescription"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#VariableInventory": [
+      {
+        "@id": "#VariableInventory/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#dataframeName": [
+      {
+        "@value": "Active"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/2",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "born"
+      }
+    ]
+  },
+  {
+    "@id": "#Arguments/3",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentName": [
+      {
+        "@value": "EXP1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue": [
+      {
+        "@id": "#ArgumentValue/3"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionArgument"
+      }
+    ]
+  },
+  {
+    "@id": "#Save/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Save"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Command": [
+      {
+        "@value": "save"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ConsumesDataframe": [
+      {
+        "@id": "#ConsumesDataframe/2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#FileName": [
+      {
+        "@value": "AgeDeath5"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#IsCompressed": [
+      {
+        "@value": false
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Software": [
+      {
+        "@value": "Stata"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation": [
+      {
+        "@id": "#SourceInformation/3"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "Save"
+      }
+    ]
+  },
+  {
+    "@id": "#Load/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Load"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Command": [
+      {
+        "@value": "load"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#FileName": [
+      {
+        "@value": "AgeDeath.dta"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#IsCompressed": [
+      {
+        "@value": false
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ProducesDataframe": [
+      {
+        "@id": "#ProducesDataframe/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Software": [
+      {
+        "@value": "Stata"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation": [
+      {
+        "@id": "#SourceInformation/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "Load"
+      }
+    ]
+  },
+  {
+    "@id": "#ArgumentValue/4",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#VariableName": [
+      {
+        "@value": "age"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "VariableSymbolExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/8",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "personid"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/9",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "born"
+      }
+    ]
+  },
+  {
+    "@id": "#VariableInventory/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#VariableInventory"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#dataframeVariable/1"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_2": [
+      {
+        "@id": "#dataframeVariable/2"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_3": [
+      {
+        "@id": "#dataframeVariable/3"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_4": [
+      {
+        "@id": "#dataframeVariable/4"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_5": [
+      {
+        "@id": "#dataframeVariable/5"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_6": [
+      {
+        "@id": "#dataframeVariable/6"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_7": [
+      {
+        "@id": "#dataframeVariable/7"
+      }
+    ]
+  },
+  {
+    "@id": "#ArgumentValue/2",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments": [
+      {
+        "@id": "#Arguments/3"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Function": [
+      {
+        "@value": "int"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#IsSdtlName": [
+      {
+        "@value": false
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionCallExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#DataframeDescription/2",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#DataframeDescription"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#VariableInventory": [
+      {
+        "@id": "#VariableInventory/2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#dataframeName": [
+      {
+        "@value": "Active"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/1",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "personid"
+      }
+    ]
+  },
+  {
+    "@id": "#SourceInformation/3",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#LineNumberStart": [
+      {
+        "@value": 3
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#OriginalSourceText": [
+      {
+        "@value": "save \"AgeDeath5\""
+      }
+    ]
+  },
+  {
+    "@id": "#Expression/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Expression"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments": [
+      {
+        "@id": "#Arguments/2"
+      },
+      {
+        "@id": "#Arguments/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Function": [
+      {
+        "@value": "multiplication"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#IsSdtlName": [
+      {
+        "@value": true
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionCallExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/4",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "name"
+      }
+    ]
+  },
+  {
+    "@id": "#Arguments/4",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentName": [
+      {
+        "@value": "EXP1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue": [
+      {
+        "@id": "#ArgumentValue/4"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionArgument"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/10",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "died"
+      }
+    ]
+  },
+  {
+    "@id": "#Variable/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Variable"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#VariableName": [
+      {
+        "@value": "age"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "VariableSymbolExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#VariableInventory/2",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#VariableInventory"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#dataframeVariable/8"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_2": [
+      {
+        "@id": "#dataframeVariable/9"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_3": [
+      {
+        "@id": "#dataframeVariable/10"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_4": [
+      {
+        "@id": "#dataframeVariable/11"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_5": [
+      {
+        "@id": "#dataframeVariable/12"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_6": [
+      {
+        "@id": "#dataframeVariable/13"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_7": [
+      {
+        "@id": "#dataframeVariable/14"
+      }
+    ]
+  },
+  {
+    "@id": "#Arguments/2",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentName": [
+      {
+        "@value": "EXP2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue": [
+      {
+        "@id": "#ArgumentValue/2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionArgument"
+      }
+    ]
+  },
+  {
+    "@id": "#Commands/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Commands",
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#Load/1"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_2": [
+      {
+        "@id": "#Compute/1"
+      }
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_3": [
+      {
+        "@id": "#Save/1"
+      }
+    ]
+  },
+  {
+    "@id": "#ProducesDataframe/1",
+    "@type": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ProducesDataframe"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#DataframeDescription/1"
+      }
+    ]
+  },
+  {
+    "@id": "#ConsumesDataframe/2",
+    "@type": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ConsumesDataframe"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#DataframeDescription/4"
+      }
+    ]
+  },
+  {
+    "@id": "#ArgumentValue/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#NumericType": [
+      {
+        "@value": "Integer"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Value": [
+      {
+        "@value": "5"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "NumericConstantExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/6",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "sex"
+      }
+    ]
+  },
+  {
+    "@id": "#DataframeDescription/4",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#DataframeDescription"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#dataframeName": [
+      {
+        "@value": "Active"
+      }
+    ]
+  },
+  {
+    "@id": "#ArgumentValue/5",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#NumericType": [
+      {
+        "@value": "Integer"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Value": [
+      {
+        "@value": "5"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "NumericConstantExpression"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/7",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "age"
+      }
+    ]
+  },
+  {
+    "@id": "#SourceInformation/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#LineNumberStart": [
+      {
+        "@value": 1
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#OriginalSourceText": [
+      {
+        "@value": "use \"AgeDeath.dta\""
+      }
+    ]
+  },
+  {
+    "@id": "#Arguments/5",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentName": [
+      {
+        "@value": "EXP2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue": [
+      {
+        "@id": "#ArgumentValue/5"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionArgument"
+      }
+    ]
+  },
+  {
+    "@id": "#ConsumesDataframe/1",
+    "@type": [
+      "http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq",
+      "https://rdf-vocabulary.ddialliance.org/sdtl#ConsumesDataframe"
+    ],
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_1": [
+      {
+        "@id": "#DataframeDescription/3"
+      }
+    ]
+  },
+  {
+    "@id": "#DataframeDescription/3",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#DataframeDescription"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#dataframeName": [
+      {
+        "@value": "Active"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/11",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "name"
+      }
+    ]
+  },
+  {
+    "@id": "#SourceInformation/2",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#LineNumberStart": [
+      {
+        "@value": 2
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#OriginalSourceText": [
+      {
+        "@value": "replace age = 5*int(age/5)"
+      }
+    ]
+  },
+  {
+    "@id": "#Arguments/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Arguments"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentName": [
+      {
+        "@value": "EXP1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ArgumentValue": [
+      {
+        "@id": "#ArgumentValue/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "FunctionArgument"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/12",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "refarea"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/5",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "refarea"
+      }
+    ]
+  },
+  {
+    "@id": "#Compute/1",
+    "@type": [
+      "https://rdf-vocabulary.ddialliance.org/sdtl#Compute"
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Command": [
+      {
+        "@value": "compute"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ConsumesDataframe": [
+      {
+        "@id": "#ConsumesDataframe/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Expression": [
+      {
+        "@id": "#Expression/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#ProducesDataframe": [
+      {
+        "@id": "#ProducesDataframe/2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#SourceInformation": [
+      {
+        "@id": "#SourceInformation/2"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#Variable": [
+      {
+        "@id": "#Variable/1"
+      }
+    ],
+    "https://rdf-vocabulary.ddialliance.org/sdtl#type": [
+      {
+        "@value": "Compute"
+      }
+    ]
+  },
+  {
+    "@id": "#dataframeVariable/14",
+    "@type": [
+      "http://www.schema.org/#Thing"
+    ],
+    "http://www.schema.org/#name": [
+      {
+        "@value": "age"
+      }
+    ]
+  }
+]

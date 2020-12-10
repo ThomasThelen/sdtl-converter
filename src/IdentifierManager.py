@@ -20,7 +20,7 @@ class IdentifierManager:
         self.provone_ns = rdflib.Namespace("http://purl.dataone.org/provone/2015/01/15/ontology#")
         self.prov_ns = rdflib.Namespace('http://www.w3.org/ns/prov#')
         self.schema_ns = rdflib.Namespace('http://www.schema.org/#')
-        self.sdtl_namespace: rdflib.Namespace = rdflib.Namespace('sdtl#')
+        self.sdtl_namespace: rdflib.Namespace = rdflib.Namespace('https://rdf-vocabulary.ddialliance.org/sdtl#')
 
         # Create a map of sdtl types to count
         sdtl_schema: dict = {i: 0 for i in sdtl.all_classes}
@@ -44,12 +44,17 @@ class IdentifierManager:
          :param property_name: The name of the property (usually an SDTL class)
          :return: A compliant URI
          """
+
+        property_lowered = property_name[0].lower() + property_name[1:]
         if property_name in self.counts:
             self.counts[property_name] += 1
             return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_name])))
+        elif property_lowered in self.counts:
+            self.counts[property_lowered] += 1
+            return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_lowered])))
         else:
-            return rdflib.URIRef(f'{self.sdtl_namespace}{property_name}')
-
+            self.counts[property_lowered] = 1
+            return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_lowered])))
     def get_property_id(self, sdtl_property) -> rdflib.URIRef:
         """
         Returns of the form: sdtl#sdtl_property
@@ -60,3 +65,6 @@ class IdentifierManager:
         :return:
         """
         return rdflib.URIRef(f'{self.sdtl_namespace}{sdtl_property}')
+
+    def to_lower(self, term):
+        return term[0].lower() + term[1:]

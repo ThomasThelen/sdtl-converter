@@ -15,6 +15,8 @@ class Converter:
         self.sdtl_files: List[str] = None
         self.new_graph()
         self.sdtl = None
+        self.is_prospective=False
+        self.is_retrospective = False
         if isinstance(file_paths, str):
             self.sdtl_files = [file_paths]
         else:
@@ -46,3 +48,23 @@ class Converter:
         :return:
         """
         return self.graph.serialize(format='turtle').decode('utf-8')
+
+    def write_turtle(self, filepath: str = "./turtle.ttl"):
+        """
+        Writes the graph to disk in turtle format
+
+        :param filepath: The path to the file being written to
+        :return:
+        """
+        with open(filepath, 'wb') as turtle_file:
+            turtle_file.write(self.graph.serialize(format='turtle'))
+
+    def write_jsonld(self, filepath: str = "./jsonld.jsonld"):
+        """
+        Writes the graph to disk in JSON-LD
+
+        :param filepath: The path to the file being written to
+        :return:
+        """
+        with open(filepath, 'wb') as turtle_file:
+            turtle_file.write(self.graph.serialize(format='json-ld'))
