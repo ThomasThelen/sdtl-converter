@@ -2,7 +2,7 @@ from typing import Union, List
 import rdflib
 import json
 
-from .Converter import Converter
+from sdtlconverter.Converter import Converter
 
 class DataFrame:
     def __init__(self, name, identifier):

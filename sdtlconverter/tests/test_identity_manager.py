@@ -1,6 +1,6 @@
 import rdflib
 
-from ..IdentifierManager import IdentifierManager
+from sdtlconverter.IdentifierManager import IdentifierManager
 
 
 def test_init():

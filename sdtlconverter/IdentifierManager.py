@@ -1,7 +1,7 @@
 from typing import List
 import rdflib
 
-from .schemas.generated.sdtl import all_classes
+from sdtlconverter.schemas.generated.sdtl import all_classes
 
 
 class IdentifierManager:

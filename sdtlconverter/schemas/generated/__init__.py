@@ -1,4 +1,4 @@
-from .sdtl import (
+from sdtlconverter.schemas.generated.sdtl import (
     Aggregate,
     AggregateVariables,
     AllNumericVariablesExpression,

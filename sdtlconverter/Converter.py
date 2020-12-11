@@ -1,6 +1,6 @@
 from typing import List, Union
 import rdflib
-from .IdentifierManager import IdentifierManager
+from sdtlconverter.IdentifierManager import IdentifierManager
 
 
 class Converter:
