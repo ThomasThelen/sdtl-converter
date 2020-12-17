@@ -194,7 +194,7 @@ class ConverterV1(Converter):
                             inventory_id = self.create_dataframe_inventory(command_id,
                                                                            command['consumesDataframe'],
                                                                            'ConsumesDataframe')
-                            self.parse_dataframe_usage(inventory_id, command['producesDataframe'])
+                            self.parse_dataframe_usage(inventory_id, command['consumesDataframe'])
                         if 'producesDataframe' in command :
                             inventory_id = self.create_dataframe_inventory(command_id,
                                                                            command['producesDataframe'],
