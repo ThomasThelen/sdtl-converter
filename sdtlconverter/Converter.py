@@ -29,19 +29,6 @@ class Converter:
         self.graph.bind("schema", self.id_manager.schema_ns)
         self.graph.bind("sdtl", rdflib.Namespace('sdtl#$'))
 
-    @staticmethod
-    def schema_to_name(schema_class) -> str:
-        """
-        Lowercases the first letter in a string. This is used to map the SDTL generated
-        from the SDTLL parsers(lowercase first letter) to the schema (which has an uppercase letter)
-
-        :param schema_class: The class name of an SDTL schema binding
-        :return:
-        """
-        name = schema_class.__qualname__
-        name = name[0].lower() + name[1:]
-        return name
-
     def __str__(self) -> str:
         """
         Returns the graph as a turtle
