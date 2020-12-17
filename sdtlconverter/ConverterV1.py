@@ -184,7 +184,7 @@ class ConverterV1(Converter):
 
                 if 'Commands' in self.sdtl:
                     # Create the node for the commands list inside the sdtl:Program
-                    commands_id = self.id_manager.get_id("Commands")
+                    commands_id = self.id_manager.get_id("CommandInventory")
                     # 'Commands' is an ordered sequence, use rdf:seq
                     self.graph.add((commands_id, rdflib.RDF.type, rdflib.RDF.Seq))
 
@@ -203,7 +203,7 @@ class ConverterV1(Converter):
                                         rdflib.RDF.type,
                                         rdflib.URIRef(predicate)))
                         # Connect it to the 'Commands' node using rdf:_n
-                        predicate = f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{command_count}'
+                        predicate = f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{command_count}'
                         self.graph.add((commands_id,
                                         rdflib.URIRef(predicate),
                                         command_id))
@@ -237,7 +237,7 @@ class ConverterV1(Converter):
             dataframe_identifier = self.dataframes[dataframe['dataframeName']]
             # Connect the ProducesDataframe node to it with rdf:_n
             self.graph.add((dataframe_inventory_id,
-                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{dataframe_count}'),
+                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{dataframe_count}'),
                             dataframe_identifier))
 
     def create_dataframe_inventory(self, command_id, sdtl: json, dataframe_relation: str):
@@ -285,7 +285,7 @@ class ConverterV1(Converter):
 
             # Connect the ProducesDataframe node to it with rdf:_n
             self.graph.add((parent_id,
-                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{dataframe_count}'),
+                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{dataframe_count}'),
                             dataframe_description_id))
 
             # Add the dataframeName
@@ -334,7 +334,7 @@ class ConverterV1(Converter):
                             self.id_manager.schema_ns.name,
                             rdflib.Literal(dataframe_variable)))
             self.graph.add((variable_inventory_id,
-                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{variable_count}'),
+                            rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{variable_count}'),
                             new_variable_id))
 
     def create_sequence(self, identifier, domain_identifier, predicate, ordered=True):
