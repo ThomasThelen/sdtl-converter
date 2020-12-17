@@ -239,7 +239,7 @@ class ConverterV1(Converter):
 
         self.graph.add((dataframe_id,
                         rdflib.RDF.type,
-                        rdflib.RDF.Seq))
+                        rdflib.RDF.Bag))
 
         # Connect the command to the rdf:Seq.
         predicate = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{dataframe_relation}')
