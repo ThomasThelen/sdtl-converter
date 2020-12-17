@@ -153,6 +153,24 @@ class ConverterV1(Converter):
 
         return object_identifiers
 
+    def add_program(self):
+        """
+        Adds a sdtl:Program node to the graph.
+        :return:
+        """
+        program_id = self.id_manager.get_id("Program")
+        self.graph.add((program_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.Program))
+        # Add all of the program level metadata
+        for program_predicate in self.sdtl:
+            if isinstance(self.sdtl[program_predicate], List):
+                continue
+            if program_predicate == "$type":
+                # Don't add sdtl:$type to the RDF
+                continue
+            prop_type = self.id_manager.get_property_id(program_predicate)
+            self.graph.add((program_id, prop_type, rdflib.Literal(self.sdtl[program_predicate])))
+        return program_id
+
     def convert_sdtl_to_rdf(self):
         # A list of unsupported SDTL commands
         unsupported = ["Comment", "Unsupported", "NoTransformOp"]
@@ -162,8 +180,7 @@ class ConverterV1(Converter):
                 self.sdtl = json.load(json_file)
 
                 # Create the node for the script, it should be sdtl:Program
-                script_id = self.id_manager.get_id("Program")
-                self.graph.add((script_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.Program))
+                script_id = self.add_program()
 
                 if 'Commands' in self.sdtl:
                     # Create the node for the commands list inside the sdtl:Program
