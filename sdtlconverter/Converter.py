@@ -54,8 +54,8 @@ class Converter:
         :return:
         """
         with open(filepath, 'wb') as turtle_file:
-            context = {"@rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                       "@schema": "http://www.schema.org/#",
-                       "@sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"}
+            context = {"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                       "schema": "http://www.schema.org/#",
+                       "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"}
 
             turtle_file.write(self.graph.serialize(format='json-ld', context=context))
