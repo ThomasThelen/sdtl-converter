@@ -307,7 +307,6 @@ class ConverterV1(Converter):
         :param dataframe: The SDTL describing the dataframe
         :return:
         """
-
         variable_inventory_id = self.id_manager.get_id("VariableInventory")
         predicate = self.id_manager.sdtl_namespace.VariableInventory
         self.create_sequence(variable_inventory_id, dataframe_description_id, predicate)
@@ -338,7 +337,14 @@ class ConverterV1(Converter):
                             new_variable_id))
 
     def create_sequence(self, identifier, domain_identifier, predicate, ordered=True):
-
+        """
+        Creates an rdf:Seq or rdf:Bag and connects it to a node
+        :param identifier: The identifier of the new node
+        :param domain_identifier: The identifier of the node being attached
+        :param predicate: The verb used to attach the node to the collection
+        :param ordered: Boolean as to whether the collection is ordered or not
+        :return:
+        """
         sequence_type = rdflib.RDF.Seq if ordered else rdflib.RDF.Bag
 
         self.graph.add((identifier,
@@ -349,4 +355,3 @@ class ConverterV1(Converter):
         self.graph.add((domain_identifier,
                         predicate,
                         identifier))
-
