@@ -329,9 +329,9 @@ class ConverterV1(Converter):
             new_variable_id = self.id_manager.get_id("dataframeVariable")
             self.graph.add((new_variable_id,
                             rdflib.RDF.type,
-                            self.id_manager.schema_ns.Thing))
+                            self.id_manager.sdtl_namespace.VariableSymbolExpression))
             self.graph.add((new_variable_id,
-                            self.id_manager.schema_ns.name,
+                            self.id_manager.sdtl_namespace.VariableName,
                             rdflib.Literal(dataframe_variable)))
             self.graph.add((variable_inventory_id,
                             rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{variable_count}'),
@@ -349,3 +349,4 @@ class ConverterV1(Converter):
         self.graph.add((domain_identifier,
                         predicate,
                         identifier))
+
