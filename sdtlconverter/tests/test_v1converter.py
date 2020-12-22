@@ -41,3 +41,4 @@ def test_namespaces():
         assert False
     finally:
         os.remove("test_jsonld.jsonld")
+
