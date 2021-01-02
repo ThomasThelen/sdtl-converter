@@ -1,0 +1,307 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> ;
+    rdf:_2 <#Rename/1> ;
+    rdf:_3 <#Rename/2> ;
+    rdf:_4 <#Rename/3> ;
+    rdf:_5 <#Rename/4> ;
+    rdf:_6 <#Save/1> .
+
+<#DataframeDescription/3> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/3> ;
+    sdtl:dataframeName "df2" .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/10> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/5> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/5> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/3> .
+
+<#DataframeInventory/6> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/7> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/4> .
+
+<#DataframeInventory/8> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/4> .
+
+<#DataframeInventory/9> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/5> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:SourceInformation <#SourceInformationInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileName "rename.csv" ;
+    sdtl:software "csv" .
+
+<#Rename/1> a sdtl:Rename ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:Renames <#RenamesInventory/1> ;
+    sdtl:SourceInformation <#SourceInformationInventory/2> ;
+    sdtl:command "Rename" .
+
+<#Rename/2> a sdtl:Rename ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:ProducesDataframe <#DataframeInventory/5> ;
+    sdtl:Renames <#RenamesInventory/2> ;
+    sdtl:SourceInformation <#SourceInformationInventory/3> ;
+    sdtl:command "Rename" .
+
+<#Rename/3> a sdtl:Rename ;
+    sdtl:ConsumesDataframe <#DataframeInventory/6> ;
+    sdtl:ProducesDataframe <#DataframeInventory/7> ;
+    sdtl:Renames <#RenamesInventory/3> ;
+    sdtl:SourceInformation <#SourceInformationInventory/4> ;
+    sdtl:command "Rename" .
+
+<#Rename/4> a sdtl:Rename ;
+    sdtl:ConsumesDataframe <#DataframeInventory/8> ;
+    sdtl:ProducesDataframe <#DataframeInventory/9> ;
+    sdtl:Renames <#RenamesInventory/4> ;
+    sdtl:SourceInformation <#SourceInformationInventory/5> ;
+    sdtl:command "Rename" .
+
+<#RenamePair/1> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/2> ;
+    sdtl:oldVariable <#VariableSymbolExpression/1> .
+
+<#RenamePair/2> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/4> ;
+    sdtl:oldVariable <#VariableSymbolExpression/3> .
+
+<#RenamePair/3> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/6> ;
+    sdtl:oldVariable <#VariableSymbolExpression/5> .
+
+<#RenamePair/4> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/8> ;
+    sdtl:oldVariable <#VariableSymbolExpression/7> .
+
+<#RenamePair/5> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/10> ;
+    sdtl:oldVariable <#VariableSymbolExpression/9> .
+
+<#RenamePair/6> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/12> ;
+    sdtl:oldVariable <#VariableSymbolExpression/11> .
+
+<#RenamePair/7> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/14> ;
+    sdtl:oldVariable <#VariableSymbolExpression/13> .
+
+<#RenamesInventory/1> a rdf:Bag ;
+    rdf:rdf:_1 <#RenamePair/1> ;
+    rdf:rdf:_2 <#RenamePair/2> .
+
+<#RenamesInventory/2> a rdf:Bag ;
+    rdf:rdf:_1 <#RenamePair/3> ;
+    rdf:rdf:_2 <#RenamePair/4> .
+
+<#RenamesInventory/3> a rdf:Bag ;
+    rdf:rdf:_1 <#RenamePair/5> .
+
+<#RenamesInventory/4> a rdf:Bag ;
+    rdf:rdf:_1 <#RenamePair/6> ;
+    rdf:rdf:_2 <#RenamePair/7> .
+
+<#Save/1> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/10> ;
+    sdtl:SourceInformation <#SourceInformationInventory/6> ;
+    sdtl:command "Save" ;
+    sdtl:fileName "rename.csv" ;
+    sdtl:software "csv" .
+
+<#SourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 12 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"rename.csv\")" ;
+    sdtl:sourceStartIndex 123 ;
+    sdtl:sourceStopIndex 152 .
+
+<#SourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 14 ;
+    sdtl:lineNumberStart 14 ;
+    sdtl:originalSourceText "df.rename(columns={ \"A\": \"a\", \"B\": \"b\" }, inplace=True)" ;
+    sdtl:sourceStartIndex 155 ;
+    sdtl:sourceStopIndex 209 .
+
+<#SourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 15 ;
+    sdtl:lineNumberStart 15 ;
+    sdtl:originalSourceText "df2 = df.rename(columns={ \"a\": \"x\", \"b\": \"y\" })" ;
+    sdtl:sourceStartIndex 211 ;
+    sdtl:sourceStopIndex 257 .
+
+<#SourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 19 ;
+    sdtl:lineNumberStart 19 ;
+    sdtl:originalSourceText "df.columns[\"a\"] = \"x\"" ;
+    sdtl:sourceStartIndex 335 ;
+    sdtl:sourceStopIndex 355 .
+
+<#SourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 23 ;
+    sdtl:lineNumberStart 23 ;
+    sdtl:originalSourceText "df.columns = [\"one\", \"two\"]" ;
+    sdtl:sourceStartIndex 506 ;
+    sdtl:sourceStopIndex 532 .
+
+<#SourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 25 ;
+    sdtl:lineNumberStart 25 ;
+    sdtl:originalSourceText "df.to_csv(\"rename.csv\")" ;
+    sdtl:sourceStartIndex 535 ;
+    sdtl:sourceStopIndex 557 .
+
+<#SourceInformationInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/1> .
+
+<#SourceInformationInventory/2> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/2> .
+
+<#SourceInformationInventory/3> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/3> .
+
+<#SourceInformationInventory/4> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/4> .
+
+<#SourceInformationInventory/5> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/5> .
+
+<#SourceInformationInventory/6> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/6> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/3> ;
+    rdf:_2 <#dataframeVariable/4> .
+
+<#VariableInventory/3> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/5> ;
+    rdf:_2 <#dataframeVariable/6> .
+
+<#VariableInventory/4> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/7> ;
+    rdf:_2 <#dataframeVariable/8> .
+
+<#VariableInventory/5> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/9> ;
+    rdf:_2 <#dataframeVariable/10> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/10> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "x" .
+
+<#VariableSymbolExpression/11> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "x" .
+
+<#VariableSymbolExpression/12> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "one" .
+
+<#VariableSymbolExpression/13> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "b" .
+
+<#VariableSymbolExpression/14> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "two" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "a" .
+
+<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariableSymbolExpression/4> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "b" .
+
+<#VariableSymbolExpression/5> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "a" .
+
+<#VariableSymbolExpression/6> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "x" .
+
+<#VariableSymbolExpression/7> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "b" .
+
+<#VariableSymbolExpression/8> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "y" .
+
+<#VariableSymbolExpression/9> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "a" .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "two" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "a" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "b" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "x" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "y" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "x" .
+
+<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "b" .
+
+<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "one" .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "df" .
+
+<#DataframeDescription/4> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/4> ;
+    sdtl:dataframeName "df" .
+
+<#DataframeDescription/5> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/5> ;
+    sdtl:dataframeName "df" .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "df" .
+

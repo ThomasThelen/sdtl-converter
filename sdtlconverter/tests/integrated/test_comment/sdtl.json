@@ -1,0 +1,116 @@
+{
+  "SourceFileName" : "N/A",
+  "SourceLanguage" : "stata",
+  "CommandCount" : 3,
+  "Messages" : [ ],
+  "Parser" : "stata-sdtl-converter",
+  "ParserVersion" : "SDTL0.3",
+  "Commands" : [
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":1,
+            "lineNumberEnd":1,
+            "sourceStartIndex":1,
+            "sourceStopIndex":37,
+            "originalSourceText":"\"\"\"This is a single-line docstring\"\"\""
+         }
+      ],
+      "commentText":"This is a single-line docstring"
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "commentText":"This is a single-line comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":3,
+            "lineNumberEnd":3,
+            "sourceStartIndex":40,
+            "sourceStopIndex":69,
+            "originalSourceText":"#This is a single-line comment"
+         }
+      ]
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":5,
+            "lineNumberEnd":12,
+            "sourceStartIndex":72,
+            "sourceStopIndex":110,
+            "originalSourceText":"\"\"\"\nThis\nis\na\nmulti-\nline\ndocstring\n\"\"\""
+         }
+      ],
+      "commentText":"\nThis\nis\na\nmulti-\nline\ndocstring\n"
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":14,
+            "lineNumberEnd":14,
+            "sourceStartIndex":113,
+            "sourceStopIndex":146,
+            "originalSourceText":"\"docstring with one set of quotes\""
+         }
+      ],
+      "commentText":"docstring with one set of quotes"
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":16,
+            "lineNumberEnd":16,
+            "sourceStartIndex":149,
+            "sourceStopIndex":189,
+            "originalSourceText":"'docstring with one set of single-quotes'"
+         }
+      ],
+      "commentText":"docstring with one set of single-quotes"
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":18,
+            "lineNumberEnd":18,
+            "sourceStartIndex":192,
+            "sourceStopIndex":231,
+            "originalSourceText":"'''docstring with three single-quotes'''"
+         }
+      ],
+      "commentText":"docstring with three single-quotes"
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":20,
+            "lineNumberEnd":26,
+            "sourceStartIndex":234,
+            "sourceStopIndex":288,
+            "originalSourceText":"'''multi-\nl\ni\nn\ne\ndocstring with\nthree single quotes'''"
+         }
+      ],
+      "commentText":"multi-\nl\ni\nn\ne\ndocstring with\nthree single quotes"
+   }
+]
+
+}

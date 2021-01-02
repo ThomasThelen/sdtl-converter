@@ -1,0 +1,113 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> ;
+    rdf:_2 <#KeepVariables/1> ;
+    rdf:_3 <#Save/1> .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#KeepVariables/1> a sdtl:KeepVariables ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:Variables <#VariablesInventory/1> ;
+    sdtl:command "KeepVariables" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileName "keep.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#Save/1> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:command "Save" ;
+    sdtl:fileName "keep.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> ;
+    rdf:_3 <#dataframeVariable/3> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/4> ;
+    rdf:_2 <#dataframeVariable/5> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariablesInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#VariableSymbolExpression/1> ;
+    rdf:rdf:_2 <#VariableSymbolExpression/2> .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 10 ;
+    sdtl:lineNumberStart 10 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"keep.csv\")" ;
+    sdtl:sourceStartIndex 80 ;
+    sdtl:sourceStopIndex 107 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 12 ;
+    sdtl:originalSourceText "kept = df[[\"A\", \"B\"]]" ;
+    sdtl:sourceStartIndex 110 ;
+    sdtl:sourceStopIndex 130 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 14 ;
+    sdtl:lineNumberStart 14 ;
+    sdtl:originalSourceText "kept.to_csv(\"keep.csv\")" ;
+    sdtl:sourceStartIndex 133 ;
+    sdtl:sourceStopIndex 155 .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "df" .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "kept" .
+

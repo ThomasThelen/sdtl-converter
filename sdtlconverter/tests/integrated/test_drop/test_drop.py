@@ -7,6 +7,3 @@ def test_load():
     converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
-
-
-

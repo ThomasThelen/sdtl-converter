@@ -1,0 +1,133 @@
+{
+  "SourceFileName" : "N/A",
+  "SourceLanguage" : "stata",
+  "CommandCount" : 3,
+  "Messages" : [ ],
+  "Parser" : "stata-sdtl-converter",
+  "ParserVersion" : "SDTL0.3",
+  "Commands" : [
+   {
+      "$type":"NoTransformOp",
+      "command":"NoTransformOp",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":1,
+            "lineNumberEnd":1,
+            "sourceStartIndex":1,
+            "sourceStopIndex":19,
+            "originalSourceText":"import pandas as pd"
+         }
+      ]
+   },
+   {
+      "$type":"Comment",
+      "command":"Comment",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":3,
+            "lineNumberEnd":9,
+            "sourceStartIndex":22,
+            "sourceStopIndex":78,
+            "originalSourceText":"\"\"\"\n    A B C\n--+------\n0 | 1 4 7\n1 | 2 5 8\n2 | 3 6 9\n\"\"\""
+         }
+      ],
+      "commentText":"\n    A B C\n--+------\n0 | 1 4 7\n1 | 2 5 8\n2 | 3 6 9\n"
+   },
+   {
+      "$type":"Load",
+      "command":"Load",
+      "fileName":"keep.csv",
+      "software":"csv",
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":10,
+            "lineNumberEnd":10,
+            "sourceStartIndex":80,
+            "sourceStopIndex":107,
+            "originalSourceText":"df = pd.read_csv(\"keep.csv\")"
+         }
+      ],
+      "producesDataframe":[
+         {
+            "dataframeName":"df",
+            "variableInventory":[
+               "A",
+               "B",
+               "C"
+            ]
+         }
+      ]
+   },
+   {
+      "$type":"KeepVariables",
+      "command":"KeepVariables",
+      "variables":[
+         {
+            "$type":"VariableSymbolExpression",
+            "variableName":"A"
+         },
+         {
+            "$type":"VariableSymbolExpression",
+            "variableName":"B"
+         }
+      ],
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":12,
+            "lineNumberEnd":12,
+            "sourceStartIndex":110,
+            "sourceStopIndex":130,
+            "originalSourceText":"kept = df[[\"A\", \"B\"]]"
+         }
+      ],
+      "consumesDataframe":[
+         {
+            "dataframeName":"df",
+            "variableInventory":[
+               "A",
+               "B",
+               "C"
+            ]
+         }
+      ],
+      "producesDataframe":[
+         {
+            "dataframeName":"kept",
+            "variableInventory":[
+               "A",
+               "B"
+            ]
+         }
+      ]
+   },
+   {
+      "$type":"Save",
+      "command":"Save",
+      "fileName":"keep.csv",
+      "software":"csv",
+      "consumesDataframe":[
+         {
+            "dataframeName":"kept",
+            "variableInventory":[
+               "A",
+               "B"
+            ]
+         }
+      ],
+      "sourceInformation":[
+         {
+            "$type":"SourceInformation",
+            "lineNumberStart":14,
+            "lineNumberEnd":14,
+            "sourceStartIndex":133,
+            "sourceStopIndex":155,
+            "originalSourceText":"kept.to_csv(\"keep.csv\")"
+         }
+      ]
+   }
+]
+}

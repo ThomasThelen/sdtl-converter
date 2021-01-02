@@ -4,6 +4,7 @@ import json
 
 from sdtlconverter.Converter import Converter
 
+
 class DataFrame:
     def __init__(self, name, identifier):
         self.name = name
@@ -25,16 +26,9 @@ class ConverterV1(Converter):
 
         self.dataframes= {}
         self.variable_names = {}
-
-        # A list of the sub-properties of the top level provone:Programs (ie scripts, things that have
-        # extensions like .py, .R, etc) that
-        # we want to include in the RDF
-        self.desired_script_properties = ["id",
-                                          "sourceFileName", "fileName", "sourceLanguage",
-                                          "ScriptMD5", "ScriptSHA1", "SourceFileLastUpdate",
-                                          "SourceFileSize", "LineCount", "CommandCount",
-                                          "Parser", "ModelCreatedTime"
-                                          ]
+        self.unordered_properties = ["Arguments, renames"]
+        self.ordered_properties= ["SourceInformation", "sortCriteria", "mergeFiles", "dropVariables",
+                                  "variables", "collapse", "arguments", "appendFiles", "renameVariables"]
 
         super().__init__(file_paths)
 
@@ -66,47 +60,19 @@ class ConverterV1(Converter):
 
         # Loop over all the things in the sdtl
         for prop in sdtl:
+            # Skip any of the top level properties that have already been created
             if prop == "producesDataframe" or prop == "consumesDataframe":
                 continue
-            if prop == "SourceInformation":
-                # Create the rdf:Seq that will contain all of the SourceInformation objects
-                information_inventory_id = self.id_manager.get_id("SourceInformationInventory")
-                predicate = self.id_manager.sdtl_namespace.SourceInformation
-                self.create_sequence(information_inventory_id, parent_id, predicate)
-
-                # Loop over each SourceInformation. Add a node for each one and add it to the rdf:Seq
-                source_info_count = 0
-                for source_info in sdtl[prop]:
-                    source_info_count += 1
-                    source_information_id = self.id_manager.get_id("SourceInformation")
-                    self.graph.add((source_information_id, rdflib.RDF.type,
-                                    self.id_manager.sdtl_namespace.SourceInformation))
-                    # Add it to the SourceInformationInventory
-                    predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{source_info_count}')
-                    self.graph.add((information_inventory_id, predicate, source_information_id))
-                    self.sdtl_to_rdf(source_info, source_information_id)
-
-            elif prop == "Arguments":
-                # Create the rdf:Seq that will contain all of the SourceInformation objects
-                arguments_inventory_id = self.id_manager.get_id("ArgumentsInventory")
-                predicate = self.id_manager.sdtl_namespace.Arguments
-                self.create_sequence(arguments_inventory_id, parent_id, predicate, False)
-
-                # Loop over each 'Argumets'. Add a node for each one and add it to the rdf:Seq
-                arguments_count = 0
-                for source_info in sdtl[prop]:
-                    arguments_count += 1
-                    argument_id = self.id_manager.get_id(source_info["$type"])
-                    argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{source_info["$type"]}')
-                    self.graph.add((argument_id, rdflib.RDF.type, argument_type))
-
-                    # Attach the ArgumentsInventory to it
-                    predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{arguments_count}')
-                    self.graph.add((arguments_inventory_id, predicate, argument_id))
-                    self.sdtl_to_rdf(source_info, argument_id)
+            elif prop in self.ordered_properties:
+                child_type = None
+                if prop == "SourceInformation":
+                    child_type="SourceInformation"
+                self.create_sdtl_object(prop, parent_id, sdtl, True, child_type=child_type)
+            elif prop in self.unordered_properties:
+                self.create_sdtl_object(prop, parent_id, sdtl, False)
 
             # Check to see if it's a an SDTL object ie {'$type': 'VariableSymbolExpression', 'variableName': 'Interest'}
-            if isinstance(sdtl[prop], dict):
+            elif isinstance(sdtl[prop], dict):
                 # Create a new RDF object
                 sdtl_type = sdtl[prop]["$type"]
                 object_identifier = self.id_manager.get_id(sdtl_type)
@@ -153,9 +119,35 @@ class ConverterV1(Converter):
 
         return object_identifiers
 
+    def create_sdtl_object (self, name, parent_id, sdtl, ordered, child_type=None):
+        # Create the rdf:Seq that will contain all of the objects
+        upper_name = self.id_manager.to_upper(name)
+        namespace_name = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{upper_name}')
+        inventory_id = self.id_manager.get_id(f'{upper_name}Inventory')
+        self.create_sequence(inventory_id, parent_id, namespace_name, ordered)
+
+        # Loop over each node. Add a node for each one and add it to the rdf:Seq
+        child_count = 0
+        for source_info in sdtl[name]:
+            child_count += 1
+            if child_type is None:
+                renames_id = self.id_manager.get_id(source_info["$type"])
+                argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{source_info["$type"]}')
+            else:
+                renames_id = self.id_manager.get_id(child_type)
+                argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{child_type}')
+            self.graph.add((renames_id, rdflib.RDF.type, argument_type))
+
+            # Attach the ArgumentsInventory to it
+            predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{child_count}')
+            self.graph.add((inventory_id, predicate, renames_id))
+            self.sdtl_to_rdf(source_info, renames_id)
+
+
+
     def add_program(self):
         """
-        Adds a sdtl:Program node to the graph.
+        Adds an sdtl:Program node to the graph.
         :return:
         """
         program_id = self.id_manager.get_id("Program")
@@ -173,7 +165,7 @@ class ConverterV1(Converter):
 
     def convert_sdtl_to_rdf(self):
         # A list of unsupported SDTL commands
-        unsupported = ["Comment", "Unsupported", "NoTransformOp"]
+        unsupported = ["Unsupported", "NoTransformOp"]
 
         for sdtl_file in self.sdtl_files:
             with open(sdtl_file) as json_file:
@@ -242,7 +234,7 @@ class ConverterV1(Converter):
 
     def create_dataframe_inventory(self, command_id, sdtl: json, dataframe_relation: str):
         """
-        Called when the parser runs across a command that creates a data frame.
+        Creates DataframeInventory nodes.
 
         :param command_id: The identifier of the command creating the data frame
         :param sdtl: The SDTL list of data frames that are being used
@@ -338,7 +330,8 @@ class ConverterV1(Converter):
 
     def create_sequence(self, identifier, domain_identifier, predicate, ordered=True):
         """
-        Creates an rdf:Seq or rdf:Bag and connects it to a node
+        Creates an rdf:Seq or rdf:Bag and connects a node to it.
+
         :param identifier: The identifier of the new node
         :param domain_identifier: The identifier of the node being attached
         :param predicate: The verb used to attach the node to the collection
@@ -355,3 +348,5 @@ class ConverterV1(Converter):
         self.graph.add((domain_identifier,
                         predicate,
                         identifier))
+
+

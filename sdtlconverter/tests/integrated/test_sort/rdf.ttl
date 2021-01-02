@@ -1,0 +1,500 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> ;
+    rdf:_10 <#Save/1> ;
+    rdf:_2 <#SortCases/1> ;
+    rdf:_3 <#SortCases/2> ;
+    rdf:_4 <#SortCases/3> ;
+    rdf:_5 <#SortCases/4> ;
+    rdf:_6 <#SortCases/5> ;
+    rdf:_7 <#SortCases/6> ;
+    rdf:_8 <#SortCases/7> ;
+    rdf:_9 <#SortCases/8> .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "df_a" .
+
+<#DataframeDescription/3> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/3> ;
+    sdtl:dataframeName "df_b" .
+
+<#DataframeDescription/4> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/4> ;
+    sdtl:dataframeName "df_c" .
+
+<#DataframeDescription/5> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/5> ;
+    sdtl:dataframeName "df_ab" .
+
+<#DataframeDescription/6> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/6> ;
+    sdtl:dataframeName "df_des" .
+
+<#DataframeDescription/7> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/7> ;
+    sdtl:dataframeName "df_list" .
+
+<#DataframeDescription/8> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/8> ;
+    sdtl:dataframeName "df_na" .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/10> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/11> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/6> .
+
+<#DataframeInventory/12> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/13> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/7> .
+
+<#DataframeInventory/14> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/15> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/8> .
+
+<#DataframeInventory/16> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/17> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/9> .
+
+<#DataframeInventory/18> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/9> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/5> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/3> .
+
+<#DataframeInventory/6> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/7> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/4> .
+
+<#DataframeInventory/8> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/9> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/5> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileName "df.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#Save/1> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/18> ;
+    sdtl:command "Save" ;
+    sdtl:fileName "df.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/10> .
+
+<#SortCases/1> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/1> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#SortCases/2> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:ProducesDataframe <#DataframeInventory/5> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/2> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#SortCases/3> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/6> ;
+    sdtl:ProducesDataframe <#DataframeInventory/7> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/3> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/4> .
+
+<#SortCases/4> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/8> ;
+    sdtl:ProducesDataframe <#DataframeInventory/9> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/4> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/5> .
+
+<#SortCases/5> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/10> ;
+    sdtl:ProducesDataframe <#DataframeInventory/11> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/5> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/6> .
+
+<#SortCases/6> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/12> ;
+    sdtl:ProducesDataframe <#DataframeInventory/13> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/6> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/7> .
+
+<#SortCases/7> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/14> ;
+    sdtl:ProducesDataframe <#DataframeInventory/15> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/7> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/8> .
+
+<#SortCases/8> a sdtl:SortCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/16> ;
+    sdtl:ProducesDataframe <#DataframeInventory/17> ;
+    sdtl:SortCriteria <#SortCriteriaInventory/8> ;
+    sdtl:command "SortCases" ;
+    sdtl:sourceInformation <#sourceInformation/9> .
+
+<#SortCriteriaInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/1> .
+
+<#SortCriteriaInventory/2> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/2> .
+
+<#SortCriteriaInventory/3> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/3> .
+
+<#SortCriteriaInventory/4> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/4> ;
+    rdf:rdf:_2 <#SortCriterion/5> .
+
+<#SortCriteriaInventory/5> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/6> ;
+    rdf:rdf:_2 <#SortCriterion/7> .
+
+<#SortCriteriaInventory/6> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/8> ;
+    rdf:rdf:_2 <#SortCriterion/9> .
+
+<#SortCriteriaInventory/7> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/10> .
+
+<#SortCriteriaInventory/8> a rdf:Seq ;
+    rdf:rdf:_1 <#SortCriterion/11> ;
+    rdf:rdf:_2 <#SortCriterion/12> ;
+    rdf:rdf:_3 <#SortCriterion/13> .
+
+<#SortCriterion/1> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/1> .
+
+<#SortCriterion/10> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/10> .
+
+<#SortCriterion/11> a sdtl:SortCriterion ;
+    sdtl:sortDirection "descending" ;
+    sdtl:variable <#VariableSymbolExpression/11> .
+
+<#SortCriterion/12> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/12> .
+
+<#SortCriterion/13> a sdtl:SortCriterion ;
+    sdtl:sortDirection "descending" ;
+    sdtl:variable <#VariableSymbolExpression/13> .
+
+<#SortCriterion/2> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/2> .
+
+<#SortCriterion/3> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/3> .
+
+<#SortCriterion/4> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/4> .
+
+<#SortCriterion/5> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/5> .
+
+<#SortCriterion/6> a sdtl:SortCriterion ;
+    sdtl:sortDirection "descending" ;
+    sdtl:variable <#VariableSymbolExpression/6> .
+
+<#SortCriterion/7> a sdtl:SortCriterion ;
+    sdtl:sortDirection "descending" ;
+    sdtl:variable <#VariableSymbolExpression/7> .
+
+<#SortCriterion/8> a sdtl:SortCriterion ;
+    sdtl:sortDirection "descending" ;
+    sdtl:variable <#VariableSymbolExpression/8> .
+
+<#SortCriterion/9> a sdtl:SortCriterion ;
+    sdtl:sortDirection "ascending" ;
+    sdtl:variable <#VariableSymbolExpression/9> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> ;
+    rdf:_3 <#dataframeVariable/3> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/4> ;
+    rdf:_2 <#dataframeVariable/5> ;
+    rdf:_3 <#dataframeVariable/6> .
+
+<#VariableInventory/3> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/7> ;
+    rdf:_2 <#dataframeVariable/8> ;
+    rdf:_3 <#dataframeVariable/9> .
+
+<#VariableInventory/4> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/10> ;
+    rdf:_2 <#dataframeVariable/11> ;
+    rdf:_3 <#dataframeVariable/12> .
+
+<#VariableInventory/5> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/13> ;
+    rdf:_2 <#dataframeVariable/14> ;
+    rdf:_3 <#dataframeVariable/15> .
+
+<#VariableInventory/6> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/16> ;
+    rdf:_2 <#dataframeVariable/17> ;
+    rdf:_3 <#dataframeVariable/18> .
+
+<#VariableInventory/7> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/19> ;
+    rdf:_2 <#dataframeVariable/20> ;
+    rdf:_3 <#dataframeVariable/21> .
+
+<#VariableInventory/8> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/22> ;
+    rdf:_2 <#dataframeVariable/23> ;
+    rdf:_3 <#dataframeVariable/24> .
+
+<#VariableInventory/9> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/25> ;
+    rdf:_2 <#dataframeVariable/26> ;
+    rdf:_3 <#dataframeVariable/27> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/10> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "C" .
+
+<#VariableSymbolExpression/11> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/12> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariableSymbolExpression/13> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "C" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "C" .
+
+<#VariableSymbolExpression/4> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/5> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariableSymbolExpression/6> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/7> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#VariableSymbolExpression/8> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/9> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/11> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/12> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/13> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/14> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/15> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/16> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/17> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/18> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/19> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/20> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/21> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/22> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/23> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/24> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/25> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/26> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/27> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 13 ;
+    sdtl:lineNumberStart 13 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"df.csv\")" ;
+    sdtl:sourceStartIndex 123 ;
+    sdtl:sourceStopIndex 148 .
+
+<#sourceInformation/10> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 28 ;
+    sdtl:lineNumberStart 28 ;
+    sdtl:originalSourceText "df.to_csv(\"df.csv\")" ;
+    sdtl:sourceStartIndex 594 ;
+    sdtl:sourceStopIndex 612 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 15 ;
+    sdtl:lineNumberStart 15 ;
+    sdtl:originalSourceText "df_a = df.sort_values(\"A\")" ;
+    sdtl:sourceStartIndex 151 ;
+    sdtl:sourceStopIndex 176 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 16 ;
+    sdtl:lineNumberStart 16 ;
+    sdtl:originalSourceText "df_b = df.sort_values(by=\"B\")" ;
+    sdtl:sourceStartIndex 178 ;
+    sdtl:sourceStopIndex 206 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 17 ;
+    sdtl:lineNumberStart 17 ;
+    sdtl:originalSourceText "df_c = df.sort_values(by=[\"C\"])" ;
+    sdtl:sourceStartIndex 208 ;
+    sdtl:sourceStopIndex 238 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 19 ;
+    sdtl:lineNumberStart 19 ;
+    sdtl:originalSourceText "df_ab = df.sort_values(by=[\"A\", \"B\"])" ;
+    sdtl:sourceStartIndex 241 ;
+    sdtl:sourceStopIndex 277 .
+
+<#sourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 20 ;
+    sdtl:lineNumberStart 20 ;
+    sdtl:originalSourceText "df_des = df.sort_values([\"A\", \"B\"], ascending=False)" ;
+    sdtl:sourceStartIndex 279 ;
+    sdtl:sourceStopIndex 330 .
+
+<#sourceInformation/7> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 21 ;
+    sdtl:lineNumberStart 21 ;
+    sdtl:originalSourceText "df_list = df.sort_values(by=[\"A\", \"B\"], ascending=[False, True])" ;
+    sdtl:sourceStartIndex 332 ;
+    sdtl:sourceStopIndex 395 .
+
+<#sourceInformation/8> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 24 ;
+    sdtl:lineNumberStart 24 ;
+    sdtl:originalSourceText "df_na = df.sort_values(by=\"C\", na_position=\"first\")" ;
+    sdtl:sourceStartIndex 441 ;
+    sdtl:sourceStopIndex 491 .
+
+<#sourceInformation/9> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 26 ;
+    sdtl:lineNumberStart 26 ;
+    sdtl:originalSourceText "df.sort_values([\"A\", \"B\", \"C\"], inplace=True, ascending=[False, True, False], na_position=\"first\")" ;
+    sdtl:sourceStartIndex 494 ;
+    sdtl:sourceStopIndex 591 .
+
+<#DataframeDescription/9> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/9> ;
+    sdtl:dataframeName "df" .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "df" .
+

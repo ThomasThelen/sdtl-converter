@@ -1,0 +1,381 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" .
+
+<#AllVariablesExpression/1> a sdtl:AllVariablesExpression .
+
+<#AllVariablesExpression/2> a sdtl:AllVariablesExpression .
+
+<#AllVariablesExpression/3> a sdtl:AllVariablesExpression .
+
+<#ArgumentsInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/1> ;
+    rdf:rdf:_2 <#FunctionArgument/2> .
+
+<#ArgumentsInventory/2> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/3> ;
+    rdf:rdf:_2 <#FunctionArgument/6> .
+
+<#ArgumentsInventory/3> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/4> ;
+    rdf:rdf:_2 <#FunctionArgument/5> .
+
+<#ArgumentsInventory/4> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/7> .
+
+<#ArgumentsInventory/5> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/8> ;
+    rdf:rdf:_2 <#FunctionArgument/9> .
+
+<#ArgumentsInventory/6> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/10> ;
+    rdf:rdf:_2 <#FunctionArgument/11> .
+
+<#ArgumentsInventory/7> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/12> .
+
+<#ArgumentsInventory/8> a rdf:Seq ;
+    rdf:rdf:_1 <#FunctionArgument/13> .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> ;
+    rdf:_2 <#KeepCases/1> ;
+    rdf:_3 <#KeepCases/2> ;
+    rdf:_4 <#KeepCases/3> ;
+    rdf:_5 <#KeepCases/4> ;
+    rdf:_6 <#DropCases/1> .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "case" .
+
+<#DataframeDescription/3> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/3> ;
+    sdtl:dataframeName "case2" .
+
+<#DataframeDescription/4> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/4> ;
+    sdtl:dataframeName "case3" .
+
+<#DataframeDescription/5> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/5> ;
+    sdtl:dataframeName "case4" .
+
+<#DataframeDescription/6> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/6> ;
+    sdtl:dataframeName "case5" .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/10> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/11> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/6> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/5> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/3> .
+
+<#DataframeInventory/6> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/7> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/4> .
+
+<#DataframeInventory/8> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/9> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/5> .
+
+<#DropCases/1> a sdtl:DropCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/10> ;
+    sdtl:ProducesDataframe <#DataframeInventory/11> ;
+    sdtl:command "DropCases" ;
+    sdtl:condition <#FunctionCallExpression/8> ;
+    sdtl:sourceInformation <#sourceInformation/6> .
+
+<#FunctionArgument/1> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/1> .
+
+<#FunctionArgument/10> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllVariablesExpression/1> .
+
+<#FunctionArgument/11> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#ValueListExpression/1> .
+
+<#FunctionArgument/12> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllVariablesExpression/2> .
+
+<#FunctionArgument/13> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllVariablesExpression/3> .
+
+<#FunctionArgument/2> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#NumericConstantExpression/1> .
+
+<#FunctionArgument/3> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#FunctionCallExpression/3> .
+
+<#FunctionArgument/4> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/2> .
+
+<#FunctionArgument/5> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#NumericConstantExpression/2> .
+
+<#FunctionArgument/6> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#FunctionCallExpression/4> .
+
+<#FunctionArgument/7> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#FunctionCallExpression/5> .
+
+<#FunctionArgument/8> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/3> .
+
+<#FunctionArgument/9> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#NumericConstantExpression/3> .
+
+<#FunctionCallExpression/1> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/1> ;
+    sdtl:function "gt" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/2> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/2> ;
+    sdtl:function "and" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/3> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/3> ;
+    sdtl:function "lt" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/4> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/4> ;
+    sdtl:function "not" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/5> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/5> ;
+    sdtl:function "eq" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/6> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/6> ;
+    sdtl:function "lgcl_any" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/7> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/7> ;
+    sdtl:function "missing_any" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/8> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/8> ;
+    sdtl:function "missing" ;
+    sdtl:isSdtlName true .
+
+<#KeepCases/1> a sdtl:KeepCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:command "KeepCases" ;
+    sdtl:condition <#FunctionCallExpression/1> ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#KeepCases/2> a sdtl:KeepCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:ProducesDataframe <#DataframeInventory/5> ;
+    sdtl:command "KeepCases" ;
+    sdtl:condition <#FunctionCallExpression/2> ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#KeepCases/3> a sdtl:KeepCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/6> ;
+    sdtl:ProducesDataframe <#DataframeInventory/7> ;
+    sdtl:command "KeepCases" ;
+    sdtl:condition <#FunctionCallExpression/6> ;
+    sdtl:sourceInformation <#sourceInformation/4> .
+
+<#KeepCases/4> a sdtl:KeepCases ;
+    sdtl:ConsumesDataframe <#DataframeInventory/8> ;
+    sdtl:ProducesDataframe <#DataframeInventory/9> ;
+    sdtl:command "KeepCases" ;
+    sdtl:condition <#FunctionCallExpression/7> ;
+    sdtl:sourceInformation <#sourceInformation/5> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileName "df.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#NumericConstantExpression/1> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "2" .
+
+<#NumericConstantExpression/2> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "4" .
+
+<#NumericConstantExpression/3> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "3" .
+
+<#ValueListExpression/1> a sdtl:ValueListExpression ;
+    sdtl:values <#values/1>,
+        <#values/2> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/3> ;
+    rdf:_2 <#dataframeVariable/4> .
+
+<#VariableInventory/3> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/5> ;
+    rdf:_2 <#dataframeVariable/6> .
+
+<#VariableInventory/4> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/7> ;
+    rdf:_2 <#dataframeVariable/8> .
+
+<#VariableInventory/5> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/9> ;
+    rdf:_2 <#dataframeVariable/10> .
+
+<#VariableInventory/6> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/11> ;
+    rdf:_2 <#dataframeVariable/12> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "A" .
+
+<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "B" .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/11> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/12> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 3 ;
+    sdtl:lineNumberStart 3 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"df.csv\")" ;
+    sdtl:sourceStartIndex 22 ;
+    sdtl:sourceStopIndex 47 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 5 ;
+    sdtl:lineNumberStart 5 ;
+    sdtl:originalSourceText "case = df[df[\"A\"] > 2]" ;
+    sdtl:sourceStartIndex 50 ;
+    sdtl:sourceStopIndex 71 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 6 ;
+    sdtl:lineNumberStart 6 ;
+    sdtl:originalSourceText "case2 = df[(df[\"A\"] < 4) & (~(df[\"B\"] == 3))]" ;
+    sdtl:sourceStartIndex 73 ;
+    sdtl:sourceStopIndex 117 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 7 ;
+    sdtl:lineNumberStart 7 ;
+    sdtl:originalSourceText "case3 = df[df.isin([2, 3]).all(axis=1)]" ;
+    sdtl:sourceStartIndex 119 ;
+    sdtl:sourceStopIndex 157 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 8 ;
+    sdtl:lineNumberStart 8 ;
+    sdtl:originalSourceText "case4 = df[df.isna().any(axis=1)]" ;
+    sdtl:sourceStartIndex 159 ;
+    sdtl:sourceStopIndex 191 .
+
+<#sourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 9 ;
+    sdtl:lineNumberStart 9 ;
+    sdtl:originalSourceText "case5 = df.dropna(how=\"all\")" ;
+    sdtl:sourceStartIndex 193 ;
+    sdtl:sourceStopIndex 220 .
+
+<#values/1> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "2" .
+
+<#values/2> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "3" .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "df" .
+

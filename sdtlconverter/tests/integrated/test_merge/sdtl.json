@@ -1,0 +1,1203 @@
+{
+  "SourceFileName" : "N/A",
+  "SourceLanguage" : "stata",
+  "CommandCount" : 3,
+  "Messages" : [ ],
+  "Parser" : "stata-sdtl-converter",
+  "ParserVersion" : "SDTL0.3",
+  "Commands" : [
+	{
+		"$type": "NoTransformOp",
+		"command": "NoTransformOp",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 1,
+			"lineNumberEnd": 1,
+			"sourceStartIndex": 1,
+			"sourceStopIndex": 19,
+			"originalSourceText": "import pandas as pd"
+		}]
+	},
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": "\nleft\n    caseID firstName income famID\n--+------------------------------\n0 | 1      Abe       15000  11\n1 | 2      Barry     None   11\n2 | 3      Chuck     17000  12\n3 | 4      Dave      25000  13\n4 | 5      Ed        21000  14\n\nright\n    rowID  lastName  income famID2\n--+-------------------------------\n0 | 1      Lincoln   31000  11\n1 | 2      Madison   32000  12\n2 | 3      Nelson    33000  13\n3 | 6      Quincy    34000  14\n",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 3,
+			"lineNumberEnd": 20,
+			"sourceStartIndex": 22,
+			"sourceStopIndex": 457,
+			"originalSourceText": "\"\"\"\nleft\n    caseID firstName income famID\n--+------------------------------\n0 | 1      Abe       15000  11\n1 | 2      Barry     None   11\n2 | 3      Chuck     17000  12\n3 | 4      Dave      25000  13\n4 | 5      Ed        21000  14\n\nright\n    rowID  lastName  income famID2\n--+-------------------------------\n0 | 1      Lincoln   31000  11\n1 | 2      Madison   32000  12\n2 | 3      Nelson    33000  13\n3 | 6      Quincy    34000  14\n\"\"\""
+		}]
+	},
+	{
+		"$type": "Load",
+		"command": "Load",
+		"fileName": "left.csv",
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"software": "csv",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 21,
+			"lineNumberEnd": 21,
+			"sourceStartIndex": 459,
+			"sourceStopIndex": 488,
+			"originalSourceText": "left = pd.read_csv(\"left.csv\")"
+		}]
+	},
+	{
+		"$type": "Load",
+		"command": "Load",
+		"fileName": "right.csv",
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"software": "csv",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 22,
+			"lineNumberEnd": 22,
+			"sourceStartIndex": 490,
+			"sourceStopIndex": 521,
+			"originalSourceText": "right = pd.read_csv(\"right.csv\")"
+		}]
+	},
+	{
+		"$type": "Rename",
+		"command": "Rename",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"renames":
+		[
+			{
+				"$type": "RenamePair",
+				"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "rowID"},
+				"newVariable": { "$type": "VariableSymbolExpression", "variableName": "caseID"}
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "right2a",
+				"variableInventory":
+				[
+					"caseID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 23,
+			"lineNumberEnd": 23,
+			"sourceStartIndex": 523,
+			"sourceStopIndex": 573,
+			"originalSourceText": "right2a = right.rename(columns={\"rowID\": \"caseID\"})"
+		}]
+	},
+	{
+		"$type": "Rename",
+		"command": "Rename",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"renames":
+		[
+			{
+				"$type": "RenamePair",
+				"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "famID2"},
+				"newVariable": { "$type": "VariableSymbolExpression", "variableName": "famID"}
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "right2b",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 24,
+			"lineNumberEnd": 24,
+			"sourceStartIndex": 575,
+			"sourceStopIndex": 625,
+			"originalSourceText": "right2b = right.rename(columns={\"famID2\": \"famID\"})"
+		}]
+	},
+	{
+		"$type": "Unsupported",
+		"command": "Unsupported",
+		"messageText": ["Merges without a by variable are not supported."],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 26,
+			"lineNumberEnd": 26,
+			"sourceStartIndex": 628,
+			"sourceStopIndex": 654,
+			"originalSourceText": "default = left.merge(right)"
+		}]
+	},
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": " This results in an empty dataframe",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 26,
+			"lineNumberEnd": 26,
+			"sourceStartIndex": 657,
+			"sourceStopIndex": 692,
+			"originalSourceText": "# This results in an empty dataframe"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2a",
+				"variableInventory":
+				[
+					"caseID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeByVariables": { "$type": "VariableSymbolExpression", "variableName": "caseID"},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "OneToOne",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "Master",
+				"newRow": false
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2a",
+				"mergeType": "OneToOne",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "inner_join",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 28,
+			"lineNumberEnd": 28,
+			"sourceStartIndex": 695,
+			"sourceStopIndex": 752,
+			"originalSourceText": "inner_join = left.merge(right2a, on=\"caseID\", how=\"inner\")"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2a",
+				"variableInventory":
+				[
+					"caseID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeByVariables":
+		{
+			"$type": "VariableListExpression",
+			"variables":
+			[
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "caseID"
+				}
+			]
+		},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2a",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "left_join",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 29,
+			"lineNumberEnd": 29,
+			"sourceStartIndex": 754,
+			"sourceStopIndex": 811,
+			"originalSourceText": "left_join = left.merge(right2a, on=[\"caseID\"], how=\"left\")"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2a",
+				"variableInventory":
+				[
+					"caseID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeByVariables": { "$type": "VariableSymbolExpression", "variableName": "caseID"},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2a",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "Master",
+				"newRow": true
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "right_join",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 30,
+			"lineNumberEnd": 30,
+			"sourceStartIndex": 813,
+			"sourceStopIndex": 870,
+			"originalSourceText": "right_join = left.merge(right2a, how=\"right\", on=\"caseID\")"
+		}]
+	},
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": " default suffixes",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 30,
+			"lineNumberEnd": 30,
+			"sourceStartIndex": 872,
+			"sourceStopIndex": 889,
+			"originalSourceText": "# default suffixes"
+		}]
+	},
+	{
+		"$type": "Unsupported",
+		"command": "Unsupported",
+		"messageText": ["Merges without a by variable are not supported."],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 31,
+			"lineNumberEnd": 31,
+			"sourceStartIndex": 891,
+			"sourceStopIndex": 939,
+			"originalSourceText": "right_join_no_by = left.merge(right, how=\"right\")"
+		}]
+	},
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": " This is unsupported",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 31,
+			"lineNumberEnd": 31,
+			"sourceStartIndex": 942,
+			"sourceStopIndex": 962,
+			"originalSourceText": "# This is unsupported"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2b",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"mergeByVariables": { "$type": "VariableSymbolExpression", "variableName": "famID"},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2b",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "Master",
+				"newRow": true
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "right_join_sort",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"rowID",
+					"lastName",
+					"income_y"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 32,
+			"lineNumberEnd": 32,
+			"sourceStartIndex": 964,
+			"sourceStopIndex": 1036,
+			"originalSourceText": "right_join_sort = left.merge(right2b, how=\"right\", on=\"famID\", sort=True)"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2a",
+				"variableInventory":
+				[
+					"caseID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeByVariables": { "$type": "VariableSymbolExpression", "variableName": "caseID"},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2a",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": true
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "outer_join",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 33,
+			"lineNumberEnd": 33,
+			"sourceStartIndex": 1038,
+			"sourceStopIndex": 1095,
+			"originalSourceText": "outer_join = left.merge(right2a, how=\"outer\", on=\"caseID\")"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right2b",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"mergeByVariables": { "$type": "VariableSymbolExpression", "variableName": "famID"},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_left" }
+					}
+				],
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right2b",
+				"mergeType": "Cartesian",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_right" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": true
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "outer_suffix",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_left",
+					"famID",
+					"rowID",
+					"lastName",
+					"income_right"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 34,
+			"lineNumberEnd": 34,
+			"sourceStartIndex": 1097,
+			"sourceStopIndex": 1185,
+			"originalSourceText": "outer_suffix = left.merge(right2b, how=\"outer\", on=\"famID\", suffixes=(\"_left\", \"_right\"))"
+		}]
+	},
+	{
+		"$type": "Unsupported",
+		"command": "Unsupported",
+		"messageText": ["Indicator columns are not currently supported by the parsing application."],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 36,
+			"lineNumberEnd": 36,
+			"sourceStartIndex": 1188,
+			"sourceStopIndex": 1235,
+			"originalSourceText": "flag_merge = left.merge(right2a, indicator=True)"
+		}]
+	},
+	{
+		"$type": "Unsupported",
+		"command": "Unsupported",
+		"messageText": ["Indicator columns are not currently supported by the parsing application."],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 37,
+			"lineNumberEnd": 37,
+			"sourceStartIndex": 1237,
+			"sourceStopIndex": 1289,
+			"originalSourceText": "flag_string = left.merge(right2a, indicator=\"Source\")"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Sequential",
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right",
+				"mergeType": "Sequential",
+				"update": "UpdateMissing",
+				"newRow": true
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "combined",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID",
+					"rowID",
+					"lastName",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 39,
+			"lineNumberEnd": 39,
+			"sourceStartIndex": 1292,
+			"sourceStopIndex": 1327,
+			"originalSourceText": "combined = left.combine_first(right)"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Sequential",
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right",
+				"mergeType": "Sequential",
+				"update": "Replace",
+				"newRow": false,
+				"dropVariables":
+				[
+					{ "$type": "VariableSymbolExpression", "variableName": "rowID" },
+					{ "$type": "VariableSymbolExpression", "variableName": "lastName" },
+					{ "$type": "VariableSymbolExpression", "variableName": "famID2" }
+				]
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "replaced",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 40,
+			"lineNumberEnd": 40,
+			"sourceStartIndex": 1329,
+			"sourceStopIndex": 1357,
+			"originalSourceText": "replaced = left.update(right)"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Sequential",
+				"update": "Master",
+				"newRow": true
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right",
+				"mergeType": "Sequential",
+				"update": "UpdateMissing",
+				"newRow": false,
+				"dropVariables":
+				[
+					{ "$type": "VariableSymbolExpression", "variableName": "rowID" },
+					{ "$type": "VariableSymbolExpression", "variableName": "lastName" },
+					{ "$type": "VariableSymbolExpression", "variableName": "famID2" }
+				]
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "updated",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 41,
+			"lineNumberEnd": 41,
+			"sourceStartIndex": 1359,
+			"sourceStopIndex": 1403,
+			"originalSourceText": "updated = left.update(right, overwrite=False)"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeByVariables":
+		{
+			"$type": "VariableSymbolExpression",
+			"variableName": "caseID"
+		},
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "OneToOne",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "Master",
+				"newRow": false
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right",
+				"mergeType": "OneToOne",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false,
+				"mergeByNames": { "$type": "VariableSymbolExpression", "variableName": "rowID" }
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "key_merge",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"rowID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 43,
+			"lineNumberEnd": 43,
+			"sourceStartIndex": 1406,
+			"sourceStopIndex": 1470,
+			"originalSourceText": "key_merge = left.merge(right, left_on=\"caseID\", right_on=\"rowID\")"
+		}]
+	},
+	{
+		"$type": "MergeDatasets",
+		"command": "MergeDatasets",
+		"consumesDataframe":
+		[
+			{
+				"dataframeName": "left",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income",
+					"famID"
+				]
+			},
+			{
+				"dataframeName": "right",
+				"variableInventory":
+				[
+					"rowID",
+					"lastName",
+					"income",
+					"famID2"
+				]
+			}
+		],
+		"mergeFiles":
+		[
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "left",
+				"mergeType": "Sequential",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_x" }
+					}
+				],
+				"update": "Master",
+				"newRow": false
+			},
+			{
+				"$type": "MergeFileDescription",
+				"fileName": "right",
+				"mergeType": "Sequential",
+				"renameVariables":
+				[
+					{
+						"$type": "RenamePair",
+						"oldVariable": { "$type": "VariableSymbolExpression", "variableName": "income" },
+						"newVariable": { "$type": "VariableSymbolExpression", "variableName": "income_y" }
+					}
+				],
+				"update": "FillNew",
+				"newRow": false
+			}
+		],
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "index_merge",
+				"variableInventory":
+				[
+					"caseID",
+					"firstName",
+					"income_x",
+					"famID",
+					"rowID",
+					"lastName",
+					"income_y",
+					"famID2"
+				]
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 44,
+			"lineNumberEnd": 44,
+			"sourceStartIndex": 1472,
+			"sourceStopIndex": 1537,
+			"originalSourceText": "index_merge = left.merge(right, left_index=True, right_index=True)"
+		}]
+	}
+]
+
+}

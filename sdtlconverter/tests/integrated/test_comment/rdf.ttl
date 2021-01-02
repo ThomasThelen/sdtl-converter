@@ -1,0 +1,131 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Comment/1> ;
+    rdf:_2 <#Comment/2> ;
+    rdf:_3 <#Comment/3> ;
+    rdf:_4 <#Comment/4> ;
+    rdf:_5 <#Comment/5> ;
+    rdf:_6 <#Comment/6> ;
+    rdf:_7 <#Comment/7> .
+
+<#Comment/1> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "This is a single-line docstring" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#Comment/2> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "This is a single-line comment" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#Comment/3> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText """
+This
+is
+a
+multi-
+line
+docstring
+""" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#Comment/4> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "docstring with one set of quotes" ;
+    sdtl:sourceInformation <#sourceInformation/4> .
+
+<#Comment/5> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "docstring with one set of single-quotes" ;
+    sdtl:sourceInformation <#sourceInformation/5> .
+
+<#Comment/6> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "docstring with three single-quotes" ;
+    sdtl:sourceInformation <#sourceInformation/6> .
+
+<#Comment/7> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText """multi-
+l
+i
+n
+e
+docstring with
+three single quotes""" ;
+    sdtl:sourceInformation <#sourceInformation/7> .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 1 ;
+    sdtl:lineNumberStart 1 ;
+    sdtl:originalSourceText "\"\"\"This is a single-line docstring\"\"\"" ;
+    sdtl:sourceStartIndex 1 ;
+    sdtl:sourceStopIndex 37 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 3 ;
+    sdtl:lineNumberStart 3 ;
+    sdtl:originalSourceText "#This is a single-line comment" ;
+    sdtl:sourceStartIndex 40 ;
+    sdtl:sourceStopIndex 69 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 5 ;
+    sdtl:originalSourceText """\"\"\"
+This
+is
+a
+multi-
+line
+docstring
+\"\"\"""" ;
+    sdtl:sourceStartIndex 72 ;
+    sdtl:sourceStopIndex 110 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 14 ;
+    sdtl:lineNumberStart 14 ;
+    sdtl:originalSourceText "\"docstring with one set of quotes\"" ;
+    sdtl:sourceStartIndex 113 ;
+    sdtl:sourceStopIndex 146 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 16 ;
+    sdtl:lineNumberStart 16 ;
+    sdtl:originalSourceText "'docstring with one set of single-quotes'" ;
+    sdtl:sourceStartIndex 149 ;
+    sdtl:sourceStopIndex 189 .
+
+<#sourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 18 ;
+    sdtl:lineNumberStart 18 ;
+    sdtl:originalSourceText "'''docstring with three single-quotes'''" ;
+    sdtl:sourceStartIndex 192 ;
+    sdtl:sourceStopIndex 231 .
+
+<#sourceInformation/7> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 26 ;
+    sdtl:lineNumberStart 20 ;
+    sdtl:originalSourceText """'''multi-
+l
+i
+n
+e
+docstring with
+three single quotes'''""" ;
+    sdtl:sourceStartIndex 234 ;
+    sdtl:sourceStopIndex 288 .
+

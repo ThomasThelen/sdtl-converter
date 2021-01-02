@@ -1,0 +1,357 @@
+{
+  "SourceFileName" : "N/A",
+  "SourceLanguage" : "stata",
+  "CommandCount" : 3,
+  "Messages" : [ ],
+  "Parser" : "stata-sdtl-converter",
+  "ParserVersion" : "SDTL0.3",
+  "Commands" : [
+	{
+		"$type": "NoTransformOp",
+		"command": "NoTransformOp",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 1,
+			"lineNumberEnd": 1,
+			"sourceStartIndex": 1,
+			"sourceStopIndex": 19,
+			"originalSourceText": "import pandas as pd"
+		}]
+	},
+	{
+		"$type": "NoTransformOp",
+		"command": "NoTransformOp",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 2,
+			"lineNumberEnd": 2,
+			"sourceStartIndex": 21,
+			"sourceStopIndex": 38,
+			"originalSourceText": "import numpy as np"
+		}]
+	},
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": "\n    A B C\n--+--------\n0 | 3 4 5\n1 | 3 2 2\n2 | 1 1 NaN\n3 | 2 5 9\n4 | 4 3 4\n",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 4,
+			"lineNumberEnd": 12,
+			"sourceStartIndex": 41,
+			"sourceStopIndex": 121,
+			"originalSourceText": "\"\"\"\n    A B C\n--+--------\n0 | 3 4 5\n1 | 3 2 2\n2 | 1 1 NaN\n3 | 2 5 9\n4 | 4 3 4\n\"\"\""
+		}]
+	},
+	{
+		"$type": "Load",
+		"command": "Load",
+		"fileName": "df.csv",
+		"producesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"software": "csv",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 13,
+			"lineNumberEnd": 13,
+			"sourceStartIndex": 123,
+			"sourceStopIndex": 148,
+			"originalSourceText": "df = pd.read_csv(\"df.csv\")"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_a", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "A"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 15,
+			"lineNumberEnd": 15,
+			"sourceStartIndex": 151,
+			"sourceStopIndex": 176,
+			"originalSourceText": "df_a = df.sort_values(\"A\")"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_b", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "B"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 16,
+			"lineNumberEnd": 16,
+			"sourceStartIndex": 178,
+			"sourceStopIndex": 206,
+			"originalSourceText": "df_b = df.sort_values(by=\"B\")"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_c", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "C"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 17,
+			"lineNumberEnd": 17,
+			"sourceStartIndex": 208,
+			"sourceStopIndex": 238,
+			"originalSourceText": "df_c = df.sort_values(by=[\"C\"])"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_ab", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "A"
+				}
+			},
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "B"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 19,
+			"lineNumberEnd": 19,
+			"sourceStartIndex": 241,
+			"sourceStopIndex": 277,
+			"originalSourceText": "df_ab = df.sort_values(by=[\"A\", \"B\"])"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_des", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "descending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "A"
+				}
+			},
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "descending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "B"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 20,
+			"lineNumberEnd": 20,
+			"sourceStartIndex": 279,
+			"sourceStopIndex": 330,
+			"originalSourceText": "df_des = df.sort_values([\"A\", \"B\"], ascending=False)"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_list", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "descending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "A"
+				}
+			},
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "B"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 21,
+			"lineNumberEnd": 21,
+			"sourceStartIndex": 332,
+			"sourceStopIndex": 395,
+			"originalSourceText": "df_list = df.sort_values(by=[\"A\", \"B\"], ascending=[False, True])"
+		}]
+	},
+	{
+		"$type": "Unsupported",
+		"command": "Unsupported",
+		"messageText": ["Sorting columns is not currently supported by the parsing application."],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 22,
+			"lineNumberEnd": 22,
+			"sourceStartIndex": 397,
+			"sourceStopIndex": 438,
+			"originalSourceText": "df_col = df.sort_values(0, axis=\"columns\")"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df_na", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "C"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 24,
+			"lineNumberEnd": 24,
+			"sourceStartIndex": 441,
+			"sourceStopIndex": 491,
+			"originalSourceText": "df_na = df.sort_values(by=\"C\", na_position=\"first\")"
+		}]
+	},
+	{
+		"$type": "SortCases",
+		"command": "SortCases",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"producesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"sortCriteria":
+		[
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "descending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "A"
+				}
+			},
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "ascending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "B"
+				}
+			},
+			{
+				"$type": "SortCriterion",
+				"sortDirection": "descending",
+				"variable":
+				{
+					"$type": "VariableSymbolExpression",
+					"variableName": "C"
+				}
+			}
+		],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 26,
+			"lineNumberEnd": 26,
+			"sourceStartIndex": 494,
+			"sourceStopIndex": 591,
+			"originalSourceText": "df.sort_values([\"A\", \"B\", \"C\"], inplace=True, ascending=[False, True, False], na_position=\"first\")"
+		}]
+	},
+	{
+		"$type": "Save",
+		"command": "Save",
+		"consumesDataframe": [{ "dataframeName": "df", "variableInventory": ["A", "B", "C"] }],
+		"fileName": "df.csv",
+		"software": "csv",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 28,
+			"lineNumberEnd": 28,
+			"sourceStartIndex": 594,
+			"sourceStopIndex": 612,
+			"originalSourceText": "df.to_csv(\"df.csv\")"
+		}]
+	}
+]
+}

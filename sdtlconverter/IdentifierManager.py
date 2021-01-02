@@ -70,3 +70,7 @@ class IdentifierManager:
     @staticmethod
     def to_lower(term):
         return term[0].lower() + term[1:]
+
+    @staticmethod
+    def to_upper(term):
+        return term[0].upper() + term[1:]
