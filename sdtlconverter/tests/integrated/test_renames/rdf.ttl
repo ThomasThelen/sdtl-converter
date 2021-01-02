@@ -4,19 +4,55 @@
 
 <#Program/1> a sdtl:Program ;
     sdtl:CommandCount 3 ;
-    sdtl:Commands <#CommandInventory/1> ;
     sdtl:Parser "stata-sdtl-converter" ;
     sdtl:ParserVersion "SDTL0.3" ;
     sdtl:SourceFileName "N/A" ;
-    sdtl:SourceLanguage "stata" .
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
 
 <#CommandInventory/1> a rdf:Seq ;
-    rdf:_1 <#Load/1> ;
-    rdf:_2 <#Rename/1> ;
-    rdf:_3 <#Rename/2> ;
-    rdf:_4 <#Rename/3> ;
-    rdf:_5 <#Rename/4> ;
-    rdf:_6 <#Save/1> .
+    rdf:_1 <#Comment/1> ;
+    rdf:_10 <#Rename/4> ;
+    rdf:_11 <#Save/1> ;
+    rdf:_2 <#Comment/2> ;
+    rdf:_3 <#Load/1> ;
+    rdf:_4 <#Rename/1> ;
+    rdf:_5 <#Rename/2> ;
+    rdf:_6 <#Comment/3> ;
+    rdf:_7 <#Rename/3> ;
+    rdf:_8 <#Comment/4> ;
+    rdf:_9 <#Comment/5> .
+
+<#Comment/1> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "Test the various methods of renaming columns." ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#Comment/2> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText """
+    A B
+--+----
+0 | 1 4
+1 | 2 5
+2 | 3 6
+""" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#Comment/3> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText " this is unsupported" ;
+    sdtl:sourceInformation <#sourceInformation/6> .
+
+<#Comment/4> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText " this highlights the necessity of keeping track of variable changes" ;
+    sdtl:sourceInformation <#sourceInformation/8> .
+
+<#Comment/5> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText " (so that we know what the old column names are when parsing such statements)" ;
+    sdtl:sourceInformation <#sourceInformation/9> .
 
 <#DataframeDescription/3> a sdtl:DataframeDescription ;
     sdtl:VariableInventory <#VariableInventory/3> ;
@@ -54,148 +90,48 @@
 
 <#Load/1> a sdtl:Load ;
     sdtl:ProducesDataframe <#DataframeInventory/1> ;
-    sdtl:SourceInformation <#SourceInformationInventory/1> ;
     sdtl:command "Load" ;
     sdtl:fileName "rename.csv" ;
-    sdtl:software "csv" .
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
 
 <#Rename/1> a sdtl:Rename ;
     sdtl:ConsumesDataframe <#DataframeInventory/2> ;
     sdtl:ProducesDataframe <#DataframeInventory/3> ;
-    sdtl:Renames <#RenamesInventory/1> ;
-    sdtl:SourceInformation <#SourceInformationInventory/2> ;
-    sdtl:command "Rename" .
+    sdtl:command "Rename" ;
+    sdtl:renames <#renames/1>,
+        <#renames/2> ;
+    sdtl:sourceInformation <#sourceInformation/4> .
 
 <#Rename/2> a sdtl:Rename ;
     sdtl:ConsumesDataframe <#DataframeInventory/4> ;
     sdtl:ProducesDataframe <#DataframeInventory/5> ;
-    sdtl:Renames <#RenamesInventory/2> ;
-    sdtl:SourceInformation <#SourceInformationInventory/3> ;
-    sdtl:command "Rename" .
+    sdtl:command "Rename" ;
+    sdtl:renames <#renames/3>,
+        <#renames/4> ;
+    sdtl:sourceInformation <#sourceInformation/5> .
 
 <#Rename/3> a sdtl:Rename ;
     sdtl:ConsumesDataframe <#DataframeInventory/6> ;
     sdtl:ProducesDataframe <#DataframeInventory/7> ;
-    sdtl:Renames <#RenamesInventory/3> ;
-    sdtl:SourceInformation <#SourceInformationInventory/4> ;
-    sdtl:command "Rename" .
+    sdtl:command "Rename" ;
+    sdtl:renames <#renames/5> ;
+    sdtl:sourceInformation <#sourceInformation/7> .
 
 <#Rename/4> a sdtl:Rename ;
     sdtl:ConsumesDataframe <#DataframeInventory/8> ;
     sdtl:ProducesDataframe <#DataframeInventory/9> ;
-    sdtl:Renames <#RenamesInventory/4> ;
-    sdtl:SourceInformation <#SourceInformationInventory/5> ;
-    sdtl:command "Rename" .
-
-<#RenamePair/1> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/2> ;
-    sdtl:oldVariable <#VariableSymbolExpression/1> .
-
-<#RenamePair/2> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/4> ;
-    sdtl:oldVariable <#VariableSymbolExpression/3> .
-
-<#RenamePair/3> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/6> ;
-    sdtl:oldVariable <#VariableSymbolExpression/5> .
-
-<#RenamePair/4> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/8> ;
-    sdtl:oldVariable <#VariableSymbolExpression/7> .
-
-<#RenamePair/5> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/10> ;
-    sdtl:oldVariable <#VariableSymbolExpression/9> .
-
-<#RenamePair/6> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/12> ;
-    sdtl:oldVariable <#VariableSymbolExpression/11> .
-
-<#RenamePair/7> a sdtl:RenamePair ;
-    sdtl:newVariable <#VariableSymbolExpression/14> ;
-    sdtl:oldVariable <#VariableSymbolExpression/13> .
-
-<#RenamesInventory/1> a rdf:Bag ;
-    rdf:rdf:_1 <#RenamePair/1> ;
-    rdf:rdf:_2 <#RenamePair/2> .
-
-<#RenamesInventory/2> a rdf:Bag ;
-    rdf:rdf:_1 <#RenamePair/3> ;
-    rdf:rdf:_2 <#RenamePair/4> .
-
-<#RenamesInventory/3> a rdf:Bag ;
-    rdf:rdf:_1 <#RenamePair/5> .
-
-<#RenamesInventory/4> a rdf:Bag ;
-    rdf:rdf:_1 <#RenamePair/6> ;
-    rdf:rdf:_2 <#RenamePair/7> .
+    sdtl:command "Rename" ;
+    sdtl:renames <#renames/6>,
+        <#renames/7> ;
+    sdtl:sourceInformation <#sourceInformation/10> .
 
 <#Save/1> a sdtl:Save ;
     sdtl:ConsumesDataframe <#DataframeInventory/10> ;
-    sdtl:SourceInformation <#SourceInformationInventory/6> ;
     sdtl:command "Save" ;
     sdtl:fileName "rename.csv" ;
-    sdtl:software "csv" .
-
-<#SourceInformation/1> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 12 ;
-    sdtl:lineNumberStart 12 ;
-    sdtl:originalSourceText "df = pd.read_csv(\"rename.csv\")" ;
-    sdtl:sourceStartIndex 123 ;
-    sdtl:sourceStopIndex 152 .
-
-<#SourceInformation/2> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 14 ;
-    sdtl:lineNumberStart 14 ;
-    sdtl:originalSourceText "df.rename(columns={ \"A\": \"a\", \"B\": \"b\" }, inplace=True)" ;
-    sdtl:sourceStartIndex 155 ;
-    sdtl:sourceStopIndex 209 .
-
-<#SourceInformation/3> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 15 ;
-    sdtl:lineNumberStart 15 ;
-    sdtl:originalSourceText "df2 = df.rename(columns={ \"a\": \"x\", \"b\": \"y\" })" ;
-    sdtl:sourceStartIndex 211 ;
-    sdtl:sourceStopIndex 257 .
-
-<#SourceInformation/4> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 19 ;
-    sdtl:lineNumberStart 19 ;
-    sdtl:originalSourceText "df.columns[\"a\"] = \"x\"" ;
-    sdtl:sourceStartIndex 335 ;
-    sdtl:sourceStopIndex 355 .
-
-<#SourceInformation/5> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 23 ;
-    sdtl:lineNumberStart 23 ;
-    sdtl:originalSourceText "df.columns = [\"one\", \"two\"]" ;
-    sdtl:sourceStartIndex 506 ;
-    sdtl:sourceStopIndex 532 .
-
-<#SourceInformation/6> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 25 ;
-    sdtl:lineNumberStart 25 ;
-    sdtl:originalSourceText "df.to_csv(\"rename.csv\")" ;
-    sdtl:sourceStartIndex 535 ;
-    sdtl:sourceStopIndex 557 .
-
-<#SourceInformationInventory/1> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/1> .
-
-<#SourceInformationInventory/2> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/2> .
-
-<#SourceInformationInventory/3> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/3> .
-
-<#SourceInformationInventory/4> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/4> .
-
-<#SourceInformationInventory/5> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/5> .
-
-<#SourceInformationInventory/6> a rdf:Seq ;
-    rdf:rdf:_1 <#SourceInformation/6> .
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/11> .
 
 <#VariableInventory/1> a rdf:Seq ;
     rdf:_1 <#dataframeVariable/1> ;
@@ -288,6 +224,117 @@
 
 <#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
     sdtl:VariableName "one" .
+
+<#renames/1> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/2> ;
+    sdtl:oldVariable <#VariableSymbolExpression/1> .
+
+<#renames/2> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/4> ;
+    sdtl:oldVariable <#VariableSymbolExpression/3> .
+
+<#renames/3> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/6> ;
+    sdtl:oldVariable <#VariableSymbolExpression/5> .
+
+<#renames/4> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/8> ;
+    sdtl:oldVariable <#VariableSymbolExpression/7> .
+
+<#renames/5> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/10> ;
+    sdtl:oldVariable <#VariableSymbolExpression/9> .
+
+<#renames/6> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/12> ;
+    sdtl:oldVariable <#VariableSymbolExpression/11> .
+
+<#renames/7> a sdtl:RenamePair ;
+    sdtl:newVariable <#VariableSymbolExpression/14> ;
+    sdtl:oldVariable <#VariableSymbolExpression/13> .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 1 ;
+    sdtl:lineNumberStart 1 ;
+    sdtl:originalSourceText "\"\"\"Test the various methods of renaming columns.\"\"\"" ;
+    sdtl:sourceStartIndex 1 ;
+    sdtl:sourceStopIndex 51 .
+
+<#sourceInformation/10> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 23 ;
+    sdtl:lineNumberStart 23 ;
+    sdtl:originalSourceText "df.columns = [\"one\", \"two\"]" ;
+    sdtl:sourceStartIndex 506 ;
+    sdtl:sourceStopIndex 532 .
+
+<#sourceInformation/11> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 25 ;
+    sdtl:lineNumberStart 25 ;
+    sdtl:originalSourceText "df.to_csv(\"rename.csv\")" ;
+    sdtl:sourceStartIndex 535 ;
+    sdtl:sourceStopIndex 557 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 11 ;
+    sdtl:lineNumberStart 5 ;
+    sdtl:originalSourceText """\"\"\"
+    A B
+--+----
+0 | 1 4
+1 | 2 5
+2 | 3 6
+\"\"\"""" ;
+    sdtl:sourceStartIndex 75 ;
+    sdtl:sourceStopIndex 121 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 12 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"rename.csv\")" ;
+    sdtl:sourceStartIndex 123 ;
+    sdtl:sourceStopIndex 152 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 14 ;
+    sdtl:lineNumberStart 14 ;
+    sdtl:originalSourceText "df.rename(columns={ \"A\": \"a\", \"B\": \"b\" }, inplace=True)" ;
+    sdtl:sourceStartIndex 155 ;
+    sdtl:sourceStopIndex 209 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 15 ;
+    sdtl:lineNumberStart 15 ;
+    sdtl:originalSourceText "df2 = df.rename(columns={ \"a\": \"x\", \"b\": \"y\" })" ;
+    sdtl:sourceStartIndex 211 ;
+    sdtl:sourceStopIndex 257 .
+
+<#sourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 16 ;
+    sdtl:lineNumberStart 16 ;
+    sdtl:originalSourceText "# this is unsupported" ;
+    sdtl:sourceStartIndex 311 ;
+    sdtl:sourceStopIndex 331 .
+
+<#sourceInformation/7> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 19 ;
+    sdtl:lineNumberStart 19 ;
+    sdtl:originalSourceText "df.columns[\"a\"] = \"x\"" ;
+    sdtl:sourceStartIndex 335 ;
+    sdtl:sourceStopIndex 355 .
+
+<#sourceInformation/8> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 21 ;
+    sdtl:lineNumberStart 21 ;
+    sdtl:originalSourceText "# this highlights the necessity of keeping track of variable changes" ;
+    sdtl:sourceStartIndex 358 ;
+    sdtl:sourceStopIndex 425 .
+
+<#sourceInformation/9> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 22 ;
+    sdtl:lineNumberStart 22 ;
+    sdtl:originalSourceText "# (so that we know what the old column names are when parsing such statements)" ;
+    sdtl:sourceStartIndex 427 ;
+    sdtl:sourceStopIndex 504 .
 
 <#DataframeDescription/1> a sdtl:DataframeDescription ;
     sdtl:VariableInventory <#VariableInventory/1> ;

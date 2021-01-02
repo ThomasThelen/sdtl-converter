@@ -8,6 +8,7 @@ def test_program_node():
     Test that the sdtl:Program node is properly represented
     """
 
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
+    converter.write_jsonld()

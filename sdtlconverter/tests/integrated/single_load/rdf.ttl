@@ -1,0 +1,67 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "Active" .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:Command "load" ;
+    sdtl:FileName "AgeDeath.dta" ;
+    sdtl:IsCompressed false ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:Software "Stata" ;
+    sdtl:SourceInformation <#SourceInformationInventory/1> .
+
+<#SourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:LineNumberStart 1 ;
+    sdtl:OriginalSourceText "use \"AgeDeath.dta\"" .
+
+<#SourceInformationInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/1> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> ;
+    rdf:_3 <#dataframeVariable/3> ;
+    rdf:_4 <#dataframeVariable/4> ;
+    rdf:_5 <#dataframeVariable/5> ;
+    rdf:_6 <#dataframeVariable/6> ;
+    rdf:_7 <#dataframeVariable/7> .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "personid" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "born" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "died" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "name" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "refarea" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "sex" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "age" .
+

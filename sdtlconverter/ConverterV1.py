@@ -174,17 +174,17 @@ class ConverterV1(Converter):
                 # Create the node for the script, it should be sdtl:Program
                 script_id = self.add_program()
 
-                if 'Commands' in self.sdtl:
+                if 'commands' in self.sdtl:
                     # Create the node for the commands list inside the sdtl:Program
                     commands_id = self.id_manager.get_id("CommandInventory")
-                    # 'Commands' is an ordered sequence, use rdf:seq
+                    # 'commands' is an ordered sequence, use rdf:seq
                     self.graph.add((commands_id, rdflib.RDF.type, rdflib.RDF.Seq))
 
-                    # Connect the Program to the Commands rdf:seq via sdtl:Commands
-                    self.graph.add((script_id, self.id_manager.sdtl_namespace.Commands, commands_id))
+                    # Connect the Program to the commands rdf:seq via sdtl:commands
+                    self.graph.add((script_id, self.id_manager.sdtl_namespace.commands, commands_id))
 
                     command_count = 0
-                    for command in self.sdtl['Commands']:
+                    for command in self.sdtl['commands']:
                         if command["$type"] in unsupported:
                             continue
                         command_count += 1
@@ -194,7 +194,7 @@ class ConverterV1(Converter):
                         self.graph.add((command_id,
                                         rdflib.RDF.type,
                                         rdflib.URIRef(predicate)))
-                        # Connect it to the 'Commands' node using rdf:_n
+                        # Connect it to the 'commands' node using rdf:_n
                         predicate = f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{command_count}'
                         self.graph.add((commands_id,
                                         rdflib.URIRef(predicate),

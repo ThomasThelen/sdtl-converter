@@ -4,16 +4,28 @@
 
 <#Program/1> a sdtl:Program ;
     sdtl:CommandCount 3 ;
-    sdtl:Commands <#CommandInventory/1> ;
     sdtl:Parser "stata-sdtl-converter" ;
     sdtl:ParserVersion "SDTL0.3" ;
     sdtl:SourceFileName "N/A" ;
-    sdtl:SourceLanguage "stata" .
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
 
 <#CommandInventory/1> a rdf:Seq ;
-    rdf:_1 <#Load/1> ;
-    rdf:_2 <#KeepVariables/1> ;
-    rdf:_3 <#Save/1> .
+    rdf:_1 <#Comment/1> ;
+    rdf:_2 <#Load/1> ;
+    rdf:_3 <#KeepVariables/1> ;
+    rdf:_4 <#Save/1> .
+
+<#Comment/1> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText """
+    A B C
+--+------
+0 | 1 4 7
+1 | 2 5 8
+2 | 3 6 9
+""" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
 
 <#DataframeInventory/1> a rdf:Bag ;
     rdf:_1 <#DataframeDescription/1> .
@@ -32,21 +44,21 @@
     sdtl:ProducesDataframe <#DataframeInventory/3> ;
     sdtl:Variables <#VariablesInventory/1> ;
     sdtl:command "KeepVariables" ;
-    sdtl:sourceInformation <#sourceInformation/2> .
+    sdtl:sourceInformation <#sourceInformation/3> .
 
 <#Load/1> a sdtl:Load ;
     sdtl:ProducesDataframe <#DataframeInventory/1> ;
     sdtl:command "Load" ;
     sdtl:fileName "keep.csv" ;
     sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/1> .
+    sdtl:sourceInformation <#sourceInformation/2> .
 
 <#Save/1> a sdtl:Save ;
     sdtl:ConsumesDataframe <#DataframeInventory/4> ;
     sdtl:command "Save" ;
     sdtl:fileName "keep.csv" ;
     sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/3> .
+    sdtl:sourceInformation <#sourceInformation/4> .
 
 <#VariableInventory/1> a rdf:Seq ;
     rdf:_1 <#dataframeVariable/1> ;
@@ -83,20 +95,33 @@
     sdtl:VariableName "B" .
 
 <#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 9 ;
+    sdtl:lineNumberStart 3 ;
+    sdtl:originalSourceText """\"\"\"
+    A B C
+--+------
+0 | 1 4 7
+1 | 2 5 8
+2 | 3 6 9
+\"\"\"""" ;
+    sdtl:sourceStartIndex 22 ;
+    sdtl:sourceStopIndex 78 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 10 ;
     sdtl:lineNumberStart 10 ;
     sdtl:originalSourceText "df = pd.read_csv(\"keep.csv\")" ;
     sdtl:sourceStartIndex 80 ;
     sdtl:sourceStopIndex 107 .
 
-<#sourceInformation/2> a sdtl:SourceInformation ;
+<#sourceInformation/3> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 12 ;
     sdtl:lineNumberStart 12 ;
     sdtl:originalSourceText "kept = df[[\"A\", \"B\"]]" ;
     sdtl:sourceStartIndex 110 ;
     sdtl:sourceStopIndex 130 .
 
-<#sourceInformation/3> a sdtl:SourceInformation ;
+<#sourceInformation/4> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 14 ;
     sdtl:lineNumberStart 14 ;
     sdtl:originalSourceText "kept.to_csv(\"keep.csv\")" ;

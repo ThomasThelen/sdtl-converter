@@ -1,0 +1,237 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "schema": "http://www.schema.org/#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#VariablesInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:rdf:_1": {
+        "@id": "#VariableSymbolExpression/1"
+      },
+      "rdf:rdf:_2": {
+        "@id": "#VariableSymbolExpression/2"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_2": {
+        "@id": "#Load/1"
+      },
+      "rdf:_3": {
+        "@id": "#KeepVariables/1"
+      },
+      "rdf:_4": {
+        "@id": "#Save/1"
+      }
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileName": "keep.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\n    A B C\n--+------\n0 | 1 4 7\n1 | 2 5 8\n2 | 3 6 9\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#DataframeDescription/2",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/2"
+      },
+      "sdtl:dataframeName": "kept"
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 12,
+      "sdtl:lineNumberStart": 12,
+      "sdtl:originalSourceText": "kept = df[[\"A\", \"B\"]]",
+      "sdtl:sourceStartIndex": 110,
+      "sdtl:sourceStopIndex": 130
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 10,
+      "sdtl:lineNumberStart": 10,
+      "sdtl:originalSourceText": "df = pd.read_csv(\"keep.csv\")",
+      "sdtl:sourceStartIndex": 80,
+      "sdtl:sourceStopIndex": 107
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/3"
+      }
+    },
+    {
+      "@id": "#KeepVariables/1",
+      "@type": "sdtl:KeepVariables",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/2"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/3"
+      },
+      "sdtl:Variables": {
+        "@id": "#VariablesInventory/1"
+      },
+      "sdtl:command": "KeepVariables",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#VariableInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/4"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/5"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 14,
+      "sdtl:lineNumberStart": 14,
+      "sdtl:originalSourceText": "kept.to_csv(\"keep.csv\")",
+      "sdtl:sourceStartIndex": 133,
+      "sdtl:sourceStopIndex": 155
+    },
+    {
+      "@id": "#Save/1",
+      "@type": "sdtl:Save",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/4"
+      },
+      "sdtl:command": "Save",
+      "sdtl:fileName": "keep.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 9,
+      "sdtl:lineNumberStart": 3,
+      "sdtl:originalSourceText": "\"\"\"\n    A B C\n--+------\n0 | 1 4 7\n1 | 2 5 8\n2 | 3 6 9\n\"\"\"",
+      "sdtl:sourceStartIndex": 22,
+      "sdtl:sourceStopIndex": 78
+    },
+    {
+      "@id": "#VariableSymbolExpression/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#VariableSymbolExpression/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    }
+  ]
+}

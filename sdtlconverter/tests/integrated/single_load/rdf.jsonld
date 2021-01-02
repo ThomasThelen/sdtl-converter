@@ -1,0 +1,130 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "schema": "http://www.schema.org/#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "personid"
+    },
+    {
+      "@id": "#SourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:LineNumberStart": 1,
+      "sdtl:OriginalSourceText": "use \"AgeDeath.dta\""
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "Active"
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/3"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/4"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/5"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/6"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/7"
+      }
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Load/1"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "born"
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:Command": "load",
+      "sdtl:FileName": "AgeDeath.dta",
+      "sdtl:IsCompressed": false,
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:Software": "Stata",
+      "sdtl:SourceInformation": {
+        "@id": "#SourceInformationInventory/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "name"
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "died"
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "refarea"
+    },
+    {
+      "@id": "#SourceInformationInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:rdf:_1": {
+        "@id": "#SourceInformation/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "sex"
+    },
+    {
+      "@id": "#dataframeVariable/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "age"
+    }
+  ]
+}

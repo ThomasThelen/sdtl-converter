@@ -8,8 +8,10 @@ def test_program_node():
     Test that the sdtl:Program node is properly represented
     """
 
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
+    converter.write_turtle()
+    converter.write_jsonld()
 
     # Check that sdtl:Program node exists and is properly named
     query = """
@@ -37,12 +39,12 @@ def test_program_node():
         ?program_id sdtl:CommandCount ?command_count .
         ?program_id sdtl:Parser ?parser .
         ?program_id sdtl:ParserVersion ?parser_version .
-        ?program_id sdtl:Commands ?commands_inventory
+        ?program_id sdtl:commands ?commands_inventory
     }
     """
 
     res = converter.graph.query(query)
-    with open("./load.json") as json_file:
+    with open("./sdtl.json") as json_file:
         sdtl = json.load(json_file)
         for row in res:
             assert rdflib.URIRef("#Program/1") == row[0]
@@ -59,7 +61,7 @@ def test_load_properties():
     Test that the 'Program' node has the correct properties.
     """
 
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Create a query that retrieves the Program level metadata
@@ -77,9 +79,9 @@ def test_load_properties():
     """
 
     res = converter.graph.query(query)
-    with open("./load.json") as json_file:
+    with open("./sdtl.json") as json_file:
         sdtl = json.load(json_file)
-        load_command = sdtl["Commands"][0]
+        load_command = sdtl["commands"][0]
         # Test that the values are present and expected
         for row in res:
             # The order comes from the SELECT order
@@ -95,7 +97,7 @@ def test_load_sourceinformation():
     Test that the SourceInformation node is correctly connected to the Load command
     and that the properties of the SourceInformation node are correct.
     """
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Create a query to check that there's a node holding the only SourceInformation
@@ -103,7 +105,7 @@ def test_load_sourceinformation():
     PREFIX sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#>
             SELECT DISTINCT ?source_info_id
     WHERE {
-    ?program_id sdtl:Commands ?sequence_id.
+    ?program_id sdtl:commands ?sequence_id.
     ?sequence rdf:type rdf:Seq.
     }
     """
@@ -116,14 +118,14 @@ def test_load_command():
     """
     Test that the node representing the 'Load' command has expected properties.
     """
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
     # Check that the ID of the Load command is correct
     query = """
     PREFIX sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#>
             SELECT DISTINCT ?source_info_id
     WHERE {
-    ?program sdtl:Commands ?command_inventory.
+    ?program sdtl:commands ?command_inventory.
     ?command_inventory rdf:type rdf:Seq.
     ?command_inventory rdf:_1 ?source_info_id.
     }
@@ -145,9 +147,9 @@ def test_load_command():
     }
     """
     res = converter.graph.query(query)
-    with open("./load.json") as json_file:
+    with open("./sdtl.json") as json_file:
         sdtl = json.load(json_file)
-        load_command = sdtl["Commands"][0]
+        load_command = sdtl["commands"][0]
         for row in res:
             assert rdflib.URIRef("#Load/1") == row[0]
             assert rdflib.Literal(load_command["Command"]) == row[1]
@@ -161,7 +163,7 @@ def test_dataframe_creation():
     Tests that the DataframeDescription and VariableInventory are the
     expected values.
     """
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
     # Queries for the Load, DataframeInventory, DataframeDescription
     # and VariableInventory properties
@@ -180,7 +182,7 @@ def test_dataframe_creation():
     """
 
     res = converter.graph.query(query)
-    with open("./load.json") as json_file:
+    with open("./sdtl.json") as json_file:
         sdtl = json.load(json_file)
 
         for row in res:
@@ -195,7 +197,7 @@ def test_dataframe_variable_inventroy():
     """
     Tests that the values of the variable inventory are correct.
     """
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Get each variable and value
@@ -228,7 +230,7 @@ def test_variable_contents():
     """
     Tests that the variables are the correct value
     """
-    converter = ConverterV1("./load.json")
+    converter = ConverterV1("./sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Add rdfs:member. From https://ontology2.com/notebooks/local/Inference_Over_RDF_Containers.html
@@ -264,10 +266,10 @@ def test_variable_contents():
     """
 
     res = converter.graph.query(query)
-    with open("./load.json") as json_file:
+    with open("./sdtl.json") as json_file:
         sdtl = json.load(json_file)
 
-        expected_strings = sdtl["Commands"][0]["producesDataframe"][0]["variableInventory"]
+        expected_strings = sdtl["commands"][0]["producesDataframe"][0]["variableInventory"]
         actual = []
         for row in res:
             for value in row:

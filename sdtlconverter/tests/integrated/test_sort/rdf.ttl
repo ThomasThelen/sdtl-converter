@@ -4,23 +4,37 @@
 
 <#Program/1> a sdtl:Program ;
     sdtl:CommandCount 3 ;
-    sdtl:Commands <#CommandInventory/1> ;
     sdtl:Parser "stata-sdtl-converter" ;
     sdtl:ParserVersion "SDTL0.3" ;
     sdtl:SourceFileName "N/A" ;
-    sdtl:SourceLanguage "stata" .
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
 
 <#CommandInventory/1> a rdf:Seq ;
-    rdf:_1 <#Load/1> ;
-    rdf:_10 <#Save/1> ;
-    rdf:_2 <#SortCases/1> ;
-    rdf:_3 <#SortCases/2> ;
-    rdf:_4 <#SortCases/3> ;
-    rdf:_5 <#SortCases/4> ;
-    rdf:_6 <#SortCases/5> ;
-    rdf:_7 <#SortCases/6> ;
-    rdf:_8 <#SortCases/7> ;
-    rdf:_9 <#SortCases/8> .
+    rdf:_1 <#Comment/1> ;
+    rdf:_10 <#SortCases/8> ;
+    rdf:_11 <#Save/1> ;
+    rdf:_2 <#Load/1> ;
+    rdf:_3 <#SortCases/1> ;
+    rdf:_4 <#SortCases/2> ;
+    rdf:_5 <#SortCases/3> ;
+    rdf:_6 <#SortCases/4> ;
+    rdf:_7 <#SortCases/5> ;
+    rdf:_8 <#SortCases/6> ;
+    rdf:_9 <#SortCases/7> .
+
+<#Comment/1> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText """
+    A B C
+--+--------
+0 | 3 4 5
+1 | 3 2 2
+2 | 1 1 NaN
+3 | 2 5 9
+4 | 4 3 4
+""" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
 
 <#DataframeDescription/2> a sdtl:DataframeDescription ;
     sdtl:VariableInventory <#VariableInventory/2> ;
@@ -109,70 +123,70 @@
     sdtl:command "Load" ;
     sdtl:fileName "df.csv" ;
     sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/1> .
+    sdtl:sourceInformation <#sourceInformation/2> .
 
 <#Save/1> a sdtl:Save ;
     sdtl:ConsumesDataframe <#DataframeInventory/18> ;
     sdtl:command "Save" ;
     sdtl:fileName "df.csv" ;
     sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/10> .
+    sdtl:sourceInformation <#sourceInformation/11> .
 
 <#SortCases/1> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/2> ;
     sdtl:ProducesDataframe <#DataframeInventory/3> ;
     sdtl:SortCriteria <#SortCriteriaInventory/1> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/2> .
+    sdtl:sourceInformation <#sourceInformation/3> .
 
 <#SortCases/2> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/4> ;
     sdtl:ProducesDataframe <#DataframeInventory/5> ;
     sdtl:SortCriteria <#SortCriteriaInventory/2> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/3> .
+    sdtl:sourceInformation <#sourceInformation/4> .
 
 <#SortCases/3> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/6> ;
     sdtl:ProducesDataframe <#DataframeInventory/7> ;
     sdtl:SortCriteria <#SortCriteriaInventory/3> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/4> .
+    sdtl:sourceInformation <#sourceInformation/5> .
 
 <#SortCases/4> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/8> ;
     sdtl:ProducesDataframe <#DataframeInventory/9> ;
     sdtl:SortCriteria <#SortCriteriaInventory/4> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/5> .
+    sdtl:sourceInformation <#sourceInformation/6> .
 
 <#SortCases/5> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/10> ;
     sdtl:ProducesDataframe <#DataframeInventory/11> ;
     sdtl:SortCriteria <#SortCriteriaInventory/5> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/6> .
+    sdtl:sourceInformation <#sourceInformation/7> .
 
 <#SortCases/6> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/12> ;
     sdtl:ProducesDataframe <#DataframeInventory/13> ;
     sdtl:SortCriteria <#SortCriteriaInventory/6> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/7> .
+    sdtl:sourceInformation <#sourceInformation/8> .
 
 <#SortCases/7> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/14> ;
     sdtl:ProducesDataframe <#DataframeInventory/15> ;
     sdtl:SortCriteria <#SortCriteriaInventory/7> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/8> .
+    sdtl:sourceInformation <#sourceInformation/9> .
 
 <#SortCases/8> a sdtl:SortCases ;
     sdtl:ConsumesDataframe <#DataframeInventory/16> ;
     sdtl:ProducesDataframe <#DataframeInventory/17> ;
     sdtl:SortCriteria <#SortCriteriaInventory/8> ;
     sdtl:command "SortCases" ;
-    sdtl:sourceInformation <#sourceInformation/9> .
+    sdtl:sourceInformation <#sourceInformation/10> .
 
 <#SortCriteriaInventory/1> a rdf:Seq ;
     rdf:rdf:_1 <#SortCriterion/1> .
@@ -421,13 +435,28 @@
     sdtl:VariableName "C" .
 
 <#sourceInformation/1> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 13 ;
-    sdtl:lineNumberStart 13 ;
-    sdtl:originalSourceText "df = pd.read_csv(\"df.csv\")" ;
-    sdtl:sourceStartIndex 123 ;
-    sdtl:sourceStopIndex 148 .
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 4 ;
+    sdtl:originalSourceText """\"\"\"
+    A B C
+--+--------
+0 | 3 4 5
+1 | 3 2 2
+2 | 1 1 NaN
+3 | 2 5 9
+4 | 4 3 4
+\"\"\"""" ;
+    sdtl:sourceStartIndex 41 ;
+    sdtl:sourceStopIndex 121 .
 
 <#sourceInformation/10> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 26 ;
+    sdtl:lineNumberStart 26 ;
+    sdtl:originalSourceText "df.sort_values([\"A\", \"B\", \"C\"], inplace=True, ascending=[False, True, False], na_position=\"first\")" ;
+    sdtl:sourceStartIndex 494 ;
+    sdtl:sourceStopIndex 591 .
+
+<#sourceInformation/11> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 28 ;
     sdtl:lineNumberStart 28 ;
     sdtl:originalSourceText "df.to_csv(\"df.csv\")" ;
@@ -435,60 +464,60 @@
     sdtl:sourceStopIndex 612 .
 
 <#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 13 ;
+    sdtl:lineNumberStart 13 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"df.csv\")" ;
+    sdtl:sourceStartIndex 123 ;
+    sdtl:sourceStopIndex 148 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 15 ;
     sdtl:lineNumberStart 15 ;
     sdtl:originalSourceText "df_a = df.sort_values(\"A\")" ;
     sdtl:sourceStartIndex 151 ;
     sdtl:sourceStopIndex 176 .
 
-<#sourceInformation/3> a sdtl:SourceInformation ;
+<#sourceInformation/4> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 16 ;
     sdtl:lineNumberStart 16 ;
     sdtl:originalSourceText "df_b = df.sort_values(by=\"B\")" ;
     sdtl:sourceStartIndex 178 ;
     sdtl:sourceStopIndex 206 .
 
-<#sourceInformation/4> a sdtl:SourceInformation ;
+<#sourceInformation/5> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 17 ;
     sdtl:lineNumberStart 17 ;
     sdtl:originalSourceText "df_c = df.sort_values(by=[\"C\"])" ;
     sdtl:sourceStartIndex 208 ;
     sdtl:sourceStopIndex 238 .
 
-<#sourceInformation/5> a sdtl:SourceInformation ;
+<#sourceInformation/6> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 19 ;
     sdtl:lineNumberStart 19 ;
     sdtl:originalSourceText "df_ab = df.sort_values(by=[\"A\", \"B\"])" ;
     sdtl:sourceStartIndex 241 ;
     sdtl:sourceStopIndex 277 .
 
-<#sourceInformation/6> a sdtl:SourceInformation ;
+<#sourceInformation/7> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 20 ;
     sdtl:lineNumberStart 20 ;
     sdtl:originalSourceText "df_des = df.sort_values([\"A\", \"B\"], ascending=False)" ;
     sdtl:sourceStartIndex 279 ;
     sdtl:sourceStopIndex 330 .
 
-<#sourceInformation/7> a sdtl:SourceInformation ;
+<#sourceInformation/8> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 21 ;
     sdtl:lineNumberStart 21 ;
     sdtl:originalSourceText "df_list = df.sort_values(by=[\"A\", \"B\"], ascending=[False, True])" ;
     sdtl:sourceStartIndex 332 ;
     sdtl:sourceStopIndex 395 .
 
-<#sourceInformation/8> a sdtl:SourceInformation ;
+<#sourceInformation/9> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 24 ;
     sdtl:lineNumberStart 24 ;
     sdtl:originalSourceText "df_na = df.sort_values(by=\"C\", na_position=\"first\")" ;
     sdtl:sourceStartIndex 441 ;
     sdtl:sourceStopIndex 491 .
-
-<#sourceInformation/9> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 26 ;
-    sdtl:lineNumberStart 26 ;
-    sdtl:originalSourceText "df.sort_values([\"A\", \"B\", \"C\"], inplace=True, ascending=[False, True, False], na_position=\"first\")" ;
-    sdtl:sourceStartIndex 494 ;
-    sdtl:sourceStopIndex 591 .
 
 <#DataframeDescription/9> a sdtl:DataframeDescription ;
     sdtl:VariableInventory <#VariableInventory/9> ;

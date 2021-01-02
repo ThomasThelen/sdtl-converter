@@ -4,11 +4,11 @@
 
 <#Program/1> a sdtl:Program ;
     sdtl:CommandCount 3 ;
-    sdtl:Commands <#CommandInventory/1> ;
     sdtl:Parser "stata-sdtl-converter" ;
     sdtl:ParserVersion "SDTL0.3" ;
     sdtl:SourceFileName "N/A" ;
-    sdtl:SourceLanguage "stata" .
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
 
 <#CommandInventory/1> a rdf:Seq ;
     rdf:_1 <#Comment/1> ;

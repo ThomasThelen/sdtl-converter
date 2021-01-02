@@ -5,7 +5,7 @@
   "Messages" : [ ],
   "Parser" : "stata-sdtl-converter",
   "ParserVersion" : "SDTL0.3",
-  "Commands" : [
+  "commands" : [
     {
         "$type": "Comment",
         "command": "Comment",

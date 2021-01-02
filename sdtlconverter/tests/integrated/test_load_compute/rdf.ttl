@@ -1,0 +1,149 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Load/1> ;
+    rdf:_2 <#Compute/1> ;
+    rdf:_3 <#Save/1> .
+
+<#Compute/1> a sdtl:Compute ;
+    sdtl:Command "compute" ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:Expression <#FunctionCallExpression/1> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:SourceInformation <#SourceInformationInventory/2> ;
+    sdtl:Variable <#VariableSymbolExpression/1> .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#FunctionCallExpression/1> a sdtl:FunctionCallExpression ;
+    sdtl:Function "multiplication" ;
+    sdtl:IsSdtlName true .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:Command "load" ;
+    sdtl:FileName "AgeDeath.dta" ;
+    sdtl:IsCompressed false ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:Software "Stata" ;
+    sdtl:SourceInformation <#SourceInformationInventory/1> .
+
+<#Save/1> a sdtl:Save ;
+    sdtl:Command "save" ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:FileName "AgeDeath5" ;
+    sdtl:IsCompressed false ;
+    sdtl:Software "Stata" ;
+    sdtl:SourceInformation <#SourceInformationInventory/3> .
+
+<#SourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:LineNumberStart 1 ;
+    sdtl:OriginalSourceText "use \"AgeDeath.dta\"" .
+
+<#SourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:LineNumberStart 2 ;
+    sdtl:OriginalSourceText "replace age = 5*int(age/5)" .
+
+<#SourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:LineNumberStart 3 ;
+    sdtl:OriginalSourceText "save \"AgeDeath5\"" .
+
+<#SourceInformationInventory/1> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/1> .
+
+<#SourceInformationInventory/2> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/2> .
+
+<#SourceInformationInventory/3> a rdf:Seq ;
+    rdf:rdf:_1 <#SourceInformation/3> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> ;
+    rdf:_3 <#dataframeVariable/3> ;
+    rdf:_4 <#dataframeVariable/4> ;
+    rdf:_5 <#dataframeVariable/5> ;
+    rdf:_6 <#dataframeVariable/6> ;
+    rdf:_7 <#dataframeVariable/7> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/8> ;
+    rdf:_2 <#dataframeVariable/9> ;
+    rdf:_3 <#dataframeVariable/10> ;
+    rdf:_4 <#dataframeVariable/11> ;
+    rdf:_5 <#dataframeVariable/12> ;
+    rdf:_6 <#dataframeVariable/13> ;
+    rdf:_7 <#dataframeVariable/14> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "age" .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "personid" .
+
+<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "died" .
+
+<#dataframeVariable/11> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "name" .
+
+<#dataframeVariable/12> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "refarea" .
+
+<#dataframeVariable/13> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "sex" .
+
+<#dataframeVariable/14> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "age" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "born" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "died" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "name" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "refarea" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "sex" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "age" .
+
+<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "personid" .
+
+<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "born" .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "Active" .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "Active" .
+

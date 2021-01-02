@@ -1,0 +1,172 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "schema": "http://www.schema.org/#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_2": {
+        "@id": "#Comment/2"
+      },
+      "rdf:_3": {
+        "@id": "#Comment/3"
+      },
+      "rdf:_4": {
+        "@id": "#Comment/4"
+      },
+      "rdf:_5": {
+        "@id": "#Comment/5"
+      },
+      "rdf:_6": {
+        "@id": "#Comment/6"
+      },
+      "rdf:_7": {
+        "@id": "#Comment/7"
+      }
+    },
+    {
+      "@id": "#sourceInformation/6",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 18,
+      "sdtl:lineNumberStart": 18,
+      "sdtl:originalSourceText": "'''docstring with three single-quotes'''",
+      "sdtl:sourceStartIndex": 192,
+      "sdtl:sourceStopIndex": 231
+    },
+    {
+      "@id": "#Comment/7",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "multi-\nl\ni\nn\ne\ndocstring with\nthree single quotes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/7"
+      }
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 12,
+      "sdtl:lineNumberStart": 5,
+      "sdtl:originalSourceText": "\"\"\"\nThis\nis\na\nmulti-\nline\ndocstring\n\"\"\"",
+      "sdtl:sourceStartIndex": 72,
+      "sdtl:sourceStopIndex": 110
+    },
+    {
+      "@id": "#Comment/2",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "This is a single-line comment",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#sourceInformation/7",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 26,
+      "sdtl:lineNumberStart": 20,
+      "sdtl:originalSourceText": "'''multi-\nl\ni\nn\ne\ndocstring with\nthree single quotes'''",
+      "sdtl:sourceStartIndex": 234,
+      "sdtl:sourceStopIndex": 288
+    },
+    {
+      "@id": "#Comment/5",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "docstring with one set of single-quotes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/5"
+      }
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "This is a single-line docstring",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#Comment/6",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "docstring with three single-quotes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/6"
+      }
+    },
+    {
+      "@id": "#Comment/3",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\nThis\nis\na\nmulti-\nline\ndocstring\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 14,
+      "sdtl:lineNumberStart": 14,
+      "sdtl:originalSourceText": "\"docstring with one set of quotes\"",
+      "sdtl:sourceStartIndex": 113,
+      "sdtl:sourceStopIndex": 146
+    },
+    {
+      "@id": "#Comment/4",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "docstring with one set of quotes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 1,
+      "sdtl:lineNumberStart": 1,
+      "sdtl:originalSourceText": "\"\"\"This is a single-line docstring\"\"\"",
+      "sdtl:sourceStartIndex": 1,
+      "sdtl:sourceStopIndex": 37
+    },
+    {
+      "@id": "#sourceInformation/5",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 16,
+      "sdtl:lineNumberStart": 16,
+      "sdtl:originalSourceText": "'docstring with one set of single-quotes'",
+      "sdtl:sourceStartIndex": 149,
+      "sdtl:sourceStopIndex": 189
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 3,
+      "sdtl:lineNumberStart": 3,
+      "sdtl:originalSourceText": "#This is a single-line comment",
+      "sdtl:sourceStartIndex": 40,
+      "sdtl:sourceStopIndex": 69
+    }
+  ]
+}
