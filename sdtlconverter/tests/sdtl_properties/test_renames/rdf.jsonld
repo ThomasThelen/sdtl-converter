@@ -1,0 +1,682 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#DataframeInventory/8",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#VariableInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/9"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/10"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "b"
+    },
+    {
+      "@id": "#dataframeVariable/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    },
+    {
+      "@id": "#dataframeVariable/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "two"
+    },
+    {
+      "@id": "#RenamesInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#RenamePair/3"
+      },
+      "rdf:_2": {
+        "@id": "#RenamePair/4"
+      }
+    },
+    {
+      "@id": "#VariableInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/5"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/6"
+      }
+    },
+    {
+      "@id": "#RenamesInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#RenamePair/5"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/14",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "two"
+    },
+    {
+      "@id": "#Rename/3",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/6"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/7"
+      },
+      "sdtl:Renames": {
+        "@id": "#RenamesInventory/3"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/7"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#DataframeDescription/2",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/2"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileName": "rename.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "a"
+    },
+    {
+      "@id": "#VariableSymbolExpression/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "y"
+    },
+    {
+      "@id": "#dataframeVariable/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "one"
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 14,
+      "sdtl:lineNumberStart": 14,
+      "sdtl:originalSourceText": "df.rename(columns={ \"A\": \"a\", \"B\": \"b\" }, inplace=True)",
+      "sdtl:sourceStartIndex": 155,
+      "sdtl:sourceStopIndex": 209
+    },
+    {
+      "@id": "#Comment/5",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " (so that we know what the old column names are when parsing such statements)",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/9"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/5",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/5"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#VariableSymbolExpression/13",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "b"
+    },
+    {
+      "@id": "#DataframeInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#RenamePair/4",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/8"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/7"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "a"
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 12,
+      "sdtl:lineNumberStart": 12,
+      "sdtl:originalSourceText": "df = pd.read_csv(\"rename.csv\")",
+      "sdtl:sourceStartIndex": 123,
+      "sdtl:sourceStopIndex": 152
+    },
+    {
+      "@id": "#VariableSymbolExpression/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "b"
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "a"
+    },
+    {
+      "@id": "#sourceInformation/10",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 23,
+      "sdtl:lineNumberStart": 23,
+      "sdtl:originalSourceText": "df.columns = [\"one\", \"two\"]",
+      "sdtl:sourceStartIndex": 506,
+      "sdtl:sourceStopIndex": 532
+    },
+    {
+      "@id": "#Comment/4",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " this highlights the necessity of keeping track of variable changes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/8"
+      }
+    },
+    {
+      "@id": "#VariableInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/7"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/8"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/12",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "one"
+    },
+    {
+      "@id": "#VariableSymbolExpression/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "x"
+    },
+    {
+      "@id": "#RenamePair/2",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/4"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/3"
+      }
+    },
+    {
+      "@id": "#Rename/2",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/4"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/5"
+      },
+      "sdtl:Renames": {
+        "@id": "#RenamesInventory/2"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/5"
+      }
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_10": {
+        "@id": "#Rename/4"
+      },
+      "rdf:_11": {
+        "@id": "#Save/1"
+      },
+      "rdf:_2": {
+        "@id": "#Comment/2"
+      },
+      "rdf:_3": {
+        "@id": "#Load/1"
+      },
+      "rdf:_4": {
+        "@id": "#Rename/1"
+      },
+      "rdf:_5": {
+        "@id": "#Rename/2"
+      },
+      "rdf:_6": {
+        "@id": "#Comment/3"
+      },
+      "rdf:_7": {
+        "@id": "#Rename/3"
+      },
+      "rdf:_8": {
+        "@id": "#Comment/4"
+      },
+      "rdf:_9": {
+        "@id": "#Comment/5"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/4",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/4"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#dataframeVariable/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "y"
+    },
+    {
+      "@id": "#sourceInformation/7",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 19,
+      "sdtl:lineNumberStart": 19,
+      "sdtl:originalSourceText": "df.columns[\"a\"] = \"x\"",
+      "sdtl:sourceStartIndex": 335,
+      "sdtl:sourceStopIndex": 355
+    },
+    {
+      "@id": "#RenamePair/3",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/6"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/5"
+      }
+    },
+    {
+      "@id": "#VariableInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/3"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/4"
+      }
+    },
+    {
+      "@id": "#Save/1",
+      "@type": "sdtl:Save",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/10"
+      },
+      "sdtl:command": "Save",
+      "sdtl:fileName": "rename.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/11"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/10",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/5"
+      }
+    },
+    {
+      "@id": "#RenamePair/6",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/12"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/11"
+      }
+    },
+    {
+      "@id": "#sourceInformation/5",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 15,
+      "sdtl:lineNumberStart": 15,
+      "sdtl:originalSourceText": "df2 = df.rename(columns={ \"a\": \"x\", \"b\": \"y\" })",
+      "sdtl:sourceStartIndex": 211,
+      "sdtl:sourceStopIndex": 257
+    },
+    {
+      "@id": "#DataframeInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/9",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/5"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#DataframeDescription/3",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/3"
+      },
+      "sdtl:dataframeName": "df2"
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#sourceInformation/6",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 16,
+      "sdtl:lineNumberStart": 16,
+      "sdtl:originalSourceText": "# this is unsupported",
+      "sdtl:sourceStartIndex": 311,
+      "sdtl:sourceStopIndex": 331
+    },
+    {
+      "@id": "#RenamesInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#RenamePair/1"
+      },
+      "rdf:_2": {
+        "@id": "#RenamePair/2"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "a"
+    },
+    {
+      "@id": "#VariableSymbolExpression/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "x"
+    },
+    {
+      "@id": "#sourceInformation/9",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 22,
+      "sdtl:lineNumberStart": 22,
+      "sdtl:originalSourceText": "# (so that we know what the old column names are when parsing such statements)",
+      "sdtl:sourceStartIndex": 427,
+      "sdtl:sourceStopIndex": 504
+    },
+    {
+      "@id": "#DataframeInventory/5",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "x"
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#RenamesInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#RenamePair/6"
+      },
+      "rdf:_2": {
+        "@id": "#RenamePair/7"
+      }
+    },
+    {
+      "@id": "#RenamePair/1",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/2"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    },
+    {
+      "@id": "#Rename/1",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/2"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/3"
+      },
+      "sdtl:Renames": {
+        "@id": "#RenamesInventory/1"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#Comment/2",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\n    A B\n--+----\n0 | 1 4\n1 | 2 5\n2 | 3 6\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/7",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#sourceInformation/11",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 25,
+      "sdtl:lineNumberStart": 25,
+      "sdtl:originalSourceText": "df.to_csv(\"rename.csv\")",
+      "sdtl:sourceStartIndex": 535,
+      "sdtl:sourceStopIndex": 557
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "x"
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 1,
+      "sdtl:lineNumberStart": 1,
+      "sdtl:originalSourceText": "\"\"\"Test the various methods of renaming columns.\"\"\"",
+      "sdtl:sourceStartIndex": 1,
+      "sdtl:sourceStopIndex": 51
+    },
+    {
+      "@id": "#RenamePair/5",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/10"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/9"
+      }
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 11,
+      "sdtl:lineNumberStart": 5,
+      "sdtl:originalSourceText": "\"\"\"\n    A B\n--+----\n0 | 1 4\n1 | 2 5\n2 | 3 6\n\"\"\"",
+      "sdtl:sourceStartIndex": 75,
+      "sdtl:sourceStopIndex": 121
+    },
+    {
+      "@id": "#VariableSymbolExpression/11",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "x"
+    },
+    {
+      "@id": "#DataframeInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#Rename/4",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/8"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/9"
+      },
+      "sdtl:Renames": {
+        "@id": "#RenamesInventory/4"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/10"
+      }
+    },
+    {
+      "@id": "#RenamePair/7",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/14"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/13"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/6",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#Comment/3",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " this is unsupported",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/6"
+      }
+    },
+    {
+      "@id": "#sourceInformation/8",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 21,
+      "sdtl:lineNumberStart": 21,
+      "sdtl:originalSourceText": "# this highlights the necessity of keeping track of variable changes",
+      "sdtl:sourceStartIndex": 358,
+      "sdtl:sourceStopIndex": 425
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      }
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "Test the various methods of renaming columns.",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    }
+  ]
+}

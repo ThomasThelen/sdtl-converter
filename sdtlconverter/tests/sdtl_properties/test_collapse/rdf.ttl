@@ -1,0 +1,823 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
+
+<#AggregateVariablesInventory/1> a rdf:Seq ;
+    rdf:_1 <#Compute/1> ;
+    rdf:_2 <#Compute/2> .
+
+<#AggregateVariablesInventory/2> a rdf:Seq ;
+    rdf:_1 <#Compute/3> .
+
+<#AggregateVariablesInventory/3> a rdf:Seq ;
+    rdf:_1 <#Compute/4> ;
+    rdf:_2 <#Compute/5> .
+
+<#AggregateVariablesInventory/4> a rdf:Seq ;
+    rdf:_1 <#Compute/6> ;
+    rdf:_2 <#Compute/7> .
+
+<#AggregateVariablesInventory/5> a rdf:Seq ;
+    rdf:_1 <#Compute/8> ;
+    rdf:_2 <#Compute/9> ;
+    rdf:_3 <#Compute/10> ;
+    rdf:_4 <#Compute/11> ;
+    rdf:_5 <#Compute/12> ;
+    rdf:_6 <#Compute/13> .
+
+<#AggregateVariablesInventory/6> a rdf:Seq ;
+    rdf:_1 <#Compute/14> ;
+    rdf:_2 <#Compute/15> ;
+    rdf:_3 <#Compute/16> .
+
+<#AllNumericVariablesExpression/1> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/10> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/11> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/12> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/13> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/2> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/3> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/4> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/5> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/6> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/7> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/8> a sdtl:AllNumericVariablesExpression .
+
+<#AllNumericVariablesExpression/9> a sdtl:AllNumericVariablesExpression .
+
+<#Analysis/1> a sdtl:Analysis ;
+    sdtl:command "Analysis" ;
+    sdtl:sourceInformation <#sourceInformation/4> .
+
+<#Analysis/2> a sdtl:Analysis ;
+    sdtl:command "Analysis" ;
+    sdtl:sourceInformation <#sourceInformation/7> .
+
+<#ArgumentsInventory/1> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/1> .
+
+<#ArgumentsInventory/10> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/11> .
+
+<#ArgumentsInventory/11> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/12> ;
+    rdf:_2 <#FunctionArgument/13> .
+
+<#ArgumentsInventory/12> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/14> .
+
+<#ArgumentsInventory/13> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/15> .
+
+<#ArgumentsInventory/14> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/16> .
+
+<#ArgumentsInventory/15> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/17> .
+
+<#ArgumentsInventory/16> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/18> .
+
+<#ArgumentsInventory/2> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/2> .
+
+<#ArgumentsInventory/3> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/3> .
+
+<#ArgumentsInventory/4> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/4> .
+
+<#ArgumentsInventory/5> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/5> .
+
+<#ArgumentsInventory/6> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/6> .
+
+<#ArgumentsInventory/7> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/7> .
+
+<#ArgumentsInventory/8> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/8> ;
+    rdf:_2 <#FunctionArgument/9> .
+
+<#ArgumentsInventory/9> a rdf:Seq ;
+    rdf:_1 <#FunctionArgument/10> .
+
+<#Collapse/1> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/1> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:MessageText <#MessageTextInventory/2> ;
+    sdtl:ProducesDataframe <#DataframeInventory/3> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableSymbolExpression/1> ;
+    sdtl:outputDatasetName "median_age" ;
+    sdtl:sourceInformation <#sourceInformation/5> .
+
+<#Collapse/2> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/2> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:MessageText <#MessageTextInventory/3> ;
+    sdtl:ProducesDataframe <#DataframeInventory/5> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableListExpression/1> ;
+    sdtl:outputDatasetName "group_sum" ;
+    sdtl:sourceInformation <#sourceInformation/6> .
+
+<#Collapse/3> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/3> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/6> ;
+    sdtl:MessageText <#MessageTextInventory/4> ;
+    sdtl:ProducesDataframe <#DataframeInventory/7> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableSymbolExpression/7> ;
+    sdtl:outputDatasetName "non_index" ;
+    sdtl:sourceInformation <#sourceInformation/8> .
+
+<#Collapse/4> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/4> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/8> ;
+    sdtl:MessageText <#MessageTextInventory/5> ;
+    sdtl:ProducesDataframe <#DataframeInventory/9> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableSymbolExpression/10> ;
+    sdtl:outputDatasetName "single_agg" ;
+    sdtl:sourceInformation <#sourceInformation/9> .
+
+<#Collapse/5> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/5> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/10> ;
+    sdtl:MessageText <#MessageTextInventory/6> ;
+    sdtl:ProducesDataframe <#DataframeInventory/11> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableSymbolExpression/13> ;
+    sdtl:outputDatasetName "multiple_agg" ;
+    sdtl:sourceInformation <#sourceInformation/10> .
+
+<#Collapse/6> a sdtl:Collapse ;
+    sdtl:AggregateVariables <#AggregateVariablesInventory/6> ;
+    sdtl:ConsumesDataframe <#DataframeInventory/12> ;
+    sdtl:MessageText <#MessageTextInventory/7> ;
+    sdtl:ProducesDataframe <#DataframeInventory/13> ;
+    sdtl:command "Collapse" ;
+    sdtl:groupByVariables <#VariableSymbolExpression/20> ;
+    sdtl:outputDatasetName "named_agg" ;
+    sdtl:sourceInformation <#sourceInformation/11> .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#NoTransformOp/1> ;
+    rdf:_10 <#Collapse/5> ;
+    rdf:_11 <#Collapse/6> ;
+    rdf:_2 <#Load/1> ;
+    rdf:_3 <#Unsupported/1> ;
+    rdf:_4 <#Analysis/1> ;
+    rdf:_5 <#Collapse/1> ;
+    rdf:_6 <#Collapse/2> ;
+    rdf:_7 <#Analysis/2> ;
+    rdf:_8 <#Collapse/3> ;
+    rdf:_9 <#Collapse/4> .
+
+<#Compute/1> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/1> ;
+    sdtl:variable <#VariableSymbolExpression/2> .
+
+<#Compute/10> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/10> ;
+    sdtl:variable <#VariableSymbolExpression/16> .
+
+<#Compute/11> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/11> ;
+    sdtl:variable <#VariableSymbolExpression/17> .
+
+<#Compute/12> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/12> ;
+    sdtl:variable <#VariableSymbolExpression/18> .
+
+<#Compute/13> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/13> ;
+    sdtl:variable <#VariableSymbolExpression/19> .
+
+<#Compute/14> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/14> ;
+    sdtl:variable <#VariableSymbolExpression/22> .
+
+<#Compute/15> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/15> ;
+    sdtl:variable <#VariableSymbolExpression/24> .
+
+<#Compute/16> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/16> ;
+    sdtl:variable <#VariableSymbolExpression/26> .
+
+<#Compute/2> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/2> ;
+    sdtl:variable <#VariableSymbolExpression/3> .
+
+<#Compute/3> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/3> ;
+    sdtl:variable <#VariableSymbolExpression/6> .
+
+<#Compute/4> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/4> ;
+    sdtl:variable <#VariableSymbolExpression/8> .
+
+<#Compute/5> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/5> ;
+    sdtl:variable <#VariableSymbolExpression/9> .
+
+<#Compute/6> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/6> ;
+    sdtl:variable <#VariableSymbolExpression/11> .
+
+<#Compute/7> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/7> ;
+    sdtl:variable <#VariableSymbolExpression/12> .
+
+<#Compute/8> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/8> ;
+    sdtl:variable <#VariableSymbolExpression/14> .
+
+<#Compute/9> a sdtl:Compute ;
+    sdtl:expression <#FunctionCallExpression/9> ;
+    sdtl:variable <#VariableSymbolExpression/15> .
+
+<#DataframeDescription/2> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/2> ;
+    sdtl:dataframeName "median_age" .
+
+<#DataframeDescription/3> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/3> ;
+    sdtl:dataframeName "group_sum" .
+
+<#DataframeDescription/4> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/4> ;
+    sdtl:dataframeName "non_index" .
+
+<#DataframeDescription/5> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/5> ;
+    sdtl:dataframeName "single_agg" .
+
+<#DataframeDescription/6> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/6> ;
+    sdtl:dataframeName "multiple_agg" .
+
+<#DataframeDescription/7> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/7> ;
+    sdtl:dataframeName "named_agg" .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/10> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/11> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/6> .
+
+<#DataframeInventory/12> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/13> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/7> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/2> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/5> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/3> .
+
+<#DataframeInventory/6> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/7> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/4> .
+
+<#DataframeInventory/8> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/9> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/5> .
+
+<#FunctionArgument/1> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/1> .
+
+<#FunctionArgument/10> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/9> .
+
+<#FunctionArgument/11> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/10> .
+
+<#FunctionArgument/12> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/11> .
+
+<#FunctionArgument/13> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#NumericConstantExpression/2> .
+
+<#FunctionArgument/14> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/12> .
+
+<#FunctionArgument/15> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/13> .
+
+<#FunctionArgument/16> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/21> .
+
+<#FunctionArgument/17> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/23> .
+
+<#FunctionArgument/18> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#VariableSymbolExpression/25> .
+
+<#FunctionArgument/2> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/2> .
+
+<#FunctionArgument/3> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/3> .
+
+<#FunctionArgument/4> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/4> .
+
+<#FunctionArgument/5> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/5> .
+
+<#FunctionArgument/6> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/6> .
+
+<#FunctionArgument/7> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/7> .
+
+<#FunctionArgument/8> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP1" ;
+    sdtl:argumentValue <#AllNumericVariablesExpression/8> .
+
+<#FunctionArgument/9> a sdtl:FunctionArgument ;
+    sdtl:argumentName "EXP2" ;
+    sdtl:argumentValue <#NumericConstantExpression/1> .
+
+<#FunctionCallExpression/1> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/1> ;
+    sdtl:function "col_median" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/10> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/10> ;
+    sdtl:function "col_skew" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/11> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/11> ;
+    sdtl:function "col_pctile" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/12> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/12> ;
+    sdtl:function "col_unique" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/13> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/13> ;
+    sdtl:function "col_skew" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/14> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/14> ;
+    sdtl:function "col_min" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/15> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/15> ;
+    sdtl:function "col_max" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/16> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/16> ;
+    sdtl:function "col_mean" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/2> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/2> ;
+    sdtl:function "col_median" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/3> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/3> ;
+    sdtl:function "col_sum" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/4> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/4> ;
+    sdtl:function "col_mdev" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/5> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/5> ;
+    sdtl:function "col_mdev" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/6> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/6> ;
+    sdtl:function "col_var" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/7> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/7> ;
+    sdtl:function "col_var" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/8> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/8> ;
+    sdtl:function "col_pctile" ;
+    sdtl:isSdtlName true .
+
+<#FunctionCallExpression/9> a sdtl:FunctionCallExpression ;
+    sdtl:Arguments <#ArgumentsInventory/9> ;
+    sdtl:function "col_unique" ;
+    sdtl:isSdtlName true .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileName "scores.csv" ;
+    sdtl:software "csv" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#MessageTextInventory/1> a rdf:Seq ;
+    rdf:_1 <#messageText/1> .
+
+<#MessageTextInventory/2> a rdf:Seq ;
+    rdf:_1 <#messageText/2> .
+
+<#MessageTextInventory/3> a rdf:Seq ;
+    rdf:_1 <#messageText/3> ;
+    rdf:_2 <#messageText/4> .
+
+<#MessageTextInventory/4> a rdf:Seq ;
+    rdf:_1 <#messageText/5> ;
+    rdf:_2 <#messageText/6> .
+
+<#MessageTextInventory/5> a rdf:Seq ;
+    rdf:_1 <#messageText/7> ;
+    rdf:_2 <#messageText/8> .
+
+<#MessageTextInventory/6> a rdf:Seq ;
+    rdf:_1 <#messageText/9> ;
+    rdf:_2 <#messageText/10> .
+
+<#MessageTextInventory/7> a rdf:Seq ;
+    rdf:_1 <#messageText/11> ;
+    rdf:_2 <#messageText/12> .
+
+<#NoTransformOp/1> a sdtl:NoTransformOp ;
+    sdtl:command "NoTransformOp" ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#NumericConstantExpression/1> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "50" .
+
+<#NumericConstantExpression/2> a sdtl:NumericConstantExpression ;
+    sdtl:numericType "Integer" ;
+    sdtl:value "50" .
+
+<#Unsupported/1> a sdtl:Unsupported ;
+    sdtl:MessageText <#MessageTextInventory/1> ;
+    sdtl:command "Unsupported" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> ;
+    rdf:_3 <#dataframeVariable/3> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/4> ;
+    rdf:_2 <#dataframeVariable/5> .
+
+<#VariableInventory/3> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/6> .
+
+<#VariableInventory/4> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/7> ;
+    rdf:_2 <#dataframeVariable/8> .
+
+<#VariableInventory/5> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/9> ;
+    rdf:_2 <#dataframeVariable/10> .
+
+<#VariableInventory/6> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/11> ;
+    rdf:_2 <#dataframeVariable/12> ;
+    rdf:_3 <#dataframeVariable/13> ;
+    rdf:_4 <#dataframeVariable/14> ;
+    rdf:_5 <#dataframeVariable/15> ;
+    rdf:_6 <#dataframeVariable/16> .
+
+<#VariableInventory/7> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/17> ;
+    rdf:_2 <#dataframeVariable/18> ;
+    rdf:_3 <#dataframeVariable/19> .
+
+<#VariableListExpression/1> a sdtl:VariableListExpression ;
+    sdtl:Variables <#VariablesInventory/1> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/10> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/11> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/12> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score" .
+
+<#VariableSymbolExpression/13> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/14> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age.quantile" .
+
+<#VariableSymbolExpression/15> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age.nunique" .
+
+<#VariableSymbolExpression/16> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age.skew" .
+
+<#VariableSymbolExpression/17> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score.quantile" .
+
+<#VariableSymbolExpression/18> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score.nunique" .
+
+<#VariableSymbolExpression/19> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score.skew" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/20> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/21> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/22> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "youngest" .
+
+<#VariableSymbolExpression/23> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/24> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "oldest" .
+
+<#VariableSymbolExpression/25> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score" .
+
+<#VariableSymbolExpression/26> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "mean_score" .
+
+<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score" .
+
+<#VariableSymbolExpression/4> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/5> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/6> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score" .
+
+<#VariableSymbolExpression/7> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Gender" .
+
+<#VariableSymbolExpression/8> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Age" .
+
+<#VariableSymbolExpression/9> a sdtl:VariableSymbolExpression ;
+    sdtl:variableName "Score" .
+
+<#VariablesInventory/1> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/4> ;
+    rdf:_2 <#VariableSymbolExpression/5> .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age" .
+
+<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score" .
+
+<#dataframeVariable/11> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age.quantile" .
+
+<#dataframeVariable/12> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age.nunique" .
+
+<#dataframeVariable/13> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age.skew" .
+
+<#dataframeVariable/14> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score.quantile" .
+
+<#dataframeVariable/15> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score.nunique" .
+
+<#dataframeVariable/16> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score.skew" .
+
+<#dataframeVariable/17> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "youngest" .
+
+<#dataframeVariable/18> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "oldest" .
+
+<#dataframeVariable/19> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "mean_score" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Gender" .
+
+<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score" .
+
+<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Gender" .
+
+<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score" .
+
+<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score" .
+
+<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age" .
+
+<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Score" .
+
+<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "Age" .
+
+<#messageText/1> a sdtl:messageText ;
+    rdfs:label "Collapse functions which return a Series are not supported." .
+
+<#messageText/10> a sdtl:messageText ;
+    rdfs:label "asdf" .
+
+<#messageText/11> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#messageText/12> a sdtl:messageText ;
+    rdfs:label "asdf" .
+
+<#messageText/2> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#messageText/3> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#messageText/4> a sdtl:messageText ;
+    rdfs:label "asdf" .
+
+<#messageText/5> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#messageText/6> a sdtl:messageText ;
+    rdfs:label "asdf" .
+
+<#messageText/7> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#messageText/8> a sdtl:messageText ;
+    rdfs:label "asdf" .
+
+<#messageText/9> a sdtl:messageText ;
+    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 1 ;
+    sdtl:lineNumberStart 1 ;
+    sdtl:originalSourceText "import pandas as pd" ;
+    sdtl:sourceStartIndex 1 ;
+    sdtl:sourceStopIndex 19 .
+
+<#sourceInformation/10> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 12 ;
+    sdtl:lineNumberStart 12 ;
+    sdtl:originalSourceText "multiple_agg = scores.groupby(\"Gender\").agg([\"quantile\", \"nunique\", \"skew\"])" ;
+    sdtl:sourceStartIndex 356 ;
+    sdtl:sourceStopIndex 431 .
+
+<#sourceInformation/11> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 17 ;
+    sdtl:lineNumberStart 13 ;
+    sdtl:originalSourceText """named_agg = scores.groupby("Gender").agg(
+    youngest=pd.NamedAgg(column="Age", aggfunc="min"),
+    oldest=pd.NamedAgg(column="Age", aggfunc="max"),
+    mean_score=pd.NamedAgg(column="Score", aggfunc="mean")
+)""" ;
+    sdtl:sourceStartIndex 433 ;
+    sdtl:sourceStopIndex 642 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 3 ;
+    sdtl:lineNumberStart 3 ;
+    sdtl:originalSourceText "scores = pd.read_csv(\"scores.csv\")" ;
+    sdtl:sourceStartIndex 22 ;
+    sdtl:sourceStopIndex 55 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 5 ;
+    sdtl:lineNumberStart 5 ;
+    sdtl:originalSourceText "mean = scores.mean()" ;
+    sdtl:sourceStartIndex 58 ;
+    sdtl:sourceStopIndex 77 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 6 ;
+    sdtl:lineNumberStart 6 ;
+    sdtl:originalSourceText "desc = scores.describe()" ;
+    sdtl:sourceStartIndex 79 ;
+    sdtl:sourceStopIndex 102 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 7 ;
+    sdtl:lineNumberStart 7 ;
+    sdtl:originalSourceText "median_age = scores.groupby(\"Age\").median()" ;
+    sdtl:sourceStartIndex 104 ;
+    sdtl:sourceStopIndex 146 .
+
+<#sourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 8 ;
+    sdtl:lineNumberStart 8 ;
+    sdtl:originalSourceText "group_sum = scores.groupby([\"Gender\", \"Age\"]).sum()" ;
+    sdtl:sourceStartIndex 148 ;
+    sdtl:sourceStopIndex 198 .
+
+<#sourceInformation/7> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 9 ;
+    sdtl:lineNumberStart 9 ;
+    sdtl:originalSourceText "group_des = scores.groupby(\"Gender\").describe()" ;
+    sdtl:sourceStartIndex 200 ;
+    sdtl:sourceStopIndex 246 .
+
+<#sourceInformation/8> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 10 ;
+    sdtl:lineNumberStart 10 ;
+    sdtl:originalSourceText "non_index = scores.groupby(\"Gender\", as_index=False).mad()" ;
+    sdtl:sourceStartIndex 248 ;
+    sdtl:sourceStopIndex 305 .
+
+<#sourceInformation/9> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 11 ;
+    sdtl:lineNumberStart 11 ;
+    sdtl:originalSourceText "single_agg = scores.groupby(\"Gender\").agg(\"var\")" ;
+    sdtl:sourceStartIndex 307 ;
+    sdtl:sourceStopIndex 354 .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "scores" .
+

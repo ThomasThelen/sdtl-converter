@@ -2,10 +2,15 @@
 [![Build Status](https://travis-ci.org/ThomasThelen/sdtl-converter.svg?branch=master)](https://travis-ci.org/ThomasThelen/sdtl-converter)
 [![codecov](https://codecov.io/gh/ThomasThelen/sdtl-converter/branch/master/graph/badge.svg?token=FHBM1I1R5H)](undefined)
 
-A python library for turning SDTL in JSON-LD format into ProvONE/Prov.
+A python library for ingesting SDTL in the JSON format into rdflib,
+which can then be queried or exported into a number of formats such as
+JSON-LD or turtle.
 
 ### Features
 
+- Supports SDTL v ____
+- Converting individual SDTL JSON files into a graph
+- Load multiple SDTL JSON files and combine into single graph
 
 ### Installing
 
@@ -15,13 +20,13 @@ This isn't on PyPI, so use pip to install from this repository.
 git+https://github.com/ThomasThelen/sdtl-converter.git`
  
 
-### Using
+### Usage
 
 
-#### Converting SDTL to RDF
+#### Loading SDTL Into the Graph
 
-Turn turn an SDTL JSON file into RDF, start by constructing a
-`ConverterV1` class, passing the path to the sdtl into the constructor.
+Turn turn a single SDTL JSON file into RDF, start by constructing a
+`ConverterV1` class and pass the path to the sdtl into the constructor.
  
 ```
 converter = ConverterV1('path_to/sdtl.json')
@@ -36,9 +41,8 @@ converter.write_jsonld()
 converter.write_turtle()
 ```
 
+#### Querying the Graph
 
-### Examples
-
-Examples that use this library can be found in the
-[examples](https://github.com/ThomasThelen/sdtl-rdf-examples)
-repository.
+In the case that you want to use rdflib to query the SDTL, refer to the
+`tests/` directory for example queries to get you started. The graph can
+be queried with SPARQL in the standard way using the SDTL ontology.

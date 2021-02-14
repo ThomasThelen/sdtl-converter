@@ -5,34 +5,33 @@ import json
 from sdtlconverter.Converter import Converter
 
 
-class DataFrame:
-    def __init__(self, name, identifier):
-        self.name = name
-        self.identifier = identifier
-
-
 class ConverterV1(Converter):
     """
-    A converter that takes SDTL 1.0 and produces a ProvONE representation.
+    Take SDTL conforming to version ___ and converts it into a format compatible with the
+    SDTL OWL specification.
     """
 
     def __init__(self, file_paths: Union[List, str]):
         """
         Creates a converter instance. It can take any number of SDTL file paths as a list,
-        or a single file path as a string.
+        or a single file path as a string. When using a list of files, they're combined into a single
+        graph.
 
         :param file_paths: A path to an SDTL JSON file
         """
 
         self.dataframes= {}
         self.variable_names = {}
-        self.unordered_properties = ["Arguments, renames"]
+        # SDTL properties that are not ordered. These are mapped to rdf:bag
+        self.unordered_properties = ["renames"]
+        # SDTL properties that are are ordered. These are mapped to rdf:seq
         self.ordered_properties= ["SourceInformation", "sortCriteria", "mergeFiles", "dropVariables",
-                                  "variables", "collapse", "arguments", "appendFiles", "renameVariables"]
+                                  "variables", "collapse", "arguments", "appendFiles", "renameVariables",
+                                  "messageText", "aggregateVariables"]
 
         super().__init__(file_paths)
 
-    def sdtl_to_rdf(self, sdtl, parent_id: rdflib.URIRef):
+    def sdtl_to_rdf(self, sdtl: json, parent_id: rdflib.URIRef):
         """
         Turns a block of SDTL into RDF, recursively.
 
@@ -120,6 +119,15 @@ class ConverterV1(Converter):
         return object_identifiers
 
     def create_sdtl_object (self, name, parent_id, sdtl, ordered, child_type=None):
+        """
+
+        :param name: The name of the property
+        :param parent_id: The node ID that this property belongs to
+        :param sdtl: The SDTL that the property is referring to
+        :param ordered: Whether or not the property is ordered
+        :param child_type: The SDTL type that the child is
+        :return:
+        """
         # Create the rdf:Seq that will contain all of the objects
         upper_name = self.id_manager.to_upper(name)
         namespace_name = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{upper_name}')
@@ -128,28 +136,39 @@ class ConverterV1(Converter):
 
         # Loop over each node. Add a node for each one and add it to the rdf:Seq
         child_count = 0
-        for source_info in sdtl[name]:
-            child_count += 1
-            if child_type is None:
-                renames_id = self.id_manager.get_id(source_info["$type"])
-                argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{source_info["$type"]}')
-            else:
-                renames_id = self.id_manager.get_id(child_type)
-                argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{child_type}')
-            self.graph.add((renames_id, rdflib.RDF.type, argument_type))
+        if isinstance(sdtl[name][0], str):
+            # Create the node
+            for string_property in sdtl[name]:
+                child_count = child_count+1
+                node_id = self.id_manager.get_id(name)
+                node_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{name}')
+                self.graph.add((node_id, rdflib.RDF.type, node_type))
+                self.graph.add((node_id, rdflib.RDFS.label, rdflib.Literal(string_property)))
 
-            # Attach the ArgumentsInventory to it
-            predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:_{child_count}')
-            self.graph.add((inventory_id, predicate, renames_id))
-            self.sdtl_to_rdf(source_info, renames_id)
+                predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{child_count}')
+                self.graph.add((inventory_id, predicate, node_id))
+        else:
+            for source_info in sdtl[name]:
+                child_count += 1
+                if child_type is None:
+                    node_id = self.id_manager.get_id(source_info["$type"])
+                    argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{source_info["$type"]}')
+                else:
+                    node_id = self.id_manager.get_id(child_type)
+                    argument_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{child_type}')
+                self.graph.add((node_id, rdflib.RDF.type, argument_type))
 
+                # Attach the ArgumentsInventory to it
+                predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{child_count}')
+                self.graph.add((inventory_id, predicate, node_id))
+                self.sdtl_to_rdf(source_info, node_id)
 
-
-    def add_program(self):
+    def add_program(self) -> rdflib.URIRef:
         """
-        Adds an sdtl:Program node to the graph.
-        :return:
+        Creates an sdtl:Program node to the graph.
+        :return The node identifier for the Program
         """
+        # Get the identifier for the node
         program_id = self.id_manager.get_id("Program")
         self.graph.add((program_id, rdflib.RDF.type, self.id_manager.sdtl_namespace.Program))
         # Add all of the program level metadata
@@ -165,13 +184,13 @@ class ConverterV1(Converter):
 
     def convert_sdtl_to_rdf(self):
         # A list of unsupported SDTL commands
-        unsupported = ["Unsupported", "NoTransformOp"]
+        #unsupported = ["Unsupported", "NoTransformOp"]
 
         for sdtl_file in self.sdtl_files:
             with open(sdtl_file) as json_file:
                 self.sdtl = json.load(json_file)
 
-                # Create the node for the script, it should be sdtl:Program
+                # Create the sdtl:Program that represents the script
                 script_id = self.add_program()
 
                 if 'commands' in self.sdtl:
@@ -185,8 +204,6 @@ class ConverterV1(Converter):
 
                     command_count = 0
                     for command in self.sdtl['commands']:
-                        if command["$type"] in unsupported:
-                            continue
                         command_count += 1
                         # Create the new command node
                         command_id = self.id_manager.get_id(command["$type"])
@@ -211,14 +228,12 @@ class ConverterV1(Converter):
                             # Connect each DataframeDescription to the newly created rdf:Seq
                             self.process_dataframe_descriptions(inventory_id, command['producesDataframe'])
 
-
-
                         self.sdtl_to_rdf(command, command_id)
 
     def parse_dataframe_usage(self, dataframe_inventory_id, sdtl):
         """
 
-        :return:
+        :return: None
         """
         dataframe_count = 0
         for dataframe in sdtl:
@@ -336,7 +351,7 @@ class ConverterV1(Converter):
         :param domain_identifier: The identifier of the node being attached
         :param predicate: The verb used to attach the node to the collection
         :param ordered: Boolean as to whether the collection is ordered or not
-        :return:
+        :return: None
         """
         sequence_type = rdflib.RDF.Seq if ordered else rdflib.RDF.Bag
 
@@ -348,5 +363,3 @@ class ConverterV1(Converter):
         self.graph.add((domain_identifier,
                         predicate,
                         identifier))
-
-

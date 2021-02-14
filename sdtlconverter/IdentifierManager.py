@@ -4,6 +4,9 @@ import rdflib
 from sdtlconverter.schemas.generated.sdtl import all_classes
 
 
+"""
+Class that handles the generation and management of identifiers for RDF subjects. 
+"""
 class IdentifierManager:
     def __init__(self):
         self.counts = 0
@@ -36,15 +39,15 @@ class IdentifierManager:
         for misc_term in misc_terms:
             self.counts[misc_term] = 0
 
-    def get_id(self, property_name) -> rdflib.URIRef:
+    def get_id(self, property_name: str) -> rdflib.URIRef:
         """
-         Returns an identifier that follows the recommended convention
-             class/count
+         Returns an identifier that follows the recommended convention class/count.
+         Note that classes in RDF are CamelCase while classes in JSON
+         follow thisConvention.
 
          :param property_name: The name of the property (usually an SDTL class)
          :return: A compliant URI
          """
-
         property_lowered = property_name[0].lower() + property_name[1:]
         if property_name in self.counts:
             self.counts[property_name] += 1

@@ -1,0 +1,2602 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#VariableInventory/13",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/70"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/71"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/72"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/73"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/29",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#dataframeVariable/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#RenamePair/2",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/9"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/8"
+      }
+    },
+    {
+      "@id": "#RenameVariablesInventory/15",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/15"
+      }
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 21,
+      "sdtl:lineNumberStart": 21,
+      "sdtl:originalSourceText": "left = pd.read_csv(\"left.csv\")",
+      "sdtl:sourceStartIndex": 459,
+      "sdtl:sourceStopIndex": 488
+    },
+    {
+      "@id": "#VariableSymbolExpression/50",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#MergeFilesInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/43",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#DataframeInventory/14",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/8"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/35",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "rowID"
+    },
+    {
+      "@id": "#RenamePair/8",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/24"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/23"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/11",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/11"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#dataframeVariable/61",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#dataframeVariable/36",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#VariableInventory/12",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/66"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/67"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/68"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/69"
+      }
+    },
+    {
+      "@id": "#MergeDatasets/8",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/21"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/8"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/22"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/16"
+      }
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 20,
+      "sdtl:lineNumberStart": 3,
+      "sdtl:originalSourceText": "\"\"\"\nleft\n    caseID firstName income famID\n--+------------------------------\n0 | 1      Abe       15000  11\n1 | 2      Barry     None   11\n2 | 3      Chuck     17000  12\n3 | 4      Dave      25000  13\n4 | 5      Ed        21000  14\n\nright\n    rowID  lastName  income famID2\n--+-------------------------------\n0 | 1      Lincoln   31000  11\n1 | 2      Madison   32000  12\n2 | 3      Nelson    33000  13\n3 | 6      Quincy    34000  14\n\"\"\"",
+      "sdtl:sourceStartIndex": 22,
+      "sdtl:sourceStopIndex": 457
+    },
+    {
+      "@id": "#MergeFileDescription/3",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/3"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#DataframeDescription/5",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/5"
+      },
+      "sdtl:dataframeName": "inner_join"
+    },
+    {
+      "@id": "#MergeFilesInventory/8",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/15"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/16"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/6",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/6"
+      },
+      "sdtl:fileName": "right2a",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#RenameVariablesInventory/10",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/10"
+      }
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\nleft\n    caseID firstName income famID\n--+------------------------------\n0 | 1      Abe       15000  11\n1 | 2      Barry     None   11\n2 | 3      Chuck     17000  12\n3 | 4      Dave      25000  13\n4 | 5      Ed        21000  14\n\nright\n    rowID  lastName  income famID2\n--+-------------------------------\n0 | 1      Lincoln   31000  11\n1 | 2      Madison   32000  12\n2 | 3      Nelson    33000  13\n3 | 6      Quincy    34000  14\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#RenameVariablesInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/3"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/36",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "lastName"
+    },
+    {
+      "@id": "#MergeFilesInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/9"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/10"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/7",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/7"
+      },
+      "sdtl:dataframeName": "right_join"
+    },
+    {
+      "@id": "#VariableSymbolExpression/37",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID2"
+    },
+    {
+      "@id": "#VariableSymbolExpression/49",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#dataframeVariable/88",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#dataframeVariable/47",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#sourceInformation/13",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 33,
+      "sdtl:lineNumberStart": 33,
+      "sdtl:originalSourceText": "outer_join = left.merge(right2a, how=\"outer\", on=\"caseID\")",
+      "sdtl:sourceStartIndex": 1038,
+      "sdtl:sourceStopIndex": 1095
+    },
+    {
+      "@id": "#sourceInformation/12",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 32,
+      "sdtl:lineNumberStart": 32,
+      "sdtl:originalSourceText": "right_join_sort = left.merge(right2b, how=\"right\", on=\"famID\", sort=True)",
+      "sdtl:sourceStartIndex": 964,
+      "sdtl:sourceStopIndex": 1036
+    },
+    {
+      "@id": "#dataframeVariable/32",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#VariableInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/17"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/18"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/19"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/20"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/21"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/22"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/23"
+      }
+    },
+    {
+      "@id": "#RenamePair/5",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/17"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/16"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#VariableSymbolExpression/41",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#RenameVariablesInventory/9",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/9"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/26",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#VariableInventory/15",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/82"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/83"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/84"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/85"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/86"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/87"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/88"
+      },
+      "rdf:_8": {
+        "@id": "#dataframeVariable/89"
+      }
+    },
+    {
+      "@id": "#RenamePair/16",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/50"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/49"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/8",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/5"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#RenamePair/11",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/32"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/31"
+      }
+    },
+    {
+      "@id": "#RenamePair/12",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/34"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/33"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/23",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#MergeFilesInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/5"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/6"
+      }
+    },
+    {
+      "@id": "#RenamePair/15",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/48"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/47"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/20",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/11"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/60",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#MergeDatasets/10",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/25"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/10"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/26"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/41"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/18"
+      }
+    },
+    {
+      "@id": "#sourceInformation/17",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 41,
+      "sdtl:lineNumberStart": 41,
+      "sdtl:originalSourceText": "updated = left.update(right, overwrite=False)",
+      "sdtl:sourceStartIndex": 1359,
+      "sdtl:sourceStopIndex": 1403
+    },
+    {
+      "@id": "#VariableSymbolExpression/14",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#VariableSymbolExpression/18",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#dataframeVariable/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#VariableSymbolExpression/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/47",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/17",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "left"
+    },
+    {
+      "@id": "#RenameVariablesInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/63",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#MergeFileDescription/14",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:fileName": "right",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": true,
+      "sdtl:update": "UpdateMissing"
+    },
+    {
+      "@id": "#dataframeVariable/16",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/51",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#Rename/1",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/3"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/4"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:renames": {
+        "@id": "#renames/1"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/86",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#dataframeVariable/81",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#VariableInventory/10",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/52"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/53"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/54"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/55"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/56"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/57"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/58"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/20",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID"
+    },
+    {
+      "@id": "#RenameVariablesInventory/7",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/7"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/59",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#MergeFilesInventory/11",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/21"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/22"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#DataframeInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/22",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#MergeFilesInventory/6",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/11"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/12"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/11",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/11"
+      },
+      "sdtl:dataframeName": "combined"
+    },
+    {
+      "@id": "#VariableSymbolExpression/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#dataframeVariable/67",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#RenameVariablesInventory/6",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/6"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/83",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#dataframeVariable/49",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#MergeDatasets/5",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/15"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/5"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/16"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/25"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/13"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/19",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/13"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "OneToOne",
+      "sdtl:newRow": false,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#VariableSymbolExpression/32",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_left"
+    },
+    {
+      "@id": "#DataframeInventory/21",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/12",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#MergeFilesInventory/7",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/13"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/14"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/15",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/24",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_10": {
+        "@id": "#Comment/3"
+      },
+      "rdf:_11": {
+        "@id": "#Comment/4"
+      },
+      "rdf:_12": {
+        "@id": "#MergeDatasets/4"
+      },
+      "rdf:_13": {
+        "@id": "#MergeDatasets/5"
+      },
+      "rdf:_14": {
+        "@id": "#MergeDatasets/6"
+      },
+      "rdf:_15": {
+        "@id": "#MergeDatasets/7"
+      },
+      "rdf:_16": {
+        "@id": "#MergeDatasets/8"
+      },
+      "rdf:_17": {
+        "@id": "#MergeDatasets/9"
+      },
+      "rdf:_18": {
+        "@id": "#MergeDatasets/10"
+      },
+      "rdf:_19": {
+        "@id": "#MergeDatasets/11"
+      },
+      "rdf:_2": {
+        "@id": "#Load/1"
+      },
+      "rdf:_3": {
+        "@id": "#Load/2"
+      },
+      "rdf:_4": {
+        "@id": "#Rename/1"
+      },
+      "rdf:_5": {
+        "@id": "#Rename/2"
+      },
+      "rdf:_6": {
+        "@id": "#Comment/2"
+      },
+      "rdf:_7": {
+        "@id": "#MergeDatasets/1"
+      },
+      "rdf:_8": {
+        "@id": "#MergeDatasets/2"
+      },
+      "rdf:_9": {
+        "@id": "#MergeDatasets/3"
+      }
+    },
+    {
+      "@id": "#RenamePair/14",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/45"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/44"
+      }
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/3"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/4"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/62",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#DataframeDescription/13",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/13"
+      },
+      "sdtl:dataframeName": "updated"
+    },
+    {
+      "@id": "#VariableSymbolExpression/13",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/43",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#dataframeVariable/19",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#VariableSymbolExpression/21",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/15",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#DataframeInventory/12",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/7"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/87",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#MergeFileDescription/10",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/10"
+      },
+      "sdtl:fileName": "right2a",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#Comment/4",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " This is unsupported",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/11"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/31",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#dataframeVariable/74",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/52",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/82",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#MergeFileDescription/22",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/16"
+      },
+      "sdtl:fileName": "right",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#dataframeVariable/55",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/68",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/40",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID2"
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#VariableSymbolExpression/25",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/64",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#MergeFileDescription/1",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/1"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "OneToOne",
+      "sdtl:newRow": false,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#DataframeInventory/24",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/13"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/57",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#dataframeVariable/48",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/70",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/78",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#sourceInformation/9",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 30,
+      "sdtl:lineNumberStart": 30,
+      "sdtl:originalSourceText": "right_join = left.merge(right2a, how=\"right\", on=\"caseID\")",
+      "sdtl:sourceStartIndex": 813,
+      "sdtl:sourceStopIndex": 870
+    },
+    {
+      "@id": "#dataframeVariable/34",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#MergeFilesInventory/10",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/19"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/20"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/18",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/10"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/23",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#dataframeVariable/77",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#DataframeInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#MergeDatasets/4",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/13"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/4"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/14"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/20"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/12"
+      }
+    },
+    {
+      "@id": "#RenamePair/1",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/7"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/6"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/28",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableInventory/9",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/45"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/46"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/47"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/48"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/49"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/50"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/51"
+      }
+    },
+    {
+      "@id": "#MergeFilesInventory/9",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/17"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/18"
+      }
+    },
+    {
+      "@id": "#RenamePair/10",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/29"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/28"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/22",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#dataframeVariable/54",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_left"
+    },
+    {
+      "@id": "#MergeFileDescription/7",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/7"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#dataframeVariable/21",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#MergeDatasets/9",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/23"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/9"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/24"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/17"
+      }
+    },
+    {
+      "@id": "#RenameVariablesInventory/8",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/8"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/10",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/6"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/31",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#VariableSymbolExpression/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#VariableSymbolExpression/12",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#DataframeDescription/2",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/2"
+      },
+      "sdtl:dataframeName": "right"
+    },
+    {
+      "@id": "#dataframeVariable/58",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_right"
+    },
+    {
+      "@id": "#VariableSymbolExpression/30",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID"
+    },
+    {
+      "@id": "#DataframeInventory/17",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/6",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID"
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileName": "left.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/18",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#DataframeInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#RenamePair/7",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/22"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/21"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/25",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#sourceInformation/7",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 28,
+      "sdtl:lineNumberStart": 28,
+      "sdtl:originalSourceText": "inner_join = left.merge(right2a, on=\"caseID\", how=\"inner\")",
+      "sdtl:sourceStartIndex": 695,
+      "sdtl:sourceStopIndex": 752
+    },
+    {
+      "@id": "#DataframeDescription/3",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/3"
+      },
+      "sdtl:dataframeName": "right2a"
+    },
+    {
+      "@id": "#dataframeVariable/17",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/35",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#VariableSymbolExpression/19",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#DataframeInventory/5",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#Comment/2",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " This results in an empty dataframe",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/6"
+      }
+    },
+    {
+      "@id": "#sourceInformation/11",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 31,
+      "sdtl:lineNumberStart": 31,
+      "sdtl:originalSourceText": "# This is unsupported",
+      "sdtl:sourceStartIndex": 942,
+      "sdtl:sourceStopIndex": 962
+    },
+    {
+      "@id": "#dataframeVariable/45",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/71",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#renames/2",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/4"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/3"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/12",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/12"
+      },
+      "sdtl:dataframeName": "replaced"
+    },
+    {
+      "@id": "#MergeDatasets/1",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/7"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/1"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/8"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/5"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/7"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/28",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#dataframeVariable/75",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#VariableSymbolExpression/26",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#MergeFileDescription/4",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/4"
+      },
+      "sdtl:fileName": "right2a",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#Rename/2",
+      "@type": "sdtl:Rename",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/5"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/6"
+      },
+      "sdtl:command": "Rename",
+      "sdtl:renames": {
+        "@id": "#renames/2"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/5"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/6",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/6"
+      },
+      "sdtl:dataframeName": "left_join"
+    },
+    {
+      "@id": "#sourceInformation/16",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 40,
+      "sdtl:lineNumberStart": 40,
+      "sdtl:originalSourceText": "replaced = left.update(right)",
+      "sdtl:sourceStartIndex": 1329,
+      "sdtl:sourceStopIndex": 1357
+    },
+    {
+      "@id": "#dataframeVariable/44",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#DataframeDescription/4",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/4"
+      },
+      "sdtl:dataframeName": "right2b"
+    },
+    {
+      "@id": "#RenameVariablesInventory/13",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/13"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/89",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#dataframeVariable/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#VariableSymbolExpression/33",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#RenameVariablesInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/4"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/85",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/29",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#DataframeInventory/22",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/12"
+      }
+    },
+    {
+      "@id": "#RenamePair/13",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/43"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/42"
+      }
+    },
+    {
+      "@id": "#MergeDatasets/7",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/19"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/7"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/20"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/15"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/7",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/39",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#DataframeInventory/28",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/15"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/26",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/14"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/37",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#dataframeVariable/20",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/56",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#dataframeVariable/30",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#DataframeDescription/8",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/8"
+      },
+      "sdtl:dataframeName": "right_join_sort"
+    },
+    {
+      "@id": "#MergeFilesInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/3"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/4"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#MergeFileDescription/12",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/12"
+      },
+      "sdtl:fileName": "right2b",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#VariableSymbolExpression/34",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_right"
+    },
+    {
+      "@id": "#VariableSymbolExpression/16",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableSymbolExpression/27",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#dataframeVariable/41",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#Load/2",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/2"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileName": "right.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#sourceInformation/15",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 39,
+      "sdtl:lineNumberStart": 39,
+      "sdtl:originalSourceText": "combined = left.combine_first(right)",
+      "sdtl:sourceStartIndex": 1292,
+      "sdtl:sourceStopIndex": 1327
+    },
+    {
+      "@id": "#VariableSymbolExpression/46",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "rowID"
+    },
+    {
+      "@id": "#VariableSymbolExpression/48",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_x"
+    },
+    {
+      "@id": "#dataframeVariable/66",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#dataframeVariable/73",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#sourceInformation/5",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 24,
+      "sdtl:lineNumberStart": 24,
+      "sdtl:originalSourceText": "right2b = right.rename(columns={\"famID2\": \"famID\"})",
+      "sdtl:sourceStartIndex": 575,
+      "sdtl:sourceStopIndex": 625
+    },
+    {
+      "@id": "#DropVariablesInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#VariableSymbolExpression/35"
+      },
+      "rdf:_2": {
+        "@id": "#VariableSymbolExpression/36"
+      },
+      "rdf:_3": {
+        "@id": "#VariableSymbolExpression/37"
+      }
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 22,
+      "sdtl:lineNumberStart": 22,
+      "sdtl:originalSourceText": "right = pd.read_csv(\"right.csv\")",
+      "sdtl:sourceStartIndex": 490,
+      "sdtl:sourceStopIndex": 521
+    },
+    {
+      "@id": "#MergeFileDescription/21",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/15"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": false,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#sourceInformation/19",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 44,
+      "sdtl:lineNumberStart": 44,
+      "sdtl:originalSourceText": "index_merge = left.merge(right, left_index=True, right_index=True)",
+      "sdtl:sourceStartIndex": 1472,
+      "sdtl:sourceStopIndex": 1537
+    },
+    {
+      "@id": "#dataframeVariable/76",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#sourceInformation/10",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 30,
+      "sdtl:lineNumberStart": 30,
+      "sdtl:originalSourceText": "# default suffixes",
+      "sdtl:sourceStartIndex": 872,
+      "sdtl:sourceStopIndex": 889
+    },
+    {
+      "@id": "#MergeFileDescription/5",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/5"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#dataframeVariable/11",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#DataframeDescription/9",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/9"
+      },
+      "sdtl:dataframeName": "outer_join"
+    },
+    {
+      "@id": "#renames/1",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/2"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/38",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#MergeFileDescription/20",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/14"
+      },
+      "sdtl:fileName": "right",
+      "sdtl:mergeByNames": {
+        "@id": "#VariableSymbolExpression/46"
+      },
+      "sdtl:mergeType": "OneToOne",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#VariableSymbolExpression/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "caseID"
+    },
+    {
+      "@id": "#RenamePair/9",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/27"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/26"
+      }
+    },
+    {
+      "@id": "#VariableListExpression/1",
+      "@type": "sdtl:VariableListExpression",
+      "sdtl:Variables": {
+        "@id": "#VariablesInventory/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/46",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#DataframeInventory/23",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/16",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:DropVariables": {
+        "@id": "#DropVariablesInventory/1"
+      },
+      "sdtl:fileName": "right",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": false,
+      "sdtl:update": "Replace"
+    },
+    {
+      "@id": "#sourceInformation/18",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 43,
+      "sdtl:lineNumberStart": 43,
+      "sdtl:originalSourceText": "key_merge = left.merge(right, left_on=\"caseID\", right_on=\"rowID\")",
+      "sdtl:sourceStartIndex": 1406,
+      "sdtl:sourceStopIndex": 1470
+    },
+    {
+      "@id": "#VariableInventory/6",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/24"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/25"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/26"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/27"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/28"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/29"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/30"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/13",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#RenamePair/6",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/19"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/18"
+      }
+    },
+    {
+      "@id": "#VariableInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/5"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/6"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/7"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/8"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/65",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID2"
+    },
+    {
+      "@id": "#VariablesInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#VariableSymbolExpression/10"
+      }
+    },
+    {
+      "@id": "#MergeFilesInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#MergeFileDescription/7"
+      },
+      "rdf:_2": {
+        "@id": "#MergeFileDescription/8"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 23,
+      "sdtl:lineNumberStart": 23,
+      "sdtl:originalSourceText": "right2a = right.rename(columns={\"rowID\": \"caseID\"})",
+      "sdtl:sourceStartIndex": 523,
+      "sdtl:sourceStopIndex": 573
+    },
+    {
+      "@id": "#RenameVariablesInventory/11",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/11"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/69",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#dataframeVariable/42",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#dataframeVariable/14",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#RenameVariablesInventory/16",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/16"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/18",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:DropVariables": {
+        "@id": "#DropVariablesInventory/2"
+      },
+      "sdtl:fileName": "right",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": false,
+      "sdtl:update": "UpdateMissing"
+    },
+    {
+      "@id": "#VariableInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/9"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/10"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/11"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/12"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/16",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/9"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/40",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#VariableInventory/11",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/59"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/60"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/61"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/62"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/63"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/64"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/65"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "rowID"
+    },
+    {
+      "@id": "#MergeDatasets/11",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/27"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/11"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/28"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/19"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/27",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/15",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#DropVariablesInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#VariableSymbolExpression/38"
+      },
+      "rdf:_2": {
+        "@id": "#VariableSymbolExpression/39"
+      },
+      "rdf:_3": {
+        "@id": "#VariableSymbolExpression/40"
+      }
+    },
+    {
+      "@id": "#VariableInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/13"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/14"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/15"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/16"
+      }
+    },
+    {
+      "@id": "#RenamePair/3",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/12"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/11"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#MergeDatasets/3",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/11"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/3"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/12"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/15"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/9"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/53",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "firstName"
+    },
+    {
+      "@id": "#dataframeVariable/33",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#DataframeDescription/15",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/15"
+      },
+      "sdtl:dataframeName": "index_merge"
+    },
+    {
+      "@id": "#dataframeVariable/13",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "rowID"
+    },
+    {
+      "@id": "#dataframeVariable/72",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income"
+    },
+    {
+      "@id": "#RenameVariablesInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/1"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/42",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#VariableInventory/8",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/38"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/39"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/40"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/41"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/42"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/43"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/44"
+      }
+    },
+    {
+      "@id": "#Comment/3",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " default suffixes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/10"
+      }
+    },
+    {
+      "@id": "#MergeDatasets/6",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/17"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/6"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/18"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableSymbolExpression/30"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/14"
+      }
+    },
+    {
+      "@id": "#RenameVariablesInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/5"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/11",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#DataframeInventory/15",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/39",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "lastName"
+    },
+    {
+      "@id": "#MergeFileDescription/17",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#VariableSymbolExpression/38",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "rowID"
+    },
+    {
+      "@id": "#dataframeVariable/80",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#dataframeVariable/24",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "caseID"
+    },
+    {
+      "@id": "#MergeDatasets/2",
+      "@type": "sdtl:MergeDatasets",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/9"
+      },
+      "sdtl:MergeFiles": {
+        "@id": "#MergeFilesInventory/2"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/10"
+      },
+      "sdtl:command": "MergeDatasets",
+      "sdtl:mergeByVariables": {
+        "@id": "#VariableListExpression/1"
+      },
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/8"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/9",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#VariableInventory/7",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/31"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/32"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/33"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/34"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/35"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/36"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/37"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/19",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/50",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_y"
+    },
+    {
+      "@id": "#MergeFileDescription/2",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/2"
+      },
+      "sdtl:fileName": "right2a",
+      "sdtl:mergeType": "OneToOne",
+      "sdtl:newRow": false,
+      "sdtl:update": "FillNew"
+    },
+    {
+      "@id": "#RenameVariablesInventory/12",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/12"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/25",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#MergeFileDescription/8",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/8"
+      },
+      "sdtl:fileName": "right2b",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#MergeFileDescription/13",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Sequential",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#VariableSymbolExpression/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "famID2"
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/84",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "income_x"
+    },
+    {
+      "@id": "#VariableSymbolExpression/44",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income"
+    },
+    {
+      "@id": "#RenamePair/4",
+      "@type": "sdtl:RenamePair",
+      "sdtl:newVariable": {
+        "@id": "#VariableSymbolExpression/14"
+      },
+      "sdtl:oldVariable": {
+        "@id": "#VariableSymbolExpression/13"
+      }
+    },
+    {
+      "@id": "#sourceInformation/6",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 26,
+      "sdtl:lineNumberStart": 26,
+      "sdtl:originalSourceText": "# This results in an empty dataframe",
+      "sdtl:sourceStartIndex": 657,
+      "sdtl:sourceStopIndex": 692
+    },
+    {
+      "@id": "#dataframeVariable/27",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "famID"
+    },
+    {
+      "@id": "#DataframeDescription/10",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/10"
+      },
+      "sdtl:dataframeName": "outer_suffix"
+    },
+    {
+      "@id": "#MergeFileDescription/9",
+      "@type": "sdtl:MergeFileDescription",
+      "sdtl:RenameVariables": {
+        "@id": "#RenameVariablesInventory/9"
+      },
+      "sdtl:fileName": "left",
+      "sdtl:mergeType": "Cartesian",
+      "sdtl:newRow": true,
+      "sdtl:update": "Master"
+    },
+    {
+      "@id": "#dataframeVariable/79",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "lastName"
+    },
+    {
+      "@id": "#VariableSymbolExpression/45",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "income_y"
+    },
+    {
+      "@id": "#RenameVariablesInventory/14",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#RenamePair/14"
+      }
+    },
+    {
+      "@id": "#VariableInventory/14",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/74"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/75"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/76"
+      },
+      "rdf:_4": {
+        "@id": "#dataframeVariable/77"
+      },
+      "rdf:_5": {
+        "@id": "#dataframeVariable/78"
+      },
+      "rdf:_6": {
+        "@id": "#dataframeVariable/79"
+      },
+      "rdf:_7": {
+        "@id": "#dataframeVariable/80"
+      },
+      "rdf:_8": {
+        "@id": "#dataframeVariable/81"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/11",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      },
+      "rdf:_2": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/14",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/14"
+      },
+      "sdtl:dataframeName": "key_merge"
+    },
+    {
+      "@id": "#sourceInformation/8",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 29,
+      "sdtl:lineNumberStart": 29,
+      "sdtl:originalSourceText": "left_join = left.merge(right2a, on=[\"caseID\"], how=\"left\")",
+      "sdtl:sourceStartIndex": 754,
+      "sdtl:sourceStopIndex": 811
+    },
+    {
+      "@id": "#sourceInformation/14",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 34,
+      "sdtl:lineNumberStart": 34,
+      "sdtl:originalSourceText": "outer_suffix = left.merge(right2b, how=\"outer\", on=\"famID\", suffixes=(\"_left\", \"_right\"))",
+      "sdtl:sourceStartIndex": 1097,
+      "sdtl:sourceStopIndex": 1185
+    }
+  ]
+}

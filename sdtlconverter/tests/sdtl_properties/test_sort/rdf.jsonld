@@ -1,0 +1,1017 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#dataframeVariable/27",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#DataframeInventory/18",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/9"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#DataframeInventory/5",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#VariableSymbolExpression/13",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "C"
+    },
+    {
+      "@id": "#VariableSymbolExpression/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#DataframeInventory/16",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/9",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/9"
+      },
+      "sdtl:dataframeName": "df"
+    },
+    {
+      "@id": "#DataframeDescription/8",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/8"
+      },
+      "sdtl:dataframeName": "df_na"
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/3"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/19",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#SortCases/1",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/2"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/3"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/1"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#VariableInventory/8",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/22"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/23"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/24"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/14",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#VariableInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/4"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/5"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/6"
+      }
+    },
+    {
+      "@id": "#VariableInventory/9",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/25"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/26"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/27"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/4",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/4"
+      },
+      "sdtl:dataframeName": "df_c"
+    },
+    {
+      "@id": "#DataframeInventory/7",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#SortCriterion/10",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/10"
+      }
+    },
+    {
+      "@id": "#SortCases/4",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/8"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/9"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/4"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/6"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/12",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/23",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/6",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#sourceInformation/7",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 20,
+      "sdtl:lineNumberStart": 20,
+      "sdtl:originalSourceText": "df_des = df.sort_values([\"A\", \"B\"], ascending=False)",
+      "sdtl:sourceStartIndex": 279,
+      "sdtl:sourceStopIndex": 330
+    },
+    {
+      "@id": "#dataframeVariable/22",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#SortCases/2",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/4"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/5"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/2"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "C"
+    },
+    {
+      "@id": "#SortCases/5",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/10"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/11"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/5"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/7"
+      }
+    },
+    {
+      "@id": "#VariableInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/10"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/11"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/12"
+      }
+    },
+    {
+      "@id": "#sourceInformation/9",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 24,
+      "sdtl:lineNumberStart": 24,
+      "sdtl:originalSourceText": "df_na = df.sort_values(by=\"C\", na_position=\"first\")",
+      "sdtl:sourceStartIndex": 441,
+      "sdtl:sourceStopIndex": 491
+    },
+    {
+      "@id": "#VariableSymbolExpression/12",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#SortCriterion/13",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "descending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/13"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/13",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#Save/1",
+      "@type": "sdtl:Save",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/18"
+      },
+      "sdtl:command": "Save",
+      "sdtl:fileName": "df.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/11"
+      }
+    },
+    {
+      "@id": "#SortCriteriaInventory/6",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/8"
+      },
+      "rdf:_2": {
+        "@id": "#SortCriterion/9"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/14",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#SortCriterion/1",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/1"
+      }
+    },
+    {
+      "@id": "#SortCriteriaInventory/8",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/11"
+      },
+      "rdf:_2": {
+        "@id": "#SortCriterion/12"
+      },
+      "rdf:_3": {
+        "@id": "#SortCriterion/13"
+      }
+    },
+    {
+      "@id": "#SortCriterion/3",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/3"
+      }
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileName": "df.csv",
+      "sdtl:software": "csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/11",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#DataframeDescription/7",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/7"
+      },
+      "sdtl:dataframeName": "df_list"
+    },
+    {
+      "@id": "#sourceInformation/5",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 17,
+      "sdtl:lineNumberStart": 17,
+      "sdtl:originalSourceText": "df_c = df.sort_values(by=[\"C\"])",
+      "sdtl:sourceStartIndex": 208,
+      "sdtl:sourceStopIndex": 238
+    },
+    {
+      "@id": "#SortCriteriaInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/6"
+      },
+      "rdf:_2": {
+        "@id": "#SortCriterion/7"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#sourceInformation/8",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 21,
+      "sdtl:lineNumberStart": 21,
+      "sdtl:originalSourceText": "df_list = df.sort_values(by=[\"A\", \"B\"], ascending=[False, True])",
+      "sdtl:sourceStartIndex": 332,
+      "sdtl:sourceStopIndex": 395
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 16,
+      "sdtl:lineNumberStart": 16,
+      "sdtl:originalSourceText": "df_b = df.sort_values(by=\"B\")",
+      "sdtl:sourceStartIndex": 178,
+      "sdtl:sourceStopIndex": 206
+    },
+    {
+      "@id": "#SortCriteriaInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/17",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#SortCases/6",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/12"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/13"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/6"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/8"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#DataframeInventory/13",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/7"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#DataframeInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#SortCases/3",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/6"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/7"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/3"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/5"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/9",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/5"
+      }
+    },
+    {
+      "@id": "#VariableInventory/7",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/19"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/20"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/21"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/10",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#DataframeDescription/2",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/2"
+      },
+      "sdtl:dataframeName": "df_a"
+    },
+    {
+      "@id": "#SortCriterion/6",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "descending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/6"
+      }
+    },
+    {
+      "@id": "#VariableInventory/5",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/13"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/14"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/15"
+      }
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 15,
+      "sdtl:lineNumberStart": 15,
+      "sdtl:originalSourceText": "df_a = df.sort_values(\"A\")",
+      "sdtl:sourceStartIndex": 151,
+      "sdtl:sourceStopIndex": 176
+    },
+    {
+      "@id": "#DataframeInventory/11",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/6"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/18",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#DataframeInventory/17",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/9"
+      }
+    },
+    {
+      "@id": "#VariableSymbolExpression/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#SortCriteriaInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/4"
+      },
+      "rdf:_2": {
+        "@id": "#SortCriterion/5"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/3",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/3"
+      },
+      "sdtl:dataframeName": "df_b"
+    },
+    {
+      "@id": "#SortCriteriaInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/2"
+      }
+    },
+    {
+      "@id": "#SortCriterion/2",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/2"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#VariableSymbolExpression/10",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "C"
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 13,
+      "sdtl:lineNumberStart": 13,
+      "sdtl:originalSourceText": "df = pd.read_csv(\"df.csv\")",
+      "sdtl:sourceStartIndex": 123,
+      "sdtl:sourceStopIndex": 148
+    },
+    {
+      "@id": "#SortCriterion/5",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/5"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/8",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#VariableInventory/6",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/16"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/17"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/18"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/6",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/6"
+      },
+      "sdtl:dataframeName": "df_des"
+    },
+    {
+      "@id": "#SortCriterion/11",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "descending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/11"
+      }
+    },
+    {
+      "@id": "#SortCriterion/4",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/4"
+      }
+    },
+    {
+      "@id": "#SortCriterion/8",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "descending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/8"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/20",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#SortCriteriaInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/3"
+      }
+    },
+    {
+      "@id": "#SortCriterion/9",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/9"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/12",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#dataframeVariable/15",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#dataframeVariable/25",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#sourceInformation/10",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 26,
+      "sdtl:lineNumberStart": 26,
+      "sdtl:originalSourceText": "df.sort_values([\"A\", \"B\", \"C\"], inplace=True, ascending=[False, True, False], na_position=\"first\")",
+      "sdtl:sourceStartIndex": 494,
+      "sdtl:sourceStopIndex": 591
+    },
+    {
+      "@id": "#VariableSymbolExpression/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#dataframeVariable/16",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#VariableSymbolExpression/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "B"
+    },
+    {
+      "@id": "#dataframeVariable/21",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_10": {
+        "@id": "#SortCases/8"
+      },
+      "rdf:_11": {
+        "@id": "#Save/1"
+      },
+      "rdf:_2": {
+        "@id": "#Load/1"
+      },
+      "rdf:_3": {
+        "@id": "#SortCases/1"
+      },
+      "rdf:_4": {
+        "@id": "#SortCases/2"
+      },
+      "rdf:_5": {
+        "@id": "#SortCases/3"
+      },
+      "rdf:_6": {
+        "@id": "#SortCases/4"
+      },
+      "rdf:_7": {
+        "@id": "#SortCases/5"
+      },
+      "rdf:_8": {
+        "@id": "#SortCases/6"
+      },
+      "rdf:_9": {
+        "@id": "#SortCases/7"
+      }
+    },
+    {
+      "@id": "#VariableInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/7"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/8"
+      },
+      "rdf:_3": {
+        "@id": "#dataframeVariable/9"
+      }
+    },
+    {
+      "@id": "#SortCases/8",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/16"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/17"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/8"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/10"
+      }
+    },
+    {
+      "@id": "#SortCriteriaInventory/7",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#SortCriterion/10"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/11",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#sourceInformation/11",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 28,
+      "sdtl:lineNumberStart": 28,
+      "sdtl:originalSourceText": "df.to_csv(\"df.csv\")",
+      "sdtl:sourceStartIndex": 594,
+      "sdtl:sourceStopIndex": 612
+    },
+    {
+      "@id": "#dataframeVariable/26",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "B"
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\n    A B C\n--+--------\n0 | 3 4 5\n1 | 3 2 2\n2 | 1 1 NaN\n3 | 2 5 9\n4 | 4 3 4\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/24",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#SortCases/7",
+      "@type": "sdtl:SortCases",
+      "sdtl:ConsumesDataframe": {
+        "@id": "#DataframeInventory/14"
+      },
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/15"
+      },
+      "sdtl:SortCriteria": {
+        "@id": "#SortCriteriaInventory/7"
+      },
+      "sdtl:command": "SortCases",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/9"
+      }
+    },
+    {
+      "@id": "#SortCriterion/12",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "ascending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/12"
+      }
+    },
+    {
+      "@id": "#sourceInformation/6",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 19,
+      "sdtl:lineNumberStart": 19,
+      "sdtl:originalSourceText": "df_ab = df.sort_values(by=[\"A\", \"B\"])",
+      "sdtl:sourceStartIndex": 241,
+      "sdtl:sourceStopIndex": 277
+    },
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "A"
+    },
+    {
+      "@id": "#VariableSymbolExpression/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:variableName": "A"
+    },
+    {
+      "@id": "#dataframeVariable/9",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "C"
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 12,
+      "sdtl:lineNumberStart": 4,
+      "sdtl:originalSourceText": "\"\"\"\n    A B C\n--+--------\n0 | 3 4 5\n1 | 3 2 2\n2 | 1 1 NaN\n3 | 2 5 9\n4 | 4 3 4\n\"\"\"",
+      "sdtl:sourceStartIndex": 41,
+      "sdtl:sourceStopIndex": 121
+    },
+    {
+      "@id": "#SortCriterion/7",
+      "@type": "sdtl:SortCriterion",
+      "sdtl:sortDirection": "descending",
+      "sdtl:variable": {
+        "@id": "#VariableSymbolExpression/7"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/15",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/8"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/5",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/5"
+      },
+      "sdtl:dataframeName": "df_ab"
+    }
+  ]
+}

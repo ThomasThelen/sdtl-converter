@@ -1,0 +1,351 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "sdtl": "https://rdf-vocabulary.ddialliance.org/sdtl#"
+  },
+  "@graph": [
+    {
+      "@id": "#Comment/4",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " in this context, it's a regular string",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/7"
+      }
+    },
+    {
+      "@id": "#Program/1",
+      "@type": "sdtl:Program",
+      "sdtl:CommandCount": 3,
+      "sdtl:Parser": "stata-sdtl-converter",
+      "sdtl:ParserVersion": "SDTL0.3",
+      "sdtl:SourceFileName": "N/A",
+      "sdtl:SourceLanguage": "stata",
+      "sdtl:commands": {
+        "@id": "#CommandInventory/1"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/2",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/2"
+      }
+    },
+    {
+      "@id": "#sourceInformation/5",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 10,
+      "sdtl:lineNumberStart": 10,
+      "sdtl:originalSourceText": "xls_df = pd.read_excel('data.xlsx')",
+      "sdtl:sourceStartIndex": 220,
+      "sdtl:sourceStopIndex": 254
+    },
+    {
+      "@id": "#sourceInformation/8",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 12,
+      "sdtl:lineNumberStart": 12,
+      "sdtl:originalSourceText": "stata_df = pd.read_stata('''data.dta''')",
+      "sdtl:sourceStartIndex": 341,
+      "sdtl:sourceStopIndex": 380
+    },
+    {
+      "@id": "#dataframeVariable/6",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    },
+    {
+      "@id": "#DataframeDescription/3",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/3"
+      },
+      "sdtl:dataframeName": "sas_df"
+    },
+    {
+      "@id": "#sourceInformation/3",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 7,
+      "sdtl:lineNumberStart": 7,
+      "sdtl:originalSourceText": "# and make sure to test all four types of quotes",
+      "sdtl:sourceStartIndex": 137,
+      "sdtl:sourceStopIndex": 184
+    },
+    {
+      "@id": "#dataframeVariable/5",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "a"
+    },
+    {
+      "@id": "#dataframeVariable/7",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "a"
+    },
+    {
+      "@id": "#Load/1",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/1"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileFormat": "csv",
+      "sdtl:fileName": "data.csv",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/4"
+      }
+    },
+    {
+      "@id": "#Comment/2",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "\nread in the various files\n",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/2"
+      }
+    },
+    {
+      "@id": "#VariableInventory/4",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/7"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/8"
+      }
+    },
+    {
+      "@id": "#VariableInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/1"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/2"
+      }
+    },
+    {
+      "@id": "#DataframeDescription/4",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/4"
+      },
+      "sdtl:dataframeName": "stata_df"
+    },
+    {
+      "@id": "#Comment/1",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": "Test the various methods of reading a file (and also integrating comments)",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/1"
+      }
+    },
+    {
+      "@id": "#VariableInventory/2",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/3"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/4"
+      }
+    },
+    {
+      "@id": "#Load/3",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/3"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileFormat": "sas7bdat",
+      "sdtl:fileName": "data.sas7bdat",
+      "sdtl:software": "SAS",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/6"
+      }
+    },
+    {
+      "@id": "#sourceInformation/2",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 7,
+      "sdtl:lineNumberStart": 5,
+      "sdtl:originalSourceText": "'''\nread in the various files\n'''",
+      "sdtl:sourceStartIndex": 104,
+      "sdtl:sourceStopIndex": 136
+    },
+    {
+      "@id": "#DataframeInventory/3",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/3"
+      }
+    },
+    {
+      "@id": "#VariableInventory/3",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#dataframeVariable/5"
+      },
+      "rdf:_2": {
+        "@id": "#dataframeVariable/6"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/3",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "a"
+    },
+    {
+      "@id": "#dataframeVariable/4",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    },
+    {
+      "@id": "#DataframeDescription/2",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/2"
+      },
+      "sdtl:dataframeName": "xls_df"
+    },
+    {
+      "@id": "#DataframeDescription/1",
+      "@type": "sdtl:DataframeDescription",
+      "sdtl:VariableInventory": {
+        "@id": "#VariableInventory/1"
+      },
+      "sdtl:dataframeName": "csv_df"
+    },
+    {
+      "@id": "#Comment/3",
+      "@type": "sdtl:Comment",
+      "sdtl:command": "Comment",
+      "sdtl:commentText": " and make sure to test all four types of quotes",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/3"
+      }
+    },
+    {
+      "@id": "#sourceInformation/4",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 9,
+      "sdtl:lineNumberStart": 9,
+      "sdtl:originalSourceText": "csv_df = pd.read_csv(\"data.csv\")",
+      "sdtl:sourceStartIndex": 187,
+      "sdtl:sourceStopIndex": 218
+    },
+    {
+      "@id": "#CommandInventory/1",
+      "@type": "rdf:Seq",
+      "rdf:_1": {
+        "@id": "#Comment/1"
+      },
+      "rdf:_2": {
+        "@id": "#Comment/2"
+      },
+      "rdf:_3": {
+        "@id": "#Comment/3"
+      },
+      "rdf:_4": {
+        "@id": "#Load/1"
+      },
+      "rdf:_5": {
+        "@id": "#Load/2"
+      },
+      "rdf:_6": {
+        "@id": "#Load/3"
+      },
+      "rdf:_7": {
+        "@id": "#Comment/4"
+      },
+      "rdf:_8": {
+        "@id": "#Load/4"
+      }
+    },
+    {
+      "@id": "#Load/2",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/2"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileFormat": "xlsx",
+      "sdtl:fileName": "data.xlsx",
+      "sdtl:software": "Excel",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/5"
+      }
+    },
+    {
+      "@id": "#DataframeInventory/4",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/4"
+      }
+    },
+    {
+      "@id": "#Load/4",
+      "@type": "sdtl:Load",
+      "sdtl:ProducesDataframe": {
+        "@id": "#DataframeInventory/4"
+      },
+      "sdtl:command": "Load",
+      "sdtl:fileFormat": "dta",
+      "sdtl:fileName": "data.dta",
+      "sdtl:software": "Stata",
+      "sdtl:sourceInformation": {
+        "@id": "#sourceInformation/8"
+      }
+    },
+    {
+      "@id": "#sourceInformation/1",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 1,
+      "sdtl:lineNumberStart": 1,
+      "sdtl:originalSourceText": "\"\"\"Test the various methods of reading a file (and also integrating comments)\"\"\"",
+      "sdtl:sourceStartIndex": 1,
+      "sdtl:sourceStopIndex": 80
+    },
+    {
+      "@id": "#DataframeInventory/1",
+      "@type": "rdf:Bag",
+      "rdf:_1": {
+        "@id": "#DataframeDescription/1"
+      }
+    },
+    {
+      "@id": "#dataframeVariable/1",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "a"
+    },
+    {
+      "@id": "#sourceInformation/6",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 11,
+      "sdtl:lineNumberStart": 11,
+      "sdtl:originalSourceText": "sas_df = pd.read_sas(\"\"\"data.sas7bdat\"\"\")",
+      "sdtl:sourceStartIndex": 256,
+      "sdtl:sourceStopIndex": 296
+    },
+    {
+      "@id": "#dataframeVariable/2",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    },
+    {
+      "@id": "#sourceInformation/7",
+      "@type": "sdtl:SourceInformation",
+      "sdtl:lineNumberEnd": 11,
+      "sdtl:lineNumberStart": 11,
+      "sdtl:originalSourceText": "# in this context, it's a regular string",
+      "sdtl:sourceStartIndex": 300,
+      "sdtl:sourceStopIndex": 339
+    },
+    {
+      "@id": "#dataframeVariable/8",
+      "@type": "sdtl:VariableSymbolExpression",
+      "sdtl:VariableName": "b"
+    }
+  ]
+}

@@ -24,4 +24,3 @@ def test_new_graph():
     converter = Converter('test_sdtl.json')
     namespaces = [x[0] for x in converter.graph.namespaces()]
     assert 'sdtl' in namespaces
-    assert 'provone' in namespaces

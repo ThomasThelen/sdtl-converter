@@ -1,0 +1,115 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#Program/1> a sdtl:Program ;
+    sdtl:CommandCount 3 ;
+    sdtl:Parser "stata-sdtl-converter" ;
+    sdtl:ParserVersion "SDTL0.3" ;
+    sdtl:SourceFileName "N/A" ;
+    sdtl:SourceLanguage "stata" ;
+    sdtl:commands <#CommandInventory/1> .
+
+<#CommandInventory/1> a rdf:Seq ;
+    rdf:_1 <#Comment/1> ;
+    rdf:_2 <#Load/1> ;
+    rdf:_3 <#Save/1> ;
+    rdf:_4 <#Save/2> ;
+    rdf:_5 <#Save/3> .
+
+<#Comment/1> a sdtl:Comment ;
+    sdtl:command "Comment" ;
+    sdtl:commentText "Test the various methods of writing a DataFrame to a file." ;
+    sdtl:sourceInformation <#sourceInformation/1> .
+
+<#DataframeInventory/1> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/2> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/3> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#DataframeInventory/4> a rdf:Bag ;
+    rdf:_1 <#DataframeDescription/1> .
+
+<#Load/1> a sdtl:Load ;
+    sdtl:ProducesDataframe <#DataframeInventory/1> ;
+    sdtl:command "Load" ;
+    sdtl:fileFormat "csv" ;
+    sdtl:fileName "df.csv" ;
+    sdtl:sourceInformation <#sourceInformation/2> .
+
+<#Save/1> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/2> ;
+    sdtl:command "Save" ;
+    sdtl:fileFormat "csv" ;
+    sdtl:fileName "data.csv" ;
+    sdtl:sourceInformation <#sourceInformation/3> .
+
+<#Save/2> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/3> ;
+    sdtl:command "Save" ;
+    sdtl:fileFormat "xlsx" ;
+    sdtl:fileName "data.xlsx" ;
+    sdtl:software "Excel" ;
+    sdtl:sourceInformation <#sourceInformation/4> .
+
+<#Save/3> a sdtl:Save ;
+    sdtl:ConsumesDataframe <#DataframeInventory/4> ;
+    sdtl:command "Save" ;
+    sdtl:fileFormat "dta" ;
+    sdtl:fileName "data.dta" ;
+    sdtl:software "Stata" ;
+    sdtl:sourceInformation <#sourceInformation/5> .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#dataframeVariable/1> ;
+    rdf:_2 <#dataframeVariable/2> .
+
+<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "a" .
+
+<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "b" .
+
+<#sourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 1 ;
+    sdtl:lineNumberStart 1 ;
+    sdtl:originalSourceText "\"\"\"Test the various methods of writing a DataFrame to a file.\"\"\"" ;
+    sdtl:sourceStartIndex 1 ;
+    sdtl:sourceStopIndex 64 .
+
+<#sourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 5 ;
+    sdtl:lineNumberStart 5 ;
+    sdtl:originalSourceText "df = pd.read_csv(\"df.csv\")" ;
+    sdtl:sourceStartIndex 88 ;
+    sdtl:sourceStopIndex 113 .
+
+<#sourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 7 ;
+    sdtl:lineNumberStart 7 ;
+    sdtl:originalSourceText "df.to_csv(\"data.csv\")" ;
+    sdtl:sourceStartIndex 116 ;
+    sdtl:sourceStopIndex 136 .
+
+<#sourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 8 ;
+    sdtl:lineNumberStart 8 ;
+    sdtl:originalSourceText "df.to_excel(\"data.xlsx\")" ;
+    sdtl:sourceStartIndex 138 ;
+    sdtl:sourceStopIndex 161 .
+
+<#sourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:lineNumberEnd 9 ;
+    sdtl:lineNumberStart 9 ;
+    sdtl:originalSourceText "df.to_stata(\"data.dta\")" ;
+    sdtl:sourceStartIndex 163 ;
+    sdtl:sourceStopIndex 185 .
+
+<#DataframeDescription/1> a sdtl:DataframeDescription ;
+    sdtl:VariableInventory <#VariableInventory/1> ;
+    sdtl:dataframeName "df" .
+

@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdtlconverter",
-    version="0.0.1",
+    version="1.0",
     author="Thomas Thelen",
     author_email="thelen@nceas.ucsb.edu",
-    description="A tool for converting SDTL into a ProvONE data model.",
+    description="A tool for converting SDTL JSON files into the SDTL graph representation.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ThomasThelen/sdtl-provone",

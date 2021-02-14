@@ -10,7 +10,7 @@ def test_write_read():
 
     """
 
-    converter = ConverterV1("./integrated/single_load/load.json")
+    converter = ConverterV1("./integrated/single_load/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_jsonld("test_jsonld.jsonld")
     try:
@@ -26,7 +26,7 @@ def test_namespaces():
     """
     Tests that the namespaces are correctly prefixed
     """
-    converter = ConverterV1("./integrated/single_load/load.json")
+    converter = ConverterV1("./integrated/single_load/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_jsonld("test_jsonld.jsonld")
     try:

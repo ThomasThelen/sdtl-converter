@@ -1,0 +1,110 @@
+{
+  "SourceFileName" : "N/A",
+  "SourceLanguage" : "stata",
+  "CommandCount" : 3,
+  "Messages" : [ ],
+  "Parser" : "stata-sdtl-converter",
+  "ParserVersion" : "SDTL0.3",
+  "commands" : [
+	{
+		"$type": "Comment",
+		"command": "Comment",
+		"commentText": "Test the various methods of writing a DataFrame to a file.",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 1,
+			"lineNumberEnd": 1,
+			"sourceStartIndex": 1,
+			"sourceStopIndex": 64,
+			"originalSourceText": "\"\"\"Test the various methods of writing a DataFrame to a file.\"\"\""
+		}]
+	},
+	{
+		"$type": "NoTransformOp",
+		"command": "NoTransformOp",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 3,
+			"lineNumberEnd": 3,
+			"sourceStartIndex": 67,
+			"sourceStopIndex": 85,
+			"originalSourceText": "import pandas as pd"
+		}]
+
+	},
+	{
+		"$type": "Load",
+		"command": "Load",
+		"fileName": "df.csv",
+		"producesDataframe":
+		[
+			{
+				"dataframeName": "df",
+				"variableInventory": ["a", "b"]
+			}
+		],
+		"fileFormat": "csv",
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 5,
+			"lineNumberEnd": 5,
+			"sourceStartIndex": 88,
+			"sourceStopIndex": 113,
+			"originalSourceText": "df = pd.read_csv(\"df.csv\")"
+		}]
+	},
+	{
+		"$type": "Save",
+		"command": "Save",
+		"fileName": "data.csv",
+		"fileFormat": "csv",
+		"consumesDataframe": [{"dataframeName": "df", "variableInventory": ["a", "b"]}],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 7,
+			"lineNumberEnd": 7,
+			"sourceStartIndex": 116,
+			"sourceStopIndex": 136,
+			"originalSourceText": "df.to_csv(\"data.csv\")"
+		}]
+	},
+	{
+		"$type": "Save",
+		"command": "Save",
+		"fileName": "data.xlsx",
+		"fileFormat": "xlsx",
+		"software": "Excel",
+		"consumesDataframe": [{"dataframeName": "df", "variableInventory": ["a", "b"]}],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 8,
+			"lineNumberEnd": 8,
+			"sourceStartIndex": 138,
+			"sourceStopIndex": 161,
+			"originalSourceText": "df.to_excel(\"data.xlsx\")"
+		}]
+	},
+	{
+		"$type": "Save",
+		"command": "Save",
+		"fileName": "data.dta",
+		"fileFormat": "dta",
+		"software": "Stata",
+		"consumesDataframe": [{"dataframeName": "df", "variableInventory": ["a", "b"]}],
+		"sourceInformation":
+		[{
+			"$type": "SourceInformation",
+			"lineNumberStart": 9,
+			"lineNumberEnd": 9,
+			"sourceStartIndex": 163,
+			"sourceStopIndex": 185,
+			"originalSourceText": "df.to_stata(\"data.dta\")"
+		}]
+	}
+  ]
+}
