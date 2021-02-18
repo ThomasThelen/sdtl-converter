@@ -47,12 +47,12 @@ class ConverterV03(Converter):
             for sdtl_object in sdtl:
                 # Create a new object
                 object_identifier = self.id_manager.get_id(sdtl_object['$type'])
-                prop_type = self.id_manager.get_property_id(sdtl_object['$type'])
 
+                prop_type = self.id_manager.get_property_id(self.id_manager.to_upper(sdtl_object['$type']))
                 self.graph.add((object_identifier, rdflib.RDF.type, prop_type))
                 if parent_id:
                     # Add a relation to the parent, connecting the two nodes
-                    self.graph.add((parent_id, prop_type, rdflib.URIRef(object_identifier)))
+                    self.graph.add((parent_id, self.id_manager.prop_type, rdflib.URIRef(object_identifier)))
                 new_parent = object_identifier
                 self.sdtl_to_rdf(sdtl_object, new_parent)
             return parent_id
@@ -75,8 +75,8 @@ class ConverterV03(Converter):
                 # Create a new RDF object
                 sdtl_type = sdtl[prop]["$type"]
                 object_identifier = self.id_manager.get_id(sdtl_type)
-                prop_type = self.id_manager.get_property_id(prop)
-                uri_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{sdtl_type}')
+                prop_type = self.id_manager.get_property_id(self.id_manager.to_upper(prop))
+                uri_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{self.id_manager.to_upper(sdtl_type)}')
                 self.graph.add((object_identifier, rdflib.RDF.type, uri_type))
                 # Loop over each object inside and add it to the graph
                 self.sdtl_to_rdf(sdtl[prop], object_identifier)
@@ -94,8 +94,7 @@ class ConverterV03(Converter):
                     # Create a new object
                     object_identifier = self.id_manager.get_id(prop)
                     prop_type = self.id_manager.get_property_id(prop)
-                    uri_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{sdtl_expression["$type"]}')
-
+                    uri_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{self.id_manager.to_upper(sdtl_expression["$type"])}')
                     self.graph.add((object_identifier, rdflib.RDF.type, uri_type))
                     if parent_id:
                             # Add a relation to the parent, connecting the two nodes
@@ -198,14 +197,14 @@ class ConverterV03(Converter):
                     self.graph.add((commands_id, rdflib.RDF.type, rdflib.RDF.Seq))
 
                     # Connect the Program to the commands rdf:seq via sdtl:commands
-                    self.graph.add((script_id, self.id_manager.sdtl_namespace.commands, commands_id))
+                    self.graph.add((script_id, self.id_manager.sdtl_namespace.Commands, commands_id))
 
                     command_count = 0
                     for command in self.sdtl['commands']:
                         command_count += 1
                         # Create the new command node
                         command_id = self.id_manager.get_id(command["$type"])
-                        predicate = f'{self.id_manager.sdtl_namespace}{command["$type"]}'
+                        predicate = f'{self.id_manager.sdtl_namespace}{self.id_manager.to_upper(command["$type"])}'
                         self.graph.add((command_id,
                                         rdflib.RDF.type,
                                         rdflib.URIRef(predicate)))
@@ -297,7 +296,7 @@ class ConverterV03(Converter):
             if 'dataframeName' in dataframe:
                 self.dataframes[dataframe['dataframeName']] = dataframe_description_id
                 self.graph.add((dataframe_description_id,
-                                self.id_manager.sdtl_namespace.dataframeName,
+                                self.id_manager.sdtl_namespace.DataframeName,
                                 rdflib.Literal(dataframe['dataframeName'])))
 
             # Create & add the variables to the 'ProducesDataFrame' node
@@ -330,7 +329,7 @@ class ConverterV03(Converter):
         for dataframe_variable in dataframe['variableInventory']:
             variable_count += 1
             # dataframeVariable is made up by me
-            new_variable_id = self.id_manager.get_id("dataframeVariable")
+            new_variable_id = self.id_manager.get_id("VariableSymbolExpression")
             self.graph.add((new_variable_id,
                             rdflib.RDF.type,
                             self.id_manager.sdtl_namespace.VariableSymbolExpression))

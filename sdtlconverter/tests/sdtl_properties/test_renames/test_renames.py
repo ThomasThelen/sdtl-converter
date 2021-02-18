@@ -57,7 +57,7 @@ def test_variable_names():
                 SELECT ?variable_expression_id ?variable_name
         WHERE {
             ?variable_expression_id rdf:type sdtl:VariableSymbolExpression .
-            ?variable_expression_id sdtl:variableName ?variable_name .
+            ?variable_expression_id sdtl:VariableName ?variable_name .
         }
     """
     res = converter.graph.query(query)
@@ -67,8 +67,8 @@ def test_variable_names():
     for row in res:
         expression_ids.append(row[0])
         variable_names.append(row[1])
-    assert len(expression_ids) == 14
-    assert len(variable_names) == 14
+    assert len(expression_ids) == 24
+    assert len(variable_names) == 24
     variables = ["A", "x", "one", "b", "two", "a", "B", "y"]
     for i in range(1, 13):
         assert rdflib.URIRef(f"#VariableSymbolExpression/{i}") in expression_ids

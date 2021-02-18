@@ -23,9 +23,9 @@ def test_sort():
             ?sort_cases_ids rdf:type sdtl:SortCases .
             ?sort_cases_ids sdtl:SortCriteria ?sort_criteria_inventory_ids .
             ?sort_criteria_inventory_ids rdf:_1 ?sort_criterion_ids .
-            ?sort_criterion_ids sdtl:sortDirection ?sort_direction .
-            ?sort_criterion_ids sdtl:variable ?var_exp_ids .
-            ?var_exp_ids sdtl:variableName ?var_name .
+            ?sort_criterion_ids sdtl:SortDirection ?sort_direction .
+            ?sort_criterion_ids sdtl:Variable ?var_exp_ids .
+            ?var_exp_ids sdtl:VariableName ?var_name .
         }
     """
     res = converter.graph.query(query)

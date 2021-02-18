@@ -37,7 +37,7 @@ def test_program_node():
         ?program_id sdtl:CommandCount ?command_count .
         ?program_id sdtl:Parser ?parser .
         ?program_id sdtl:ParserVersion ?parser_version .
-        ?program_id sdtl:commands ?commands_inventory
+        ?program_id sdtl:Commands ?commands_inventory
     }
     """
 

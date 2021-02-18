@@ -21,7 +21,7 @@ def test_get_kept_variables():
         ?keep_var_id rdf:type sdtl:KeepVariables .
         ?keep_var_id sdtl:Variables ?var_inventory_id .
         ?var_inventory_id rdf:_1 ?var_symbol_expression_id .
-        ?var_symbol_expression_id sdtl:variableName ?var_name .
+        ?var_symbol_expression_id sdtl:VariableName ?var_name .
     }
     """
     res = converter.graph.query(query)

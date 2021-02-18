@@ -29,8 +29,6 @@ class IdentifierManager:
         for key, value in sdtl_schema.items():
             lowercase_key = key[0].lower() + key[1:]
             self.counts[lowercase_key] = value
-        # for provone_term in provone_terms:
-        #    self.counts[provone_term] = 0
         for misc_term in misc_terms:
             self.counts[misc_term] = 0
 
@@ -38,21 +36,23 @@ class IdentifierManager:
         """
          Returns an identifier that follows the recommended convention class/count.
          Note that classes in RDF are CamelCase while classes in JSON
-         follow thisConvention.
+         follow thisConvention.  property_name might also be camelCase so uppercase
+         the first letter...
 
          :param property_name: The name of the property (usually an SDTL class)
          :return: A compliant URI
          """
         property_lowered = property_name[0].lower() + property_name[1:]
+        capitalzed_name = self.to_upper(property_lowered)
         if property_name in self.counts:
             self.counts[property_name] += 1
-            return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_name])))
+            return rdflib.URIRef('{}{}/{}'.format('#', capitalzed_name, str(self.counts[property_name])))
         elif property_lowered in self.counts:
             self.counts[property_lowered] += 1
-            return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_lowered])))
+            return rdflib.URIRef('{}{}/{}'.format('#', capitalzed_name, str(self.counts[property_lowered])))
         else:
             self.counts[property_lowered] = 1
-            return rdflib.URIRef('{}{}/{}'.format('#', property_name, str(self.counts[property_lowered])))
+            return rdflib.URIRef('{}{}/{}'.format('#', capitalzed_name, str(self.counts[property_lowered])))
 
     def get_property_id(self, sdtl_property) -> rdflib.URIRef:
         """
@@ -63,7 +63,7 @@ class IdentifierManager:
         :param sdtl_property:
         :return:
         """
-        return rdflib.URIRef(f'{self.sdtl_namespace}{sdtl_property}')
+        return rdflib.URIRef(f'{self.sdtl_namespace}{self.to_upper(sdtl_property)}')
 
     @staticmethod
     def to_lower(term):

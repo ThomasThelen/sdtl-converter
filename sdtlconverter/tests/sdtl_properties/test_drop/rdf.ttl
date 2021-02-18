@@ -4,43 +4,44 @@
 
 <#Program/1> a sdtl:Program ;
     sdtl:CommandCount 3 ;
+    sdtl:Commands <#CommandInventory/1> ;
     sdtl:Parser "stata-sdtl-converter" ;
     sdtl:ParserVersion "SDTL0.3" ;
     sdtl:SourceFileName "N/A" ;
-    sdtl:SourceLanguage "stata" ;
-    sdtl:commands <#CommandInventory/1> .
+    sdtl:SourceLanguage "stata" .
 
 <#CommandInventory/1> a rdf:Seq ;
-    rdf:_1 <#Comment/1> ;
-    rdf:_2 <#Load/1> ;
-    rdf:_3 <#DropVariables/1> ;
-    rdf:_4 <#DropVariables/2> ;
-    rdf:_5 <#DropVariables/3> ;
-    rdf:_6 <#DropVariables/4> ;
-    rdf:_7 <#Save/1> .
+    rdf:_1 <#NoTransformOp/1> ;
+    rdf:_2 <#Comment/1> ;
+    rdf:_3 <#Load/1> ;
+    rdf:_4 <#DropVariables/1> ;
+    rdf:_5 <#DropVariables/2> ;
+    rdf:_6 <#DropVariables/3> ;
+    rdf:_7 <#DropVariables/4> ;
+    rdf:_8 <#Save/1> .
 
 <#Comment/1> a sdtl:Comment ;
-    sdtl:command "Comment" ;
-    sdtl:commentText """
+    sdtl:Command "Comment" ;
+    sdtl:CommentText """
     A B C
 --+------
 0 | 1 4 7
 1 | 2 5 8
 2 | 3 6 9
 """ ;
-    sdtl:sourceInformation <#sourceInformation/1> .
+    sdtl:SourceInformation <#SourceInformation/2> .
 
 <#DataframeDescription/2> a sdtl:DataframeDescription ;
-    sdtl:VariableInventory <#VariableInventory/2> ;
-    sdtl:dataframeName "drop" .
+    sdtl:DataframeName "drop" ;
+    sdtl:VariableInventory <#VariableInventory/2> .
 
 <#DataframeDescription/3> a sdtl:DataframeDescription ;
-    sdtl:VariableInventory <#VariableInventory/3> ;
-    sdtl:dataframeName "drop_axis" .
+    sdtl:DataframeName "drop_axis" ;
+    sdtl:VariableInventory <#VariableInventory/3> .
 
 <#DataframeDescription/4> a sdtl:DataframeDescription ;
-    sdtl:VariableInventory <#VariableInventory/4> ;
-    sdtl:dataframeName "drop_sugar" .
+    sdtl:DataframeName "drop_sugar" ;
+    sdtl:VariableInventory <#VariableInventory/4> .
 
 <#DataframeInventory/1> a rdf:Bag ;
     rdf:_1 <#DataframeDescription/1> .
@@ -73,185 +74,196 @@
     rdf:_1 <#DataframeDescription/5> .
 
 <#DropVariables/1> a sdtl:DropVariables ;
+    sdtl:Command "DropVariables" ;
     sdtl:ConsumesDataframe <#DataframeInventory/2> ;
     sdtl:ProducesDataframe <#DataframeInventory/3> ;
-    sdtl:Variables <#VariablesInventory/1> ;
-    sdtl:command "DropVariables" ;
-    sdtl:sourceInformation <#sourceInformation/3> .
+    sdtl:SourceInformation <#SourceInformation/4> ;
+    sdtl:Variables <#VariablesInventory/1> .
 
 <#DropVariables/2> a sdtl:DropVariables ;
+    sdtl:Command "DropVariables" ;
     sdtl:ConsumesDataframe <#DataframeInventory/4> ;
     sdtl:ProducesDataframe <#DataframeInventory/5> ;
-    sdtl:Variables <#VariablesInventory/2> ;
-    sdtl:command "DropVariables" ;
-    sdtl:sourceInformation <#sourceInformation/4> .
+    sdtl:SourceInformation <#SourceInformation/5> ;
+    sdtl:Variables <#VariablesInventory/2> .
 
 <#DropVariables/3> a sdtl:DropVariables ;
+    sdtl:Command "DropVariables" ;
     sdtl:ConsumesDataframe <#DataframeInventory/6> ;
     sdtl:ProducesDataframe <#DataframeInventory/7> ;
-    sdtl:Variables <#VariablesInventory/3> ;
-    sdtl:command "DropVariables" ;
-    sdtl:sourceInformation <#sourceInformation/5> .
+    sdtl:SourceInformation <#SourceInformation/6> ;
+    sdtl:Variables <#VariablesInventory/3> .
 
 <#DropVariables/4> a sdtl:DropVariables ;
+    sdtl:Command "DropVariables" ;
     sdtl:ConsumesDataframe <#DataframeInventory/8> ;
     sdtl:ProducesDataframe <#DataframeInventory/9> ;
-    sdtl:Variables <#VariablesInventory/4> ;
-    sdtl:command "DropVariables" ;
-    sdtl:sourceInformation <#sourceInformation/6> .
+    sdtl:SourceInformation <#SourceInformation/7> ;
+    sdtl:Variables <#VariablesInventory/4> .
 
 <#Load/1> a sdtl:Load ;
+    sdtl:Command "Load" ;
+    sdtl:FileName "drop.csv" ;
     sdtl:ProducesDataframe <#DataframeInventory/1> ;
-    sdtl:command "Load" ;
-    sdtl:fileName "drop.csv" ;
-    sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/2> .
+    sdtl:Software "csv" ;
+    sdtl:SourceInformation <#SourceInformation/3> .
+
+<#NoTransformOp/1> a sdtl:NoTransformOp ;
+    sdtl:Command "NoTransformOp" ;
+    sdtl:SourceInformation <#SourceInformation/1> .
 
 <#Save/1> a sdtl:Save ;
+    sdtl:Command "Save" ;
     sdtl:ConsumesDataframe <#DataframeInventory/10> ;
-    sdtl:command "Save" ;
-    sdtl:fileName "drop.csv" ;
-    sdtl:software "csv" ;
-    sdtl:sourceInformation <#sourceInformation/7> .
+    sdtl:FileName "drop.csv" ;
+    sdtl:Software "csv" ;
+    sdtl:SourceInformation <#SourceInformation/8> .
 
-<#VariableInventory/1> a rdf:Seq ;
-    rdf:_1 <#dataframeVariable/1> ;
-    rdf:_2 <#dataframeVariable/2> ;
-    rdf:_3 <#dataframeVariable/3> .
+<#SourceInformation/1> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 1 ;
+    sdtl:LineNumberStart 1 ;
+    sdtl:OriginalSourceText "import pandas as pd" ;
+    sdtl:SourceStartIndex 1 ;
+    sdtl:SourceStopIndex 19 .
 
-<#VariableInventory/2> a rdf:Seq ;
-    rdf:_1 <#dataframeVariable/4> ;
-    rdf:_2 <#dataframeVariable/5> .
-
-<#VariableInventory/3> a rdf:Seq ;
-    rdf:_1 <#dataframeVariable/6> ;
-    rdf:_2 <#dataframeVariable/7> .
-
-<#VariableInventory/4> a rdf:Seq ;
-    rdf:_1 <#dataframeVariable/8> ;
-    rdf:_2 <#dataframeVariable/9> .
-
-<#VariableInventory/5> a rdf:Seq ;
-    rdf:_1 <#dataframeVariable/10> .
-
-<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
-    sdtl:variableName "A" .
-
-<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
-    sdtl:variableName "A" .
-
-<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
-    sdtl:variableName "A" .
-
-<#VariableSymbolExpression/4> a sdtl:VariableSymbolExpression ;
-    sdtl:variableName "B" .
-
-<#VariableSymbolExpression/5> a sdtl:VariableSymbolExpression ;
-    sdtl:variableName "C" .
-
-<#VariablesInventory/1> a rdf:Seq ;
-    rdf:_1 <#VariableSymbolExpression/1> .
-
-<#VariablesInventory/2> a rdf:Seq ;
-    rdf:_1 <#VariableSymbolExpression/2> .
-
-<#VariablesInventory/3> a rdf:Seq ;
-    rdf:_1 <#VariableSymbolExpression/3> .
-
-<#VariablesInventory/4> a rdf:Seq ;
-    rdf:_1 <#VariableSymbolExpression/4> ;
-    rdf:_2 <#VariableSymbolExpression/5> .
-
-<#dataframeVariable/1> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "A" .
-
-<#dataframeVariable/10> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "A" .
-
-<#dataframeVariable/2> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "B" .
-
-<#dataframeVariable/3> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "C" .
-
-<#dataframeVariable/4> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "B" .
-
-<#dataframeVariable/5> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "C" .
-
-<#dataframeVariable/6> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "B" .
-
-<#dataframeVariable/7> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "C" .
-
-<#dataframeVariable/8> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "B" .
-
-<#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
-    sdtl:VariableName "C" .
-
-<#sourceInformation/1> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 9 ;
-    sdtl:lineNumberStart 3 ;
-    sdtl:originalSourceText """\"\"\"
+<#SourceInformation/2> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 9 ;
+    sdtl:LineNumberStart 3 ;
+    sdtl:OriginalSourceText """\"\"\"
     A B C
 --+------
 0 | 1 4 7
 1 | 2 5 8
 2 | 3 6 9
 \"\"\"""" ;
-    sdtl:sourceStartIndex 22 ;
-    sdtl:sourceStopIndex 78 .
+    sdtl:SourceStartIndex 22 ;
+    sdtl:SourceStopIndex 78 .
 
-<#sourceInformation/2> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 10 ;
-    sdtl:lineNumberStart 10 ;
-    sdtl:originalSourceText "df = pd.read_csv(\"drop.csv\")" ;
-    sdtl:sourceStartIndex 80 ;
-    sdtl:sourceStopIndex 107 .
+<#SourceInformation/3> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 10 ;
+    sdtl:LineNumberStart 10 ;
+    sdtl:OriginalSourceText "df = pd.read_csv(\"drop.csv\")" ;
+    sdtl:SourceStartIndex 80 ;
+    sdtl:SourceStopIndex 107 .
 
-<#sourceInformation/3> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 12 ;
-    sdtl:lineNumberStart 12 ;
-    sdtl:originalSourceText "drop = df.drop(columns=\"A\")" ;
-    sdtl:sourceStartIndex 110 ;
-    sdtl:sourceStopIndex 136 .
+<#SourceInformation/4> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 12 ;
+    sdtl:LineNumberStart 12 ;
+    sdtl:OriginalSourceText "drop = df.drop(columns=\"A\")" ;
+    sdtl:SourceStartIndex 110 ;
+    sdtl:SourceStopIndex 136 .
 
-<#sourceInformation/4> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 13 ;
-    sdtl:lineNumberStart 13 ;
-    sdtl:originalSourceText "drop_axis = df.drop([\"A\"], axis=1)" ;
-    sdtl:sourceStartIndex 138 ;
-    sdtl:sourceStopIndex 171 .
+<#SourceInformation/5> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 13 ;
+    sdtl:LineNumberStart 13 ;
+    sdtl:OriginalSourceText "drop_axis = df.drop([\"A\"], axis=1)" ;
+    sdtl:SourceStartIndex 138 ;
+    sdtl:SourceStopIndex 171 .
 
-<#sourceInformation/5> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 14 ;
-    sdtl:lineNumberStart 14 ;
-    sdtl:originalSourceText "drop_sugar = df.drop(\"A\", axis=\"columns\")" ;
-    sdtl:sourceStartIndex 173 ;
-    sdtl:sourceStopIndex 213 .
+<#SourceInformation/6> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 14 ;
+    sdtl:LineNumberStart 14 ;
+    sdtl:OriginalSourceText "drop_sugar = df.drop(\"A\", axis=\"columns\")" ;
+    sdtl:SourceStartIndex 173 ;
+    sdtl:SourceStopIndex 213 .
 
-<#sourceInformation/6> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 16 ;
-    sdtl:lineNumberStart 16 ;
-    sdtl:originalSourceText "df.drop(columns=[\"B\", \"C\"], inplace=True)" ;
-    sdtl:sourceStartIndex 216 ;
-    sdtl:sourceStopIndex 256 .
+<#SourceInformation/7> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 16 ;
+    sdtl:LineNumberStart 16 ;
+    sdtl:OriginalSourceText "df.drop(columns=[\"B\", \"C\"], inplace=True)" ;
+    sdtl:SourceStartIndex 216 ;
+    sdtl:SourceStopIndex 256 .
 
-<#sourceInformation/7> a sdtl:SourceInformation ;
-    sdtl:lineNumberEnd 18 ;
-    sdtl:lineNumberStart 18 ;
-    sdtl:originalSourceText "df.to_csv(\"drop.csv\")" ;
-    sdtl:sourceStartIndex 259 ;
-    sdtl:sourceStopIndex 279 .
+<#SourceInformation/8> a sdtl:SourceInformation ;
+    sdtl:LineNumberEnd 18 ;
+    sdtl:LineNumberStart 18 ;
+    sdtl:OriginalSourceText "df.to_csv(\"drop.csv\")" ;
+    sdtl:SourceStartIndex 259 ;
+    sdtl:SourceStopIndex 279 .
+
+<#VariableInventory/1> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/1> ;
+    rdf:_2 <#VariableSymbolExpression/2> ;
+    rdf:_3 <#VariableSymbolExpression/3> .
+
+<#VariableInventory/2> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/4> ;
+    rdf:_2 <#VariableSymbolExpression/5> .
+
+<#VariableInventory/3> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/7> ;
+    rdf:_2 <#VariableSymbolExpression/8> .
+
+<#VariableInventory/4> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/10> ;
+    rdf:_2 <#VariableSymbolExpression/11> .
+
+<#VariableInventory/5> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/13> .
+
+<#VariableSymbolExpression/1> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#VariableSymbolExpression/10> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#VariableSymbolExpression/11> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#VariableSymbolExpression/12> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#VariableSymbolExpression/13> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#VariableSymbolExpression/14> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#VariableSymbolExpression/15> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#VariableSymbolExpression/2> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#VariableSymbolExpression/3> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#VariableSymbolExpression/4> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#VariableSymbolExpression/5> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#VariableSymbolExpression/6> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#VariableSymbolExpression/7> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "B" .
+
+<#VariableSymbolExpression/8> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "C" .
+
+<#VariableSymbolExpression/9> a sdtl:VariableSymbolExpression ;
+    sdtl:VariableName "A" .
+
+<#VariablesInventory/1> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/6> .
+
+<#VariablesInventory/2> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/9> .
+
+<#VariablesInventory/3> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/12> .
+
+<#VariablesInventory/4> a rdf:Seq ;
+    rdf:_1 <#VariableSymbolExpression/14> ;
+    rdf:_2 <#VariableSymbolExpression/15> .
 
 <#DataframeDescription/5> a sdtl:DataframeDescription ;
-    sdtl:VariableInventory <#VariableInventory/5> ;
-    sdtl:dataframeName "df" .
+    sdtl:DataframeName "df" ;
+    sdtl:VariableInventory <#VariableInventory/5> .
 
 <#DataframeDescription/1> a sdtl:DataframeDescription ;
-    sdtl:VariableInventory <#VariableInventory/1> ;
-    sdtl:dataframeName "df" .
+    sdtl:DataframeName "df" ;
+    sdtl:VariableInventory <#VariableInventory/1> .
 

@@ -22,7 +22,7 @@ def test_identifiers():
                 SELECT ?keep_cases_id ?condition_id ?argument_ids ?first_function_argument
         WHERE {
             ?keep_cases_id rdf:type sdtl:KeepCases .
-            ?keep_cases_id sdtl:condition ?condition_id .
+            ?keep_cases_id sdtl:Condition ?condition_id .
             ?condition_id sdtl:Arguments ?argument_ids .
             ?argument_ids rdf:_1 ?first_function_argument .
         }
@@ -70,12 +70,12 @@ def test_keep_cases_functioncallexpression():
                 SELECT ?arg_name ?var_name
         WHERE {
             ?keep_cases_id rdf:type sdtl:KeepCases .
-            ?keep_cases_id sdtl:condition ?condition_id .
+            ?keep_cases_id sdtl:Condition ?condition_id .
             ?condition_id sdtl:Arguments ?argument_ids .
             ?argument_ids rdf:_1 ?first_function_argument .
-            ?first_function_argument sdtl:argumentName ?arg_name .
-            ?first_function_argument sdtl:argumentValue ?arg_value_id .
-            ?arg_value_id sdtl:variableName ?var_name .
+            ?first_function_argument sdtl:ArgumentName ?arg_name .
+            ?first_function_argument sdtl:ArgumentValue ?arg_value_id .
+            ?arg_value_id sdtl:VariableName ?var_name .
         }
         """
     res = converter.graph.query(query)

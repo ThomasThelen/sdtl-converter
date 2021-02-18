@@ -12,7 +12,7 @@ def test_drop_identifiers():
 
     converter = ConverterV03("./sdtl_properties/test_drop/sdtl.json")
     converter.convert_sdtl_to_rdf()
-    converter.write_turtle()
+    converter.write_turtle("./sdtl_properties/test_drop/rdf.ttl")
 
     # Get the drop identifiers
     query = """
@@ -60,7 +60,7 @@ def test_drop_variables_content():
     WHERE {
         <#DropVariables/1> sdtl:Variables ?data_var_inventory_id .
         ?data_var_inventory_id rdf:_1 ?symbol_expression_id .
-        ?symbol_expression_id sdtl:variableName ?var_name .
+        ?symbol_expression_id sdtl:VariableName ?var_name .
     }
     """
     res = converter.graph.query(query)

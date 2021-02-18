@@ -16,8 +16,8 @@ def test_get_id():
 
 def test_get_property_id():
     id_manager = IdentifierManager()
-    identifier = id_manager.get_id('fileName')
-    assert identifier == rdflib.URIRef('#fileName/1')
+    identifier = id_manager.get_id('FileName')
+    assert identifier == rdflib.URIRef('#FileName/1')
 
 
 def test_to_lower():

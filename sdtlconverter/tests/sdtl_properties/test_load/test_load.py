@@ -18,8 +18,8 @@ def test_load_command():
             SELECT ?load_id ?file_format ?filename
     WHERE {
         ?load_id rdf:type sdtl:Load .
-        ?load_id sdtl:fileFormat ?file_format .
-        ?load_id sdtl:fileName ?filename .
+        ?load_id sdtl:FileFormat ?file_format .
+        ?load_id sdtl:FileName ?filename .
     }
     """
 

@@ -18,8 +18,8 @@ def test_save_command():
             SELECT ?save_id ?file_format ?filename
     WHERE {
         ?save_id rdf:type sdtl:Save .
-        ?save_id sdtl:fileFormat ?file_format .
-        ?save_id sdtl:fileName ?filename
+        ?save_id sdtl:FileFormat ?file_format .
+        ?save_id sdtl:FileName ?filename
     }
     """
 
