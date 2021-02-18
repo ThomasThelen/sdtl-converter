@@ -1,6 +1,4 @@
 # SDTLConverter
-[![Build Status](https://travis-ci.org/ThomasThelen/sdtl-converter.svg?branch=master)](https://travis-ci.org/ThomasThelen/sdtl-converter)
-[![codecov](https://codecov.io/gh/ThomasThelen/sdtl-converter/branch/master/graph/badge.svg?token=FHBM1I1R5H)](undefined)
 
 A python library for ingesting SDTL in the JSON format into rdflib,
 which can then be queried or exported into a number of formats such as
@@ -46,3 +44,7 @@ converter.write_turtle()
 In the case that you want to use rdflib to query the SDTL, refer to the
 `tests/` directory for example queries to get you started. The graph can
 be queried with SPARQL in the standard way using the SDTL ontology.
+
+#### Testing
+
+To run the tests, run `pytest` from the root of the `tests/` directory.
