@@ -27,6 +27,8 @@ Turn turn a single SDTL JSON file into RDF, start by constructing a
 `ConverterV03` class and pass the path to the sdtl into the constructor.
  
 ```
+from sdtlconverter.ConverterV03 import ConverterV03
+
 converter = ConverterV03('path_to/sdtl.json')
 ```
 
