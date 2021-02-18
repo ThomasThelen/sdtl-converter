@@ -8,7 +8,7 @@ JSON-LD or turtle.
 
 ### Features
 
-- Supports SDTL v ____
+- Supports SDTL v 0.3
 - Converting individual SDTL JSON files into a graph
 - Load multiple SDTL JSON files and combine into single graph
 
@@ -26,14 +26,14 @@ git+https://github.com/ThomasThelen/sdtl-converter.git`
 #### Loading SDTL Into the Graph
 
 Turn turn a single SDTL JSON file into RDF, start by constructing a
-`ConverterV1` class and pass the path to the sdtl into the constructor.
+`ConverterV03` class and pass the path to the sdtl into the constructor.
  
 ```
-converter = ConverterV1('path_to/sdtl.json')
+converter = ConverterV03('path_to/sdtl.json')
 ```
 
 Next, call `convert_sdtl_to_rdf` to perform the conversion. Either print
-the ConverterV1 object or write the output to disk.
+the ConverterV03 object or write the output to disk.
 ```
 converter.convert_sdtl_to_rdf()
 print(str(converter))

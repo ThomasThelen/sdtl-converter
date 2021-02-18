@@ -34,7 +34,7 @@ class Converter:
         """
         return self.graph.serialize(format='turtle').decode('utf-8')
 
-    def write_turtle(self, filepath: str = "./rdf.ttl"):
+    def write_turtle(self, filepath: str = "./sdtl.ttl"):
         """
         Writes the graph to disk in turtle format.
 
@@ -44,7 +44,7 @@ class Converter:
         with open(filepath, 'wb') as turtle_file:
             turtle_file.write(self.graph.serialize(format='turtle'))
 
-    def write_jsonld(self, filepath: str = "./rdf.jsonld"):
+    def write_jsonld(self, filepath: str = "./sdtl.jsonld"):
         """
         Writes the graph to disk in JSON-LD.
 

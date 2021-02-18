@@ -1,7 +1,5 @@
-
-import rdflib
-
 from sdtlconverter.Converter import Converter
+
 
 def test_init():
     """
@@ -14,8 +12,11 @@ def test_init():
     assert len(converter.sdtl_files) == 1
     assert converter.graph is not None
 
+    converter = Converter(['test_sdtl.json', 'my_second_sdtl.json'])
+    assert len(converter.sdtl_files) == 2
 
-def test_new_graph():
+
+def test_new_graph_namespaces():
     """
     Test that when the graph is initialized, the sdtl & provone
     namespaces are present.

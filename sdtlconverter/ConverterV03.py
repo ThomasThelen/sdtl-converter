@@ -5,7 +5,7 @@ import json
 from sdtlconverter.Converter import Converter
 
 
-class ConverterV1(Converter):
+class ConverterV03(Converter):
     """
     Take SDTL conforming to version ___ and converts it into a format compatible with the
     SDTL OWL specification.
@@ -20,24 +20,24 @@ class ConverterV1(Converter):
         :param file_paths: A path to an SDTL JSON file
         """
 
-        self.dataframes= {}
+        self.dataframes = {}
         self.variable_names = {}
         # SDTL properties that are not ordered. These are mapped to rdf:bag
         self.unordered_properties = ["renames"]
         # SDTL properties that are are ordered. These are mapped to rdf:seq
-        self.ordered_properties= ["SourceInformation", "sortCriteria", "mergeFiles", "dropVariables",
+        self.ordered_properties = ["SourceInformation", "sortCriteria", "mergeFiles", "dropVariables",
                                   "variables", "collapse", "arguments", "appendFiles", "renameVariables",
                                   "messageText", "aggregateVariables"]
 
         super().__init__(file_paths)
 
-    def sdtl_to_rdf(self, sdtl: json, parent_id: rdflib.URIRef):
+    def sdtl_to_rdf(self, sdtl: json, parent_id: rdflib.URIRef) -> Union[rdflib.URIRef, list]:
         """
         Turns a block of SDTL into RDF, recursively.
 
         :param sdtl: The SDTL being turned into RDF
         :param parent_id: The identifier of the parent object that this object/property belongs to
-        :return:
+        :return: The identifier of the node created to represennt the SDTL
         """
 
         # Identifiers of child objects that the parent links to.
@@ -65,7 +65,7 @@ class ConverterV1(Converter):
             elif prop in self.ordered_properties:
                 child_type = None
                 if prop == "SourceInformation":
-                    child_type="SourceInformation"
+                    child_type ="SourceInformation"
                 self.create_sdtl_object(prop, parent_id, sdtl, True, child_type=child_type)
             elif prop in self.unordered_properties:
                 self.create_sdtl_object(prop, parent_id, sdtl, False)
@@ -118,7 +118,7 @@ class ConverterV1(Converter):
 
         return object_identifiers
 
-    def create_sdtl_object (self, name, parent_id, sdtl, ordered, child_type=None):
+    def create_sdtl_object(self, name, parent_id, sdtl, ordered, child_type=None):
         """
 
         :param name: The name of the property
@@ -142,11 +142,9 @@ class ConverterV1(Converter):
                 child_count = child_count+1
                 node_id = self.id_manager.get_id(name)
                 node_type = rdflib.URIRef(f'{self.id_manager.sdtl_namespace}{name}')
-                self.graph.add((node_id, rdflib.RDF.type, node_type))
-                self.graph.add((node_id, rdflib.RDFS.label, rdflib.Literal(string_property)))
 
                 predicate = rdflib.URIRef(f'http://www.w3.org/1999/02/22-rdf-syntax-ns#_{child_count}')
-                self.graph.add((inventory_id, predicate, node_id))
+                self.graph.add((inventory_id, predicate, rdflib.Literal(string_property)))
         else:
             for source_info in sdtl[name]:
                 child_count += 1
@@ -184,7 +182,7 @@ class ConverterV1(Converter):
 
     def convert_sdtl_to_rdf(self):
         # A list of unsupported SDTL commands
-        #unsupported = ["Unsupported", "NoTransformOp"]
+        # unsupported = ["Unsupported", "NoTransformOp"]
 
         for sdtl_file in self.sdtl_files:
             with open(sdtl_file) as json_file:
@@ -221,7 +219,7 @@ class ConverterV1(Converter):
                                                                            command['consumesDataframe'],
                                                                            'ConsumesDataframe')
                             self.parse_dataframe_usage(inventory_id, command['consumesDataframe'])
-                        if 'producesDataframe' in command :
+                        if 'producesDataframe' in command:
                             inventory_id = self.create_dataframe_inventory(command_id,
                                                                            command['producesDataframe'],
                                                                            'ProducesDataframe')

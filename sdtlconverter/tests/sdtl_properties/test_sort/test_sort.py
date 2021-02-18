@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 
 
 def test_sort():
@@ -8,7 +8,7 @@ def test_sort():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_sort/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
     converter.write_jsonld()

@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 
 import rdflib
 
@@ -10,7 +10,7 @@ def test_identifiers():
     :return:
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_keep_cases/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
     converter.write_jsonld()
@@ -59,7 +59,7 @@ def test_keep_cases_functioncallexpression():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_keep_cases/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
     converter.write_jsonld()

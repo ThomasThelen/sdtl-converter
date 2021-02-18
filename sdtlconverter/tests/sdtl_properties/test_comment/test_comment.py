@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 
 import rdflib
 
@@ -9,7 +9,7 @@ def test_comment_identifiers():
     identifiers.
     :return: None
     """
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_comment/sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Get the comment identifiers

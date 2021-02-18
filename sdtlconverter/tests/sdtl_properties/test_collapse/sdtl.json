@@ -168,7 +168,7 @@
    {
       "$type":"Collapse",
       "command":"Collapse",
-      "messageText":["Collapsed variables referring to non-numeric variables will not exist in the data file.", "asdf"],
+      "messageText":["Collapsed variables referring to non-numeric variables will not exist in the data file."],
       "groupByVariables":{
          "$type":"VariableListExpression",
          "variables":[
@@ -343,8 +343,7 @@
       "$type":"Collapse",
       "command":"Collapse",
       "messageText":[
-         "Collapsed variables referring to non-numeric variables will not exist in the data file.",
-         "asdf"
+         "Collapsed variables referring to non-numeric variables will not exist in the data file."
       ],
       "groupByVariables":{
          "$type":"VariableSymbolExpression",
@@ -432,8 +431,7 @@
       "$type":"Collapse",
       "command":"Collapse",
       "messageText":[
-         "Collapsed variables referring to non-numeric variables will not exist in the data file.",
-         "asdf"
+         "Collapsed variables referring to non-numeric variables will not exist in the data file."
       ],
       "groupByVariables":{
          "$type":"VariableSymbolExpression",
@@ -631,8 +629,7 @@
       "$type":"Collapse",
       "command":"Collapse",
       "messageText":[
-         "Collapsed variables referring to non-numeric variables will not exist in the data file.",
-         "asdf"
+         "Collapsed variables referring to non-numeric variables will not exist in the data file."
       ],
       "groupByVariables":{
          "$type":"VariableSymbolExpression",

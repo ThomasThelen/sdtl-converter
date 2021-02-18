@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 import rdflib
 import json
 
@@ -8,10 +8,8 @@ def test_program_node():
     Test that the sdtl:Program node is properly represented
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_append/sdtl.json")
     converter.convert_sdtl_to_rdf()
-    converter.write_turtle()
-    converter.write_jsonld()
 
     # Check that sdtl:Program node exists and is properly named
     query = """
@@ -44,7 +42,7 @@ def test_program_node():
     """
 
     res = converter.graph.query(query)
-    with open("./sdtl.json") as json_file:
+    with open("./sdtl_properties/test_append/sdtl.json") as json_file:
         sdtl = json.load(json_file)
         for row in res:
             assert rdflib.URIRef("#Program/1") == row[0]
@@ -60,7 +58,7 @@ def test_identifiers():
     """
     Test that the expected identifiers are present
     """
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_append/sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # Get all of the AppendDatasets identifiers

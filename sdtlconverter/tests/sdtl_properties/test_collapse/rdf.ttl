@@ -1,5 +1,4 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdtl: <https://rdf-vocabulary.ddialliance.org/sdtl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -483,30 +482,26 @@
     sdtl:sourceInformation <#sourceInformation/2> .
 
 <#MessageTextInventory/1> a rdf:Seq ;
-    rdf:_1 <#messageText/1> .
+    rdf:_1 "Collapse functions which return a Series are not supported." .
 
 <#MessageTextInventory/2> a rdf:Seq ;
-    rdf:_1 <#messageText/2> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#MessageTextInventory/3> a rdf:Seq ;
-    rdf:_1 <#messageText/3> ;
-    rdf:_2 <#messageText/4> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#MessageTextInventory/4> a rdf:Seq ;
-    rdf:_1 <#messageText/5> ;
-    rdf:_2 <#messageText/6> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." ;
+    rdf:_2 "asdf" .
 
 <#MessageTextInventory/5> a rdf:Seq ;
-    rdf:_1 <#messageText/7> ;
-    rdf:_2 <#messageText/8> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#MessageTextInventory/6> a rdf:Seq ;
-    rdf:_1 <#messageText/9> ;
-    rdf:_2 <#messageText/10> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#MessageTextInventory/7> a rdf:Seq ;
-    rdf:_1 <#messageText/11> ;
-    rdf:_2 <#messageText/12> .
+    rdf:_1 "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#NoTransformOp/1> a sdtl:NoTransformOp ;
     sdtl:command "NoTransformOp" ;
@@ -699,42 +694,6 @@
 
 <#dataframeVariable/9> a sdtl:VariableSymbolExpression ;
     sdtl:VariableName "Age" .
-
-<#messageText/1> a sdtl:messageText ;
-    rdfs:label "Collapse functions which return a Series are not supported." .
-
-<#messageText/10> a sdtl:messageText ;
-    rdfs:label "asdf" .
-
-<#messageText/11> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
-
-<#messageText/12> a sdtl:messageText ;
-    rdfs:label "asdf" .
-
-<#messageText/2> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
-
-<#messageText/3> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
-
-<#messageText/4> a sdtl:messageText ;
-    rdfs:label "asdf" .
-
-<#messageText/5> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
-
-<#messageText/6> a sdtl:messageText ;
-    rdfs:label "asdf" .
-
-<#messageText/7> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
-
-<#messageText/8> a sdtl:messageText ;
-    rdfs:label "asdf" .
-
-<#messageText/9> a sdtl:messageText ;
-    rdfs:label "Collapsed variables referring to non-numeric variables will not exist in the data file." .
 
 <#sourceInformation/1> a sdtl:SourceInformation ;
     sdtl:lineNumberEnd 1 ;

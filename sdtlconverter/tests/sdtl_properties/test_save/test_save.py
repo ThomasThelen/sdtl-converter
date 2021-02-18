@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 import rdflib
 
 
@@ -7,7 +7,7 @@ def test_save_command():
     Test that the save command is being properly represented
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_save/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
     converter.write_jsonld()

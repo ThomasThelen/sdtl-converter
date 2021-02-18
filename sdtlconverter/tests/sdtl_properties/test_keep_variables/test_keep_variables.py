@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 
 import rdflib
 
@@ -10,7 +10,7 @@ def test_get_kept_variables():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_keep_variables/sdtl.json")
     converter.convert_sdtl_to_rdf()
 
     # What is one variable name that is kept?

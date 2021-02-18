@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 
 import rdflib
 
@@ -10,7 +10,7 @@ def test_drop_identifiers():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_drop/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
 
@@ -38,7 +38,7 @@ def test_drop_variables_content():
     Test that the contents of DropVariables is expected
     :return: None
     """
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_drop/sdtl.json")
     converter.convert_sdtl_to_rdf()
     # Get the ID of the command that references #VariablesInventory/1
     query = """
@@ -66,6 +66,5 @@ def test_drop_variables_content():
     res = converter.graph.query(query)
     assert len(res) > 0
     for row in res:
-        print(row)
         assert row[0] == rdflib.Literal("A")
 

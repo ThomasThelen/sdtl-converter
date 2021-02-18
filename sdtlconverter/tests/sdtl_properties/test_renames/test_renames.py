@@ -1,4 +1,4 @@
-from sdtlconverter.ConverterV1 import ConverterV1
+from sdtlconverter.ConverterV03 import ConverterV03
 import rdflib
 
 
@@ -9,7 +9,7 @@ def test_identifiers():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_renames/sdtl.json")
     converter.convert_sdtl_to_rdf()
     converter.write_turtle()
     converter.write_jsonld()
@@ -49,7 +49,7 @@ def test_variable_names():
     :return: None
     """
 
-    converter = ConverterV1("./sdtl.json")
+    converter = ConverterV03("./sdtl_properties/test_renames/sdtl.json")
     converter.convert_sdtl_to_rdf()
     # Get the identifiers of all of the Rename nodes
     query = """
@@ -67,7 +67,6 @@ def test_variable_names():
     for row in res:
         expression_ids.append(row[0])
         variable_names.append(row[1])
-    print(expression_ids)
     assert len(expression_ids) == 14
     assert len(variable_names) == 14
     variables = ["A", "x", "one", "b", "two", "a", "B", "y"]

@@ -7,16 +7,11 @@ from sdtlconverter.schemas.generated.sdtl import all_classes
 """
 Class that handles the generation and management of identifiers for RDF subjects. 
 """
+
+
 class IdentifierManager:
     def __init__(self):
         self.counts = 0
-
-        # A list of terms in ProvONE that have identifiers. DEVNOTE: The
-        # xsd of ProvONE can *hopefully* be generated from the owl file and then
-        # have python classes generated (see how the sdtl is done)
-        provone_terms: List[str] = ["Port", "Program", "Workflow", "Execution",
-                                    "Association", "Channel"]
-
         misc_terms: List[str] = ["bag"]
 
         # Create the ProvONE and SDTL namespaces.
@@ -34,7 +29,7 @@ class IdentifierManager:
         for key, value in sdtl_schema.items():
             lowercase_key = key[0].lower() + key[1:]
             self.counts[lowercase_key] = value
-        #for provone_term in provone_terms:
+        # for provone_term in provone_terms:
         #    self.counts[provone_term] = 0
         for misc_term in misc_terms:
             self.counts[misc_term] = 0
