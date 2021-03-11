@@ -31,6 +31,85 @@ class ConverterV03(Converter):
 
         super().__init__(file_paths)
 
+    def process_sdtl(self, sdtl: json) -> json:
+        """
+        Adds $type to all of the SDTL objects that are missing it
+
+        :return: The SDTL documennt with type annotations
+        """
+
+        typeless_properties = """{ "noType": [
+                {"command": "Aggregate", "property": "aggregateVariables", "reqType": "Compute"   },
+                {"command": "AppendDatasets", "property": "appendFiles", "reqType": "AppendFileDescription"   },
+                {"command": "AppendFileDescription", "property": "renameVariables", "reqType": "RenamePair"   },
+                {"command": "Collapse", "property": "aggregateVariables", "reqType": "Compute" },
+                {"command": "FunctionCallExpression", "property": "arguments", "reqType": "FunctionArgument"  },
+                {"command": "LoopOverList", "property": "iterators", "reqType": "IteratorDescription"  },
+                {"command": "MergeDatasets", "property": "mergeFiles", "reqType": "MergeFileDescription" },
+                {"command": "MergeFileDescription", "property": "renameVariables", "reqType": "RenamePair" },
+                {"command": "Recode", "property": "recodedVariables", "reqType": "RecodeVariable" },
+                {"command": "Recode", "property": "rules", "reqType": "RecodeRule" },
+                {"command": "Rename", "property": "renames", "reqType": "RenamePair" },
+                {"command": "ReshapeLong", "property": "makeItems", "reqType": "ReshapeItemDescription" },
+                {"command": "ReshapeWide", "property": "makeItems", "reqType": "ReshapeItemDescription" },
+                {"command": "SetValueLabels", "property": "labels", "reqType": "ValueLabel" },
+                {"command": "SortCases", "property": "sortCriteria", "reqType": "SortCriterion" }
+                ]
+            }"""
+
+        #with open("schemas/NoType.json") as f:
+        noTypejson = json.loads(typeless_properties)
+        noTypeCnt = len(noTypejson['noType'])
+
+        ##  Add $type to sourceInformation property
+        cmndCnt = len(sdtl['commands'])
+        ##  iterate over commands
+        for key1 in range(cmndCnt):
+
+            ## iterate within sourceInformation
+            propCnt = len(sdtl['commands'][key1]['sourceInformation'])
+            for key2 in range(propCnt):
+                if '$type' not in sdtl['commands'][key1]['sourceInformation'][key2]:
+                    sdtl['commands'][key1]['sourceInformation'][key2].update({"$type": "SourceInformation"})
+
+            ## iterate within producesDataframe
+            if 'producesDataframe' in sdtl['commands'][key1]:
+                propCnt = len(sdtl['commands'][key1]['producesDataframe'])
+                for key2 in range(propCnt):
+                    if 'producesDataframe' in sdtl['commands'][key1]:
+                        if '$type' not in sdtl['commands'][key1]['producesDataframe'][key2]:
+                            sdtl['commands'][key1]['producesDataframe'][key2].update(
+                                {"$type": "DataframeDescription"})
+
+            ## iterate within consumesDataframe
+            if 'consumesDataframe' in sdtl['commands'][key1]:
+                propCnt = len(sdtl['commands'][key1]['consumesDataframe'])
+                for key2 in range(propCnt):
+                    if 'consumesDataframe' in sdtl['commands'][key1]:
+                        if '$type' not in sdtl['commands'][key1]['consumesDataframe'][key2]:
+                            sdtl['commands'][key1]['consumesDataframe'][key2].update(
+                                {"$type": "DataframeDescription"})
+
+            ##  iterate over properties that do not require $type ---
+            noTypeCnt = len(noTypejson['noType'])
+            for key3 in range(noTypeCnt):
+                ntCommand = noTypejson['noType'][key3]['command']
+                ntProperty = noTypejson['noType'][key3]['property']
+
+                ## check for command in noTypejson
+                if sdtl['commands'][key1]["command"] == ntCommand and ntProperty in sdtl['commands'][key1]:
+
+                    ## iterate over array within property
+                    propCnt = len(sdtl['commands'][key1][ntProperty])
+                    for key4 in range(propCnt):
+
+                        ## check for presence of $type
+                        if '$type' not in sdtl['commands'][key1][ntProperty][key4]:
+                            sdtl['commands'][key1][ntProperty][key4].update(
+                                {"$type": noTypejson['noType'][key3]['reqType']})
+        return sdtl
+
+
     def sdtl_to_rdf(self, sdtl: json, parent_id: rdflib.URIRef) -> Union[rdflib.URIRef, list]:
         """
         Turns a block of SDTL into RDF, recursively.
@@ -186,7 +265,7 @@ class ConverterV03(Converter):
         for sdtl_file in self.sdtl_files:
             with open(sdtl_file) as json_file:
                 self.sdtl = json.load(json_file)
-
+                self.sdtl = self.process_sdtl(self.sdtl)
                 # Create the sdtl:Program that represents the script
                 script_id = self.add_program()
 
@@ -213,11 +292,6 @@ class ConverterV03(Converter):
                         self.graph.add((commands_id,
                                         rdflib.URIRef(predicate),
                                         command_id))
-                        if 'consumesDataframe' in command:
-                            inventory_id = self.create_dataframe_inventory(command_id,
-                                                                           command['consumesDataframe'],
-                                                                           'ConsumesDataframe')
-                            self.parse_dataframe_usage(inventory_id, command['consumesDataframe'])
                         if 'producesDataframe' in command:
                             inventory_id = self.create_dataframe_inventory(command_id,
                                                                            command['producesDataframe'],
@@ -225,6 +299,11 @@ class ConverterV03(Converter):
                             # Connect each DataframeDescription to the newly created rdf:Seq
                             self.process_dataframe_descriptions(inventory_id, command['producesDataframe'])
 
+                        if 'consumesDataframe' in command:
+                            inventory_id = self.create_dataframe_inventory(command_id,
+                                                                           command['consumesDataframe'],
+                                                                           'ConsumesDataframe')
+                            self.parse_dataframe_usage(inventory_id, command['consumesDataframe'])
                         self.sdtl_to_rdf(command, command_id)
 
     def parse_dataframe_usage(self, dataframe_inventory_id, sdtl):

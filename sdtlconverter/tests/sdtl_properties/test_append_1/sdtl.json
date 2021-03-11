@@ -1,0 +1,198 @@
+{
+   "SourceFileName": "N/A",
+   "SourceLanguage": "sas",
+   "CommandCount": 3,
+   "Messages": [],
+   "Parser": "stata-sdtl-converter",
+   "ParserVersion": "SDTL0.3",
+   "commands": [
+      {
+         "$type": "AppendDatasets",
+         "appendFiles": [
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_1.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_2.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_3.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_4.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_5.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_6.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_7.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_8.sas7bdat"
+            },
+            {
+               "$type": "AppendFileDescription",
+               "fileName": "D:\\Users\\altergc\\Documents\\ICPSR\\Project development\\metadata_capture\\scripts\\GSS_36797\\MVP_scripts\\GSS_SAS\\output\\GSS_region_9.sas7bdat"
+            }
+         ],
+         "command": "AppendDatasets",
+         "producesDataframe": [
+            {
+               "dataframeName": "GSS3",
+               "variableInventory": [
+                  "ABANY",
+                  "ABCARE",
+                  "ABCON1",
+                  "ABCON2",
+                  "ABCON3",
+                  "ABDEFECT",
+                  "ABFIRM",
+                  "ABHLTH",
+                  "ABIMP",
+                  "ABINFO",
+                  "ABNOMORE",
+                  "ABORCT",
+                  "ABPOOR",
+                  "ABPRO1",
+                  "ABPRO2",
+                  "ABPRO3",
+                  "ABRAPE",
+                  "ABSINGLE",
+                  "AGE",
+                  "ATTEND",
+                  "BIBLE",
+                  "CAPFIRM",
+                  "CAPIMP",
+                  "CAPINFO",
+                  "CAPPUN",
+                  "CAPPUN2",
+                  "CHLDIDEL",
+                  "CHLDMORE",
+                  "CHLDNUM",
+                  "CHLDSOON",
+                  "CHURHMEM",
+                  "COHORT",
+                  "DEGREE",
+                  "DIVLAW",
+                  "DIVLAWY",
+                  "EDUC",
+                  "ETH1",
+                  "ETH2",
+                  "ETH3",
+                  "ETHNIC",
+                  "ETHNUM",
+                  "GUNFIRM",
+                  "GUNIMP",
+                  "GUNINFO",
+                  "GUNLAW",
+                  "HISPANIC",
+                  "HOMOCHNG",
+                  "HOMOSEX",
+                  "ID",
+                  "IMMAMECO",
+                  "IMMCRIME",
+                  "IMMIDEAS",
+                  "IMMJOBS",
+                  "INCOME",
+                  "LETIN",
+                  "MADEG",
+                  "MAEDUC",
+                  "MARITAL",
+                  "MARTYPE",
+                  "MEMCHURH",
+                  "NATAID",
+                  "NATARMS",
+                  "NATCHLD",
+                  "NATCITY",
+                  "NATCRIME",
+                  "NATDRUG",
+                  "NATEDUC",
+                  "NATENVIR",
+                  "NATFARE",
+                  "NATHEAL",
+                  "NATMASS",
+                  "NATPARK",
+                  "NATRACE",
+                  "NATROAD",
+                  "NATSCI",
+                  "NATSOC",
+                  "NATSPAC",
+                  "PADEG",
+                  "PAEDUC",
+                  "PARTYID1",
+                  "PARTYID2",
+                  "PARTYID3",
+                  "PILL",
+                  "PILLOK",
+                  "PRAYER",
+                  "PRAYERX",
+                  "PRAYERY",
+                  "PREMARSX",
+                  "PRESTIGE",
+                  "RACE",
+                  "RACECEN1",
+                  "RACECEN2",
+                  "RACECEN3",
+                  "RACESELF",
+                  "REGION",
+                  "RELIG1",
+                  "RELIG2",
+                  "RELIG3",
+                  "RELIG4",
+                  "RELIG5",
+                  "RINCOME",
+                  "SEX",
+                  "SEXEDUC",
+                  "SPDEG",
+                  "SPDUE",
+                  "SPEDUC",
+                  "SPPAID",
+                  "TAX",
+                  "TAXMID",
+                  "TAXPOOR",
+                  "TAXRICH",
+                  "TAXSHARE",
+                  "TEENPILL",
+                  "TEENSEX",
+                  "WRKSTAT",
+                  "XMARSEX",
+                  "YEAR"
+               ]
+            }
+         ],
+         "sourceInformation": [
+            {
+               "lineNumberStart": 5,
+               "lineNumberEnd": 5,
+               "sourceStartIndex": 277,
+               "sourceStopIndex": 479,
+               "originalSourceText": "set data_out.GSS_region_1 data_out.GSS_region_2 data_out.GSS_region_3 data_out.GSS_region_4 data_out.GSS_region_5 data_out.GSS_region_6 data_out.GSS_region_7 data_out.GSS_region_8 data_out.GSS_region_9 ;"
+            }
+         ]
+      },
+      {
+         "$type": "Execute",
+         "command": "Execute",
+         "sourceInformation": [
+            {
+               "lineNumberStart": 6,
+               "lineNumberEnd": 6,
+               "sourceStartIndex": 481,
+               "sourceStopIndex": 484,
+               "originalSourceText": "run;"
+            }
+         ]
+      }
+   ]
+}
