@@ -90,7 +90,7 @@ class SDTLClient:
         #        if sdtl is not None:
         #            self.add_result(SDTLResult(sdtl, file.name))
         #for file in self.input_files:
-        sdtl = self.get_sdtl(self.input_files[1])
+        sdtl = self.get_sdtl(self.input_files[0])
         if sdtl is not None:
             self.add_result(sdtl, "sdtl_output.json")
 
