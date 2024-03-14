@@ -4,6 +4,8 @@ A python library for ingesting SDTL in the JSON format into rdflib,
 which can then be queried or exported into a number of formats such as
 JSON-LD or turtle.
 
+Deprecated by further work from the [C2Metadata](http://c2metadata.mtna.us/) team.
+
 ### Features
 
 - Supports SDTL v 0.3
